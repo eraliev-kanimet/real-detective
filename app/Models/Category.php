@@ -16,7 +16,12 @@ class Category extends Model
 
     public $timestamps = false;
 
-    public function categories(): HasMany
+    public static array $services = [
+        'private_person' => 'For private persons',
+        'business' => 'For Business'
+    ];
+
+    public function subcategories(): HasMany
     {
         return $this->hasMany(Subcategory::class);
     }
