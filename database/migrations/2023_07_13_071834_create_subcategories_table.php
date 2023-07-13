@@ -16,6 +16,9 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('name');
             $table->string('slug')->unique()->index();
+            $table->string('contract_type');
+            $table->integer('average_receipt');
+            $table->integer('minimum_advance_amount');
             $table->boolean('visible')->default(true);
             $table->json('basic');
             $table->json('content');
