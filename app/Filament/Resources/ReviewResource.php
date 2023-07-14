@@ -3,10 +3,9 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ReviewResource\Pages;
+use App\Helpers\FilamentHelper;
 use App\Models\Review;
 use Exception;
-use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -15,21 +14,18 @@ use Filament\Tables;
 class ReviewResource extends Resource
 {
     protected static ?string $model = Review::class;
+    protected static ?int $navigationSort = 5;
+    protected static ?string $navigationIcon = 'heroicon-o-chat-alt';
 
     public static function form(Form $form): Form
     {
-        return $form
-            ->schema([
-                TextInput::make('name')
-                    ->required(),
-                Textarea::make('content')
-                    ->required(),
-                TextInput::make('rating')
-                    ->minValue(0)
-                    ->maxValue(5)
-                    ->numeric()
-                    ->required(),
-            ])->columns(1);
+        $helper = new FilamentHelper();
+
+        return $form->schema([
+            $helper->textInput('name'),
+            $helper->textarea('content'),
+            $helper->numericInputWithMinMaxValue('rating', 0, 5),
+        ])->columns(1);
     }
 
     /**

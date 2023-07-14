@@ -2,100 +2,51 @@
 
 namespace App\Filament\Resources\SubcategoryResource;
 
+use App\Helpers\FilamentHelper;
 use App\Models\Category;
 use Closure;
-use Filament\Forms\Components\Repeater;
-use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Toggle;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class SubcategoryForm
 {
-    public function form(): array
+    public function __construct(
+        protected FilamentHelper $helper
+    )
     {
-        return [
-            ...$this->basic(),
-            $this->content(),
-            $this->faq(),
-        ];
     }
 
-    protected function basic(): array
+    public static function form(): array
     {
+        $self = new SubcategoryForm(new FilamentHelper);
+
         return [
-            Select::make('category_id')
-                ->options(Category::all()->pluck('name', 'id'))
-                ->required(),
-            TextInput::make('name')
-                ->required()
+            $self->helper->select('category_id', Category::all()->pluck('name', 'id')),
+            $self->helper->textInput('name')
                 ->reactive()
                 ->afterStateUpdated(function (Closure $set, $state) {
                     $set('slug', Str::slug(transliterate($state)));
                 }),
-            TextInput::make('slug')
-                ->required()
+            $self->helper->textInput('slug')
                 ->disabled()
                 ->unique(ignorable: fn(null|Model $record): null|Model => $record),
-            TextInput::make('basic.h1')
-                ->required(),
-            Textarea::make('basic.description')
-                ->required(),
-            TextInput::make('basic.rating')
-                ->numeric()
-                ->minValue(0)
-                ->maxValue(5)
-                ->required(),
-            TextInput::make('basic.video')
-                ->required(),
-            Toggle::make('visible')
-                ->default(true)
-                ->required(),
-            Select::make('contract_type')
-                ->options(['Deposit' => 'Deposit'])
-                ->required(),
-            TextInput::make('average_receipt')
-                ->numeric()
-                ->minValue(0)
-                ->required(),
-            TextInput::make('minimum_advance_amount')
-                ->numeric()
-                ->minValue(0)
-                ->required(),
+            $self->helper->textInput('basic.h1'),
+            $self->helper->textarea('basic.description'),
+            $self->helper->numericInputWithMinMaxValue('basic.rating', 0, 5),
+            $self->helper->textInput('basic.video'),
+            $self->helper->toggle('visible', true),
+            $self->helper->select('contract_type', ['Deposit' => 'Deposit']),
+            $self->helper->numericInputWithMinValue('average_receipt', 0),
+            $self->helper->numericInputWithMinValue('minimum_advance_amount', 0),
+            $self->helper->repeater('content', [
+                $self->helper->textInput('header'),
+                $self->helper->richEditor('content'),
+            ])->required(),
+            $self->helper->repeater('faq', [
+                $self->helper->textInput('question'),
+                $self->helper->textarea('content'),
+            ])->required(),
         ];
-    }
-
-    protected function content()
-    {
-        return Repeater::make('content')
-            ->schema([
-                TextInput::make('header')
-                    ->required(),
-                RichEditor::make('content')
-                    ->disableToolbarButtons([
-                        'attachFiles',
-                        'codeBlock',
-                    ])
-                    ->notRegex('/.(<script|<style>).+/i')
-                    ->required()
-            ])
-            ->required();
-    }
-
-    protected function faq()
-    {
-        return Repeater::make('faq')
-            ->schema([
-                TextInput::make('question')
-                    ->required(),
-                Textarea::make('answer')
-                    ->notRegex('/.(<script|<style>).+/i')
-                    ->required()
-            ])
-            ->required();
     }
 }
 

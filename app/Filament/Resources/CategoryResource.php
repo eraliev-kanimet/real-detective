@@ -4,11 +4,9 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\CategoryResource\Pages;
 use App\Filament\Resources\CategoryResource\RelationManagers\SubcategoriesRelationManager;
+use App\Helpers\FilamentHelper;
 use App\Models\Category;
 use Exception;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Toggle;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -20,22 +18,19 @@ use Filament\Tables\Columns\TextColumn;
 class CategoryResource extends Resource
 {
     protected static ?string $model = Category::class;
+    protected static ?int $navigationSort = 2;
+    protected static ?string $navigationIcon = 'heroicon-o-menu-alt-1';
 
     public static function form(Form $form): Form
     {
-        return $form
-            ->schema([
-                TextInput::make('name')
-                    ->required(),
-                TextInput::make('icon')
-                    ->required(),
-                Select::make('service')
-                    ->options(Category::$services)
-                    ->required(),
-                Toggle::make('visible')
-                    ->default(true)
-                    ->required()
-            ])->columns(1);
+        $helper = new FilamentHelper();
+
+        return $form->schema([
+            $helper->textInput('name'),
+            $helper->textInput('icon'),
+            $helper->select('service', Category::$services),
+            $helper->toggle('visible', true),
+        ])->columns(1);
     }
 
     /**

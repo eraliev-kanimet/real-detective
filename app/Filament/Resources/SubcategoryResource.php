@@ -14,12 +14,12 @@ use Filament\Tables;
 class SubcategoryResource extends Resource
 {
     protected static ?string $model = Subcategory::class;
+    protected static ?int $navigationSort = 3;
+    protected static ?string $navigationIcon = 'heroicon-o-view-grid';
 
     public static function form(Form $form): Form
     {
-        $subcategoryForm = new SubcategoryForm();
-
-        return $form->schema($subcategoryForm->form())->columns(1);
+        return $form->schema(SubcategoryForm::form())->columns(1);
     }
 
     /**
