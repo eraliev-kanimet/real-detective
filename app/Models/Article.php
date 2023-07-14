@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Article extends Model
 {
@@ -10,7 +11,6 @@ class Article extends Model
         'name',
         'slug',
         'read_time',
-        'views',
         'tags',
         'author',
         'content',
@@ -27,5 +27,10 @@ class Article extends Model
     public function getRouteKeyName(): string
     {
         return 'slug';
+    }
+
+    public function view(): MorphOne
+    {
+        return $this->morphOne(View::class, 'viewable');
     }
 }

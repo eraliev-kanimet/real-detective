@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique()->index();
             $table->integer('read_time');
-            $table->integer('views')->default(0);
             $table->json('tags');
             $table->json('author');
             $table->json('content');
