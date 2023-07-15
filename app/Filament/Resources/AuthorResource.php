@@ -24,10 +24,10 @@ class AuthorResource extends Resource
         return $form
             ->schema([
                 $helper->grid([
+                    $helper->image('image')->avatar(),
                     $helper->textInput('name'),
                     $helper->textInput('post'),
-                ]),
-                $helper->image('image'),
+                ], 3),
                 $helper->richEditor('about'),
             ])->columns(1);
     }

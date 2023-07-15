@@ -51,9 +51,11 @@ class PageResourceForm
                             ])
                         ]),
                         $helper->tab('Block 3', [
-                            $helper->textInput('content.block3.post'),
-                            $helper->textInput('content.block3.name'),
-                            $helper->textInput('content.block3.experience'),
+                            $helper->grid([
+                                $helper->textInput('content.block3.post'),
+                                $helper->textInput('content.block3.name'),
+                                $helper->textInput('content.block3.experience'),
+                            ], 3),
                             $helper->richEditor('content.bloc3.about')
                         ]),
                         $helper->tab('Block 4', [
@@ -70,14 +72,18 @@ class PageResourceForm
                 ]),
                 $helper->tab('The contacts page', [
                     $helper->fieldset('City 1', [
-                        $helper->textInput('content.city1.name'),
-                        $helper->textInput('content.city1.phone'),
-                        $helper->textInput('content.city1.address'),
+                        $helper->grid([
+                            $helper->textInput('content.city1.name'),
+                            $helper->textInput('content.city1.phone'),
+                            $helper->textInput('content.city1.address'),
+                        ], 3),
                     ], 2),
                     $helper->fieldset('City 2', [
-                        $helper->textInput('content.city2.name'),
-                        $helper->textInput('content.city2.phone'),
-                        $helper->textInput('content.city2.address'),
+                        $helper->grid([
+                            $helper->textInput('content.city2.name'),
+                            $helper->textInput('content.city2.phone'),
+                            $helper->textInput('content.city2.address'),
+                        ], 3),
                     ], 2),
                 ]),
             ])
