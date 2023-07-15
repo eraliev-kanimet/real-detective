@@ -15,4 +15,6 @@ class View extends Model
     {
         return $this->morphTo();
     }
+
+    public $timestamps = false;
 }

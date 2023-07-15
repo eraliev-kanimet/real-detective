@@ -16,11 +16,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique()->index();
             $table->integer('read_time');
+            $table->foreignId('author_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->string('image');
+            $table->text('description');
             $table->json('tags');
-            $table->json('author');
             $table->json('content');
             $table->json('faq');
-            $table->json('seo');
             $table->timestamps();
         });
     }

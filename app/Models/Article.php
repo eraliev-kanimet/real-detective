@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Article extends Model
@@ -12,16 +13,17 @@ class Article extends Model
         'slug',
         'read_time',
         'tags',
-        'author',
+        'image',
+        'author_id',
         'content',
-        'seo',
+        'description',
+        'faq',
     ];
 
     protected $casts = [
         'tags' => 'array',
-        'author' => 'array',
         'content' => 'array',
-        'seo' => 'array',
+        'faq' => 'array',
     ];
 
     public function getRouteKeyName(): string
@@ -32,5 +34,52 @@ class Article extends Model
     public function view(): MorphOne
     {
         return $this->morphOne(View::class, 'viewable');
+    }
+
+    public function author(): BelongsTo
+    {
+        return $this->belongsTo(Author::class);
+    }
+
+    public static function boot(): void
+    {
+        parent::boot();
+
+        self::created(function (Article $article) {
+            $article->view()->save(new View);
+        });
+
+        self::saving(function (Article $article) {
+            $authors = [];
+            $content = [];
+
+            foreach ($article->content as $value) {
+                if ($value['type'] == 'quote') {
+                    if (isset($authors[$value['data']['author_id']])) {
+                        $author = $authors[$value['data']['author_id']];
+                    } else {
+                        $author = Author::whereId($value['data']['author_id'])->first();
+                        $authors[$value['data']['author_id']] = $author;
+                    }
+
+                    $content[] = [
+                        'type' => 'quote',
+                        'data' => [
+                            'text' => $value['data']['text'],
+                            'author_id' => $author->id,
+                            'author' => [
+                                'name' => $author->name,
+                                'post' => $author->post,
+                                'image' => $author->image,
+                            ]
+                        ]
+                    ];
+                } else {
+                    $content[] = $value;
+                }
+            }
+
+            $article->content = $content;
+        });
     }
 }
