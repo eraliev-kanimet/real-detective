@@ -62,19 +62,18 @@ class Article extends Model
                         $authors[$value['data']['author_id']] = $author;
                     }
 
-                    $content[] = [
-                        'type' => 'quote',
-                        'data' => [
-                            'text' => $value['data']['text'],
-                            'author_id' => $author->id,
-                            'author' => [
-                                'name' => $author->name,
-                                'post' => $author->post,
-                                'image' => $author->image,
-                            ]
-                        ]
-                    ];
-                } else {
+                    if ($author) {
+                        $value['data']['author'] = [
+                            'name' => $author->name,
+                            'post' => $author->post,
+                            'image' => $author->image,
+                        ];
+                    } else {
+                        unset($value);
+                    }
+                }
+
+                if (isset($value)) {
                     $content[] = $value;
                 }
             }

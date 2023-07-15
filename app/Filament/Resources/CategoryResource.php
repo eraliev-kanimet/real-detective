@@ -27,8 +27,14 @@ class CategoryResource extends Resource
 
         return $form->schema([
             $helper->textInput('name'),
-            $helper->textInput('icon'),
-            $helper->select('service', Category::$services),
+            $helper->grid([
+                $helper->select('icon', [
+                    'icon1' => 'Icon 1',
+                    'icon2' => 'Icon 2',
+                    'icon3' => 'Icon 3',
+                ]),
+                $helper->select('service', Category::$services),
+            ]),
             $helper->toggle('visible', true),
         ])->columns(1);
     }

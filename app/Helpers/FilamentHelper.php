@@ -2,7 +2,10 @@
 
 namespace App\Helpers;
 
+use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\Fieldset;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
@@ -30,9 +33,19 @@ class FilamentHelper
         return TextInput::make($model)->required();
     }
 
+    public function textInputNullable(string $model)
+    {
+        return TextInput::make($model)->nullable();
+    }
+
     public function textarea(string $model)
     {
         return Textarea::make($model)->notRegex('/.(<script|<style>).+/i')->required();
+    }
+
+    public function textareaNullable(string $model)
+    {
+        return Textarea::make($model)->notRegex('/.(<script|<style>).+/i')->nullable();
     }
 
     public function repeater(string $model, array $schema)
@@ -82,7 +95,7 @@ class FilamentHelper
             ->required();
     }
 
-    public function numericInputWithMinValue(string $model, int $min)
+    public function numericInputWithMinValue(string $model, int $min = 0)
     {
         return $this->numericInput($model)
             ->minValue($min);
@@ -93,5 +106,28 @@ class FilamentHelper
         return $this->numericInput($model)
             ->minValue($min)
             ->maxValue($max);
+    }
+
+    public function image(string $model)
+    {
+        return FileUpload::make($model)->image()->required();
+    }
+
+    public function builder(string $model, array $blocks)
+    {
+        return Builder::make($model)
+            ->label('')
+            ->blocks($blocks);
+    }
+
+    public function builderBlock(string $model, array $schema)
+    {
+        return Builder\Block::make($model)
+            ->schema($schema);
+    }
+
+    public function grid(array $schema, array|int $columns = 2)
+    {
+        return Grid::make($columns)->schema($schema);
     }
 }

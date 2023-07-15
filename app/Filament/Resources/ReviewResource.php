@@ -14,7 +14,7 @@ use Filament\Tables;
 class ReviewResource extends Resource
 {
     protected static ?string $model = Review::class;
-    protected static ?int $navigationSort = 5;
+    protected static ?int $navigationSort = 6;
     protected static ?string $navigationIcon = 'heroicon-o-chat-alt';
 
     public static function form(Form $form): Form
@@ -22,9 +22,11 @@ class ReviewResource extends Resource
         $helper = new FilamentHelper();
 
         return $form->schema([
-            $helper->textInput('name'),
+            $helper->grid([
+                $helper->textInput('name'),
+                $helper->numericInputWithMinMaxValue('rating', 0, 5),
+            ]),
             $helper->textarea('content'),
-            $helper->numericInputWithMinMaxValue('rating', 0, 5),
         ])->columns(1);
     }
 
