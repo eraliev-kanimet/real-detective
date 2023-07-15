@@ -25,8 +25,14 @@ class Author extends Model
     {
         parent::boot();
 
-        parent::updated(function (Author $author) {
-            foreach ($author->articles as $article) {
+        self::updated(function () {
+            foreach (Article::all() as $article) {
+                $article->update();
+            }
+        });
+
+        self::deleted(function () {
+            foreach (Article::all() as $article) {
                 $article->update();
             }
         });
