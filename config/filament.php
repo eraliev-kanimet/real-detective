@@ -59,7 +59,7 @@ return [
         'path' => app_path('Filament'),
     ],
 
-    'dark_mode' => true,
+    'dark_mode' => false,
 
     'database_notifications' => [
         'enabled' => false,

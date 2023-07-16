@@ -15,35 +15,44 @@ class SubcategoryForm
         $helper = new FilamentHelper;
 
         return [
-            $helper->grid([
-                $helper->textInput('name')
-                    ->reactive()
-                    ->afterStateUpdated(function (Closure $set, $state) {
-                        $set('slug', Str::slug(transliterate($state)));
-                    }),
-                $helper->textInput('slug')
-                    ->disabled()
-                    ->unique(ignorable: fn(null|Model $record): null|Model => $record),
+            $helper->tabs([
+                $helper->tab('Basic', [
+                    $helper->grid([
+                        $helper->textInput('name')
+                            ->reactive()
+                            ->afterStateUpdated(function (Closure $set, $state) {
+                                $set('slug', Str::slug(transliterate($state)));
+                            }),
+                        $helper->textInput('slug')
+                            ->disabled()
+                            ->unique(ignorable: fn(null|Model $record): null|Model => $record),
+                    ]),
+                    $helper->textInput('basic.h1'),
+                    $helper->textarea('basic.description'),
+                    $helper->grid([
+                        $helper->select('category_id', Category::all()->pluck('name', 'id'))
+                            ->label('Category'),
+                        $helper->select('contract_type', ['Deposit' => 'Deposit']),
+                        $helper->numericInputWithMinMaxValue('basic.rating', 0, 5),
+                        $helper->textInput('basic.video'),
+                        $helper->numericInputWithMinValue('average_receipt'),
+                        $helper->numericInputWithMinValue('minimum_advance_amount'),
+                    ]),
+                    $helper->toggle('visible', true),
+                ]),
+                $helper->tab('Content', [
+                    $helper->repeater('content', [
+                        $helper->textInput('header'),
+                        $helper->richEditor('content'),
+                    ])->required()->label('')
+                ]),
+                $helper->tab('FAQ', [
+                    $helper->repeater('faq', [
+                        $helper->textInput('question'),
+                        $helper->textarea('answer'),
+                    ])->required()->label(''),
+                ])
             ]),
-            $helper->textInput('basic.h1'),
-            $helper->textarea('basic.description'),
-            $helper->grid([
-                $helper->select('category_id', Category::all()->pluck('name', 'id')),
-                $helper->select('contract_type', ['Deposit' => 'Deposit']),
-                $helper->numericInputWithMinMaxValue('basic.rating', 0, 5),
-                $helper->textInput('basic.video'),
-                $helper->numericInputWithMinValue('average_receipt'),
-                $helper->numericInputWithMinValue('minimum_advance_amount'),
-            ]),
-            $helper->toggle('visible', true),
-            $helper->repeater('content', [
-                $helper->textInput('header'),
-                $helper->richEditor('content'),
-            ])->required(),
-            $helper->repeater('faq', [
-                $helper->textInput('question'),
-                $helper->textarea('content'),
-            ])->required(),
         ];
     }
 }

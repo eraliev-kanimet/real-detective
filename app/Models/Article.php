@@ -31,9 +31,9 @@ class Article extends Model
         return 'slug';
     }
 
-    public function view(): MorphOne
+    public function rating(): MorphOne
     {
-        return $this->morphOne(View::class, 'viewable');
+        return $this->morphOne(Rating::class, 'rateable');
     }
 
     public function author(): BelongsTo
@@ -46,7 +46,7 @@ class Article extends Model
         parent::boot();
 
         self::created(function (Article $article) {
-            $article->view()->save(new View);
+            $article->rating()->save(new Rating);
         });
 
         self::saving(function (Article $article) {

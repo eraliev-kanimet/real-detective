@@ -5,13 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
-class View extends Model
+class Rating extends Model
 {
     protected $fillable = [
-        'value'
+        'views',
+        'likes',
+        'dislikes',
     ];
 
-    public function viewable(): MorphTo
+    public function rateable(): MorphTo
     {
         return $this->morphTo();
     }

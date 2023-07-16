@@ -5,10 +5,8 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\PageResource\PageResourceForm;
 use App\Filament\Resources\PageResource\Pages;
 use App\Models\Page;
-use Exception;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
-use Filament\Resources\Table;
 
 class PageResource extends Resource
 {
@@ -22,23 +20,11 @@ class PageResource extends Resource
         return $form->schema(PageResourceForm::form())->columns(1);
     }
 
-    /**
-     * @throws Exception
-     */
-    public static function table(Table $table): Table
-    {
-        redirect()->route('filament.resources.pages.edit', [
-            'record' => 1
-        ]);
-
-        return $table;
-    }
-
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListPages::route('/'),
-            'edit' => Pages\EditPage::route('/{record}/edit'),
+            'edit' => Pages\EditPage::route('/{record}'),
+            'index' => Pages\EditPage::route('/1'),
         ];
     }
 }

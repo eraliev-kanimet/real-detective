@@ -26,15 +26,15 @@ class CategoryResource extends Resource
         $helper = new FilamentHelper();
 
         return $form->schema([
-            $helper->textInput('name'),
             $helper->grid([
+                $helper->textInput('name'),
                 $helper->select('icon', [
                     'icon1' => 'Icon 1',
                     'icon2' => 'Icon 2',
                     'icon3' => 'Icon 3',
                 ]),
                 $helper->select('service', Category::$services),
-            ]),
+            ], 3),
             $helper->toggle('visible', true),
         ])->columns(1);
     }

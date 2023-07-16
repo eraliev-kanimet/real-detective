@@ -38,25 +38,25 @@ class ArticleResourceForm
                 $helper->tab('Content', [
                     $helper->builder('content', [
                         $helper->builderBlock('text', [
-                            $helper->richEditor('content')->label(''),
-                        ]),
+                            $helper->textarea('content')->label(''),
+                        ])->icon('heroicon-o-menu'),
                         $helper->builderBlock('text_with_headers_type_1', [
                             $helper->textInput('header'),
                             $helper->builder('items', [
                                 $helper->builderBlock('text', [
-                                    $helper->richEditor('content')->label(''),
+                                    $helper->textarea('content')->label(''),
                                 ]),
                                 $helper->builderBlock('subheader', [
                                     $helper->textInput('header'),
-                                    $helper->richEditor('text'),
+                                    $helper->textarea('text'),
                                 ]),
                             ])
-                        ]),
+                        ])->icon('heroicon-o-document-text'),
                         $helper->builderBlock('text_with_headers_type_2', [
                             $helper->textInput('header'),
                             $helper->builder('items', [
                                 $helper->builderBlock('text', [
-                                    $helper->richEditor('content')->label(''),
+                                    $helper->textarea('content')->label(''),
                                 ]),
                                 $helper->builderBlock('subheader', [
                                     $helper->select('icon', [
@@ -65,22 +65,22 @@ class ArticleResourceForm
                                         'icon3' => 'Icon 3',
                                     ]),
                                     $helper->textInput('header'),
-                                    $helper->richEditor('text'),
+                                    $helper->textarea('text'),
                                 ]),
                             ])
-                        ]),
+                        ])->icon('heroicon-o-newspaper'),
                         $helper->builderBlock('text_with_headers_type_3', [
                             $helper->textInput('header'),
                             $helper->builder('items', [
                                 $helper->builderBlock('text', [
-                                    $helper->richEditor('content')->label(''),
+                                    $helper->textarea('content')->label(''),
                                 ]),
                                 $helper->builderBlock('subheader', [
                                     $helper->textInput('header'),
-                                    $helper->richEditor('text'),
+                                    $helper->textarea('text'),
                                 ]),
                             ])
-                        ]),
+                        ])->icon('heroicon-o-document-text'),
                         $helper->builderBlock('image', [
                             $helper->textInputNullable('header'),
                             $helper->textareaNullable('text'),
@@ -88,18 +88,18 @@ class ArticleResourceForm
                                 $helper->image('image'),
                                 $helper->textInputNullable('alt'),
                             ])
-                        ]),
+                        ])->icon('heroicon-o-photograph'),
                         $helper->builderBlock('quote', [
-                            $helper->richEditor('text'),
+                            $helper->textarea('text'),
                             $helper->select('author_id', $authors)->label('Author')
-                        ]),
+                        ])->icon('heroicon-o-information-circle'),
                     ])->required(),
                 ]),
                 $helper->tab('FAQ', [
                     $helper->repeater('faq', [
                         $helper->textInput('question'),
-                        $helper->richEditor('answer'),
-                    ])->required(),
+                        $helper->textarea('answer'),
+                    ])->required()->label(''),
                 ]),
             ])
         ];
