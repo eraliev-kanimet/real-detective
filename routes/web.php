@@ -1,5 +1,24 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('', [HomeController::class, 'home'])->name('home');
+Route::get('reviews', [HomeController::class, 'reviews'])->name('reviews');
+Route::get('contacts', [HomeController::class, 'contacts'])->name('contacts');
+
+Route::get('articles/{article:slug}', [ArticleController::class, 'show'])->name('article');
+Route::get('articles', [ArticleController::class, 'index'])->name('articles');
+
+Route::get('catalog/{subcategory:slug}', [CategoryController::class, 'subcategory'])->name('subcategory');
+Route::get('price', [CategoryController::class, 'price'])->name('price');
+Route::get('catalog', [CategoryController::class, 'index'])->name('categories');
+
+Route::get('sitemap', [PageController::class, 'sitemap'])->name('sitemap');
+Route::get('cookies-policy', [PageController::class, 'cookiesPolicy'])->name('cookies-policy');
+Route::get('privacy-policy', [PageController::class, 'privacyPolicy'])->name('privacy-policy');
 
 Route::redirect('/login', '/admin/login', 301)->name('login');

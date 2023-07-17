@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Page;
+
 function transliterate($text): string
 {
     return strtr($text, [
@@ -12,4 +14,14 @@ function transliterate($text): string
         'У' => 'U', 'Ф' => 'F', 'Х' => 'H', 'Ц' => 'Ts', 'Ч' => 'Ch', 'Ш' => 'Sh', 'Щ' => 'Sch', 'Ъ' => '', 'Ы' => 'Y', 'Ь' => '',
         'Э' => 'E', 'Ю' => 'Yu', 'Я' => 'Ya'
     ]);
+}
+
+function site(string $key, mixed $default = '')
+{
+    return Page::$site->seo[$key] ?? $default;
+}
+
+function site_content(string $key, mixed $default = '')
+{
+    return Page::$site->content[$key] ?? $default;
 }

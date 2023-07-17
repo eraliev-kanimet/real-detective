@@ -27,7 +27,6 @@ class SubcategoryForm
                             ->disabled()
                             ->unique(ignorable: fn(null|Model $record): null|Model => $record),
                     ]),
-                    $helper->textInput('basic.h1'),
                     $helper->textarea('basic.description'),
                     $helper->grid([
                         $helper->select('category_id', Category::all()->pluck('name', 'id'))
