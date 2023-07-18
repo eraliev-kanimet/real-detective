@@ -15,6 +15,10 @@ use Illuminate\Database\Eloquent\Builder;
 class AuthorResource extends Resource
 {
     protected static ?string $model = Author::class;
+    protected static ?string $navigationLabel = 'Авторы';
+    protected static ?string $breadcrumb = 'Авторы';
+    protected static ?string $pluralLabel = 'Авторы';
+    protected static ?string $modelLabel = 'Автор';
     protected static ?int $navigationSort = 4;
     protected static ?string $navigationIcon = 'heroicon-o-identification';
 
@@ -30,11 +34,11 @@ class AuthorResource extends Resource
         return $form
             ->schema([
                 $helper->grid([
-                    $helper->image('image')->avatar(),
-                    $helper->textInput('name'),
-                    $helper->textInput('post'),
+                    $helper->image('image')->avatar()->label('Фото'),
+                    $helper->textInput('name')->label('Имя'),
+                    $helper->textInput('post')->label('Должность'),
                 ], 3),
-                $helper->richEditor('about'),
+                $helper->richEditor('about')->label('О себе'),
             ])->columns(1);
     }
 
@@ -45,9 +49,11 @@ class AuthorResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('post'),
-                Tables\Columns\TextColumn::make('articles_count')->counts('articles'),
+                Tables\Columns\TextColumn::make('name')->label('Имя'),
+                Tables\Columns\TextColumn::make('post')->label('Должность'),
+                Tables\Columns\TextColumn::make('articles_count')
+                    ->counts('articles')
+                    ->label('Кол-во статей'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

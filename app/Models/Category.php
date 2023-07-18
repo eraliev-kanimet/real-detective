@@ -17,8 +17,8 @@ class Category extends Model
     public $timestamps = false;
 
     public static array $services = [
-        'private_person' => 'For private persons',
-        'business' => 'For Business'
+        'private_person' => 'Для частных лиц',
+        'business' => 'Для Бизнеса'
     ];
 
     public function subcategories(): HasMany

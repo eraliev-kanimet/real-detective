@@ -18,6 +18,10 @@ use Filament\Tables\Columns\TextColumn;
 class CategoryResource extends Resource
 {
     protected static ?string $model = Category::class;
+    protected static ?string $navigationLabel = 'Категории';
+    protected static ?string $breadcrumb = 'Категории';
+    protected static ?string $pluralLabel = 'Категории';
+    protected static ?string $modelLabel = 'Категория';
     protected static ?int $navigationSort = 2;
     protected static ?string $navigationIcon = 'heroicon-o-menu-alt-1';
 
@@ -27,15 +31,15 @@ class CategoryResource extends Resource
 
         return $form->schema([
             $helper->grid([
-                $helper->textInput('name'),
+                $helper->textInput('name')->label('Название'),
                 $helper->select('icon', [
                     'icon1' => 'Icon 1',
                     'icon2' => 'Icon 2',
                     'icon3' => 'Icon 3',
-                ]),
-                $helper->select('service', Category::$services),
+                ])->label('Иконка'),
+                $helper->select('service', Category::$services)->label('Группа'),
             ], 3),
-            $helper->toggle('visible', true),
+            $helper->toggle('visible', true)->label('Активный'),
         ])->columns(1);
     }
 
@@ -46,9 +50,9 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name'),
-                TextColumn::make('service')->enum(Category::$services),
-                IconColumn::make('visible')->boolean()
+                TextColumn::make('name')->label('Название'),
+                TextColumn::make('service')->label('Группа')->enum(Category::$services),
+                IconColumn::make('visible')->label('Активный')->boolean()
             ])
             ->actions([
                 EditAction::make(),

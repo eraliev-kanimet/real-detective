@@ -10,11 +10,16 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 
 class ArticleResource extends Resource
 {
     protected static ?string $model = Article::class;
+    protected static ?string $navigationLabel = 'Статьи';
+    protected static ?string $breadcrumb = 'Статьи';
+    protected static ?string $pluralLabel = 'Статьи';
+    protected static ?string $modelLabel = 'Статья';
     protected static ?int $navigationSort = 5;
     protected static ?string $navigationIcon = 'heroicon-o-newspaper';
 
@@ -35,12 +40,12 @@ class ArticleResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')->limit(25),
-                Tables\Columns\TextColumn::make('rating.views'),
-                Tables\Columns\TextColumn::make('rating.likes'),
-                Tables\Columns\TextColumn::make('rating.dislikes'),
-                Tables\Columns\TextColumn::make('author.name')->limit(13),
-                Tables\Columns\TextColumn::make('created_at')->dateTime(),
+                TextColumn::make('name')->limit(25)->label('Название'),
+                TextColumn::make('rating.views')->label('Просмотры'),
+                TextColumn::make('rating.likes')->label('Нравится'),
+                TextColumn::make('rating.dislikes')->label('Не нравится'),
+                TextColumn::make('author.name')->label('Автор')->limit(13),
+                TextColumn::make('created_at')->label('Дата создания')->dateTime(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

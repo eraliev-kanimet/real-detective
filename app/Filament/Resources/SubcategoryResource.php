@@ -14,6 +14,10 @@ use Filament\Tables;
 class SubcategoryResource extends Resource
 {
     protected static ?string $model = Subcategory::class;
+    protected static ?string $navigationLabel = 'Услуги';
+    protected static ?string $breadcrumb = 'Услуги';
+    protected static ?string $pluralLabel = 'Услуги';
+    protected static ?string $modelLabel = 'Услуга';
     protected static ?int $navigationSort = 3;
     protected static ?string $navigationIcon = 'heroicon-o-view-grid';
 
@@ -29,8 +33,8 @@ class SubcategoryResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('contract_type'),
+                Tables\Columns\TextColumn::make('name')->label('Название'),
+                Tables\Columns\TextColumn::make('contract_type')->label('Тип контракта'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

@@ -5,7 +5,6 @@ namespace App\Filament\Resources;
 use App\Helpers\FilamentHelper;
 use Exception;
 use App\Models\User;
-use Filament\Tables;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
@@ -16,6 +15,10 @@ use App\Filament\Resources\UserResource\Pages;
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
+    protected static ?string $navigationLabel = 'Пользователи';
+    protected static ?string $breadcrumb = 'Пользователи';
+    protected static ?string $pluralLabel = 'Пользователи';
+    protected static ?string $modelLabel = 'Пользователь';
     protected static ?int $navigationSort = 9;
     protected static ?string $navigationIcon = 'heroicon-o-lock-closed';
 
@@ -24,11 +27,12 @@ class UserResource extends Resource
         $helper = new FilamentHelper();
 
         return $form->schema([
-            $helper->textInput('name'),
+            $helper->textInput('name')->label('Имя'),
             $helper->textInput('email')
                 ->email()
                 ->unique(User::class, 'email'),
             $helper->textInput('password')
+                ->label('Пароль')
                 ->password()
                 ->maxLength(255)
                 ->dehydrateStateUsing(static function ($state) use ($form) {
@@ -54,10 +58,16 @@ class UserResource extends Resource
         $table
             ->columns([
                 TextColumn::make('id')->sortable(),
-                TextColumn::make('name')->sortable()->searchable(),
+                TextColumn::make('name')->sortable()->searchable()->label('Имя'),
                 TextColumn::make('email')->sortable()->searchable(),
-                Tables\Columns\TextColumn::make('created_at')->dateTime('M j, Y')->sortable(),
-                Tables\Columns\TextColumn::make('updated_at')->dateTime('M j, Y')->sortable(),
+                TextColumn::make('created_at')
+                    ->label('Дата создание')
+                    ->dateTime('M j, Y')
+                    ->sortable(),
+                TextColumn::make('updated_at')
+                    ->label('Дата последнего изменения')
+                    ->dateTime('M j, Y')
+                    ->sortable(),
             ]);
 
         return $table;

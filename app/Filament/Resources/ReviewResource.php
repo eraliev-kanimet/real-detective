@@ -14,6 +14,10 @@ use Filament\Tables;
 class ReviewResource extends Resource
 {
     protected static ?string $model = Review::class;
+    protected static ?string $navigationLabel = 'Отзывы';
+    protected static ?string $breadcrumb = 'Отзывы';
+    protected static ?string $pluralLabel = 'Отзывы';
+    protected static ?string $modelLabel = 'Отзыв';
     protected static ?int $navigationSort = 6;
     protected static ?string $navigationIcon = 'heroicon-o-chat-alt';
 
@@ -23,10 +27,10 @@ class ReviewResource extends Resource
 
         return $form->schema([
             $helper->grid([
-                $helper->textInput('name'),
-                $helper->numericInputWithMinMaxValue('rating', 0, 5),
+                $helper->textInput('name')->label('Имя'),
+                $helper->numericInputWithMinMaxValue('rating', 0, 5)->label('Оценка'),
             ]),
-            $helper->textarea('content'),
+            $helper->textarea('content')->label('Текст'),
         ])->columns(1);
     }
 
@@ -37,8 +41,8 @@ class ReviewResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('rating'),
+                Tables\Columns\TextColumn::make('name')->label('Название'),
+                Tables\Columns\TextColumn::make('rating')->label('Оценка'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

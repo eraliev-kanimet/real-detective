@@ -16,9 +16,10 @@ class SubcategoryForm
 
         return [
             $helper->tabs([
-                $helper->tab('Basic', [
+                $helper->tab('Основная', [
                     $helper->grid([
                         $helper->textInput('name')
+                            ->label('Название')
                             ->reactive()
                             ->afterStateUpdated(function (Closure $set, $state) {
                                 $set('slug', Str::slug(transliterate($state)));
@@ -27,28 +28,30 @@ class SubcategoryForm
                             ->disabled()
                             ->unique(ignorable: fn(null|Model $record): null|Model => $record),
                     ]),
-                    $helper->textarea('basic.description'),
+                    $helper->textarea('basic.description')->label('Описание'),
                     $helper->grid([
                         $helper->select('category_id', Category::all()->pluck('name', 'id'))
-                            ->label('Category'),
-                        $helper->select('contract_type', ['Deposit' => 'Deposit']),
-                        $helper->numericInputWithMinMaxValue('basic.rating', 0, 5),
-                        $helper->textInput('basic.video'),
-                        $helper->numericInputWithMinValue('average_receipt'),
-                        $helper->numericInputWithMinValue('minimum_advance_amount'),
+                            ->label('Категория'),
+                        $helper->select('contract_type', ['Депозитный' => 'Депозитный'])->label('Тип контракта'),
+                        $helper->numericInputWithMinMaxValue('basic.rating', 0, 5)
+                            ->label('Оценка'),
+                        $helper->textInput('basic.video')->label('Видео'),
+                        $helper->numericInputWithMinValue('average_receipt')->label('Средний чек'),
+                        $helper->numericInputWithMinValue('minimum_advance_amount')
+                            ->label('Размер минимального аванса'),
                     ]),
-                    $helper->toggle('visible', true),
+                    $helper->toggle('visible', true)->label('Активный'),
                 ]),
-                $helper->tab('Content', [
+                $helper->tab('Контент', [
                     $helper->repeater('content', [
-                        $helper->textInput('header'),
-                        $helper->richEditor('content'),
+                        $helper->textInput('header')->label('Заголовок'),
+                        $helper->richEditor('content')->label('Описание'),
                     ])->required()->label('')
                 ]),
                 $helper->tab('FAQ', [
                     $helper->repeater('faq', [
-                        $helper->textInput('question'),
-                        $helper->textarea('answer'),
+                        $helper->textInput('question')->label('Вопрос'),
+                        $helper->textarea('answer')->label('Ответ'),
                     ])->required()->label(''),
                 ])
             ]),

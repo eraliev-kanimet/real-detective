@@ -20,6 +20,7 @@ class ArticleResourceForm
                 $helper->tab('Basic', [
                     $helper->grid([
                         $helper->textInput('name')
+                            ->label('Название')
                             ->reactive()
                             ->afterStateUpdated(function (Closure $set, $state) {
                                 $set('slug', Str::slug(transliterate($state)));
@@ -27,78 +28,78 @@ class ArticleResourceForm
                         $helper->textInput('slug')
                             ->disabled()
                             ->unique(ignorable: fn(null|Model $record): null|Model => $record),
-                        $helper->textarea('description')->rows(7),
-                        $helper->image('image'),
+                        $helper->textarea('description')->label('Описание')->rows(7),
+                        $helper->image('image')->label('Картинка'),
                         $helper->select('author_id', $authors)
-                            ->label('Author'),
-                        $helper->numericInputWithMinValue('read_time'),
+                            ->label('Автор'),
+                        $helper->numericInputWithMinValue('read_time')->label('Время чтение'),
                     ]),
-                    $helper->tags('tags'),
+                    $helper->tags('tags')->label('Теги'),
                 ]),
-                $helper->tab('Content', [
+                $helper->tab('Контент', [
                     $helper->builder('content', [
                         $helper->builderBlock('text', [
                             $helper->textarea('content')->label(''),
-                        ])->icon('heroicon-o-menu'),
+                        ])->icon('heroicon-o-menu')->label('Текст'),
                         $helper->builderBlock('text_with_headers_type_1', [
-                            $helper->textInput('header'),
+                            $helper->textInput('header')->label('Заголовок'),
                             $helper->builder('items', [
                                 $helper->builderBlock('text', [
                                     $helper->textarea('content')->label(''),
-                                ]),
+                                ])->label('Текст'),
                                 $helper->builderBlock('subheader', [
-                                    $helper->textInput('header'),
-                                    $helper->textarea('text'),
-                                ]),
+                                    $helper->textInput('header')->label('Под-заголовок'),
+                                    $helper->textarea('text')->label('Текст'),
+                                ])->label('Текст с под-заголовком'),
                             ])
-                        ])->icon('heroicon-o-document-text'),
+                        ])->icon('heroicon-o-document-text')->label('Текст с заголовком 1'),
                         $helper->builderBlock('text_with_headers_type_2', [
-                            $helper->textInput('header'),
+                            $helper->textInput('header')->label('Заголовок'),
                             $helper->builder('items', [
                                 $helper->builderBlock('text', [
                                     $helper->textarea('content')->label(''),
-                                ]),
+                                ])->label('Текст'),
                                 $helper->builderBlock('subheader', [
                                     $helper->select('icon', [
                                         'icon1' => 'Icon 1',
                                         'icon2' => 'Icon 2',
                                         'icon3' => 'Icon 3',
-                                    ]),
-                                    $helper->textInput('header'),
-                                    $helper->textarea('text'),
-                                ]),
+                                    ])->label('Иконка'),
+                                    $helper->textInput('header')->label('Под-заголовок'),
+                                    $helper->textarea('text')->label('Текст'),
+                                ])->label('Текст с под-заголовком'),
                             ])
-                        ])->icon('heroicon-o-newspaper'),
+                        ])->icon('heroicon-o-newspaper')->label('Текст с заголовком 2'),
                         $helper->builderBlock('text_with_headers_type_3', [
-                            $helper->textInput('header'),
+                            $helper->textInput('header')->label('Заголовок'),
                             $helper->builder('items', [
                                 $helper->builderBlock('text', [
                                     $helper->textarea('content')->label(''),
-                                ]),
+                                ])->label('Текст'),
                                 $helper->builderBlock('subheader', [
-                                    $helper->textInput('header'),
-                                    $helper->textarea('text'),
-                                ]),
+                                    $helper->textInput('header')->label('Под-заголовок'),
+                                    $helper->textarea('text')->label('Текст'),
+                                ])->label('Текст с под-заголовком'),
                             ])
-                        ])->icon('heroicon-o-document-text'),
+                        ])->icon('heroicon-o-document-text')->label('Текст с заголовком 3'),
                         $helper->builderBlock('image', [
-                            $helper->textInputNullable('header'),
-                            $helper->textareaNullable('text'),
+                            $helper->textInputNullable('header')->label('Заголовок'),
+                            $helper->textareaNullable('text')->label('Описание'),
                             $helper->repeater('images', [
-                                $helper->image('image'),
+                                $helper->image('image')->label('Картинка'),
                                 $helper->textInputNullable('alt'),
-                            ])
-                        ])->icon('heroicon-o-photograph'),
+                            ])->label('Картинки')
+                        ])->icon('heroicon-o-photograph')->label('Картинки'),
                         $helper->builderBlock('quote', [
-                            $helper->textarea('text'),
-                            $helper->select('author_id', $authors)->label('Author')
-                        ])->icon('heroicon-o-information-circle'),
+                            $helper->textarea('text')->label('Текст'),
+                            $helper->select('author_id', $authors)->label('Автор')
+                        ])->icon('heroicon-o-information-circle')->label('Цитата'),
                     ])->required(),
                 ]),
                 $helper->tab('FAQ', [
                     $helper->repeater('faq', [
-                        $helper->textInput('question'),
-                        $helper->textarea('answer'),
+                        $helper->textInput('question')->label('Вопрос'),
+                        $helper->textarea('answer')->label('Ответ'),
                     ])->required()->label(''),
                 ]),
             ])

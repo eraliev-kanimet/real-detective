@@ -12,77 +12,79 @@ class PageResourceForm
 
         return [
             $helper->tabs([
-                $helper->tab('Site properties', [
+                $helper->tab('Свойства сайта', [
                     $helper->fieldset('SEO', [
-                        $helper->textInput('seo.title'),
-                        $helper->textarea('seo.description'),
+                        $helper->textInput('seo.title')->label('Заголовок'),
+                        $helper->textarea('seo.description')->label('Описание'),
                     ]),
                     $helper->grid([
-                        $helper->textInput('seo.phone'),
-                        $helper->textInput('seo.address'),
-                    ]),
-                    $helper->fieldset('Social networks', [
+                        $helper->textInput('seo.phone')->label('Телефон'),
+                        $helper->textInput('seo.address')->label('Адрес'),
                         $helper->textInput('seo.email'),
+                    ], 3),
+                    $helper->fieldset('Социальные сети', [
                         $helper->textInput('seo.telegram'),
                         $helper->textInput('seo.youtube'),
-                        $helper->textInput('seo.profi'),
+                        $helper->textInput('seo.profi')->label('Профи'),
                         $helper->textInput('seo.tenchat'),
                         $helper->textInput('seo.whatsapp'),
                         $helper->textInput('seo.signal'),
                     ], 2),
                 ]),
-                $helper->tab('The home page', [
-                    $helper->textInput('seo.map'),
-                    $helper->tags('content.videos')->placeholder('New video'),
+                $helper->tab('Главная страница', [
+                    $helper->textInput('seo.map')->label('Карта'),
+                    $helper->tags('content.videos')
+                        ->label('Видеоролики')
+                        ->placeholder('Новое видео'),
                     $helper->tabs([
-                        $helper->tab('Block 1', [
-                            $helper->richEditor('content.block1.text'),
+                        $helper->tab('Блок 1', [
+                            $helper->richEditor('content.block1.text')->label(''),
                             $helper->repeater('content.block1.items', [
-                                $helper->textInput('header'),
-                                $helper->richEditor('description')
-                            ])
+                                $helper->textInput('header')->label('Заголовок'),
+                                $helper->richEditor('description')->label('Описание')
+                            ])->label('Пункты')
                         ]),
-                        $helper->tab('Block 2', [
-                            $helper->textInput('content.block2.header'),
-                            $helper->richEditor('content.block2.description'),
+                        $helper->tab('Блок 2', [
+                            $helper->textInput('content.block2.header')->label('Заголовок'),
+                            $helper->richEditor('content.block2.description')->label('Описание'),
                             $helper->repeater('content.block2.items', [
-                                $helper->textInput('header'),
-                                $helper->richEditor('description')
-                            ])
+                                $helper->textInput('header')->label('Заголовок'),
+                                $helper->richEditor('description')->label('Описание')
+                            ])->label('Пункты')
                         ]),
-                        $helper->tab('Block 3', [
+                        $helper->tab('Блок 3', [
                             $helper->grid([
-                                $helper->textInput('content.block3.post'),
-                                $helper->textInput('content.block3.name'),
-                                $helper->textInput('content.block3.experience'),
+                                $helper->textInput('content.block3.name')->label('Имя'),
+                                $helper->textInput('content.block3.post')->label('Должность'),
+                                $helper->textInput('content.block3.experience')->label('Опыт'),
                             ], 3),
-                            $helper->richEditor('content.bloc3.about')
+                            $helper->richEditor('content.block3.about')->label('О себе')
                         ]),
-                        $helper->tab('Block 4', [
-                            $helper->textInput('content.block4.header'),
-                            $helper->richEditor('content.block4.description')
+                        $helper->tab('Блок 4', [
+                            $helper->textInput('content.block4.header')->label('Заголовок'),
+                            $helper->richEditor('content.block4.description')->label('Описание')
                         ]),
                         $helper->tab('FAQ', [
                             $helper->repeater('content.faq', [
-                                $helper->textInput('question'),
-                                $helper->richEditor('answer')
-                            ]),
+                                $helper->textInput('question')->label('Вопрос'),
+                                $helper->richEditor('answer')->label('Ответ')
+                            ])->label(''),
                         ]),
                     ])
                 ]),
-                $helper->tab('The contacts page', [
-                    $helper->fieldset('City 1', [
+                $helper->tab('Страница "Контакты"', [
+                    $helper->fieldset('Город 1', [
                         $helper->grid([
-                            $helper->textInput('content.city1.name'),
-                            $helper->textInput('content.city1.phone'),
-                            $helper->textInput('content.city1.address'),
+                            $helper->textInput('content.city1.name')->label('Название'),
+                            $helper->textInput('content.city1.phone')->label('Телефон'),
+                            $helper->textInput('content.city1.address')->label('Адрес'),
                         ], 3),
                     ], 2),
-                    $helper->fieldset('City 2', [
+                    $helper->fieldset('Город 2', [
                         $helper->grid([
-                            $helper->textInput('content.city2.name'),
-                            $helper->textInput('content.city2.phone'),
-                            $helper->textInput('content.city2.address'),
+                            $helper->textInput('content.city2.name')->label('Название'),
+                            $helper->textInput('content.city2.phone')->label('Телефон'),
+                            $helper->textInput('content.city2.address')->label('Адрес'),
                         ], 3),
                     ], 2),
                 ]),

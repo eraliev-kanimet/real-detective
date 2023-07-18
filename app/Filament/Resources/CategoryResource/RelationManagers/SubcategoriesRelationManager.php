@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 class SubcategoriesRelationManager extends RelationManager
 {
     protected static string $relationship = 'subcategories';
+    protected static ?string $title = 'Услуги';
 
     /**
      * @throws Exception
@@ -19,8 +20,8 @@ class SubcategoriesRelationManager extends RelationManager
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('contract_type'),
+                Tables\Columns\TextColumn::make('name')->label('Название'),
+                Tables\Columns\TextColumn::make('contract_type')->label('Тип контракта'),
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make()->url(route('filament.resources.subcategories.create')),
@@ -29,7 +30,7 @@ class SubcategoriesRelationManager extends RelationManager
                 Tables\Actions\Action::make('edit')
                     ->action(function (Model $record) {
                         redirect()->route('filament.resources.subcategories.edit', $record);
-                    }),
+                    })->label('Изменить'),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([

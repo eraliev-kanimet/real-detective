@@ -9,7 +9,7 @@ use Filament\Resources\Pages\EditRecord;
 class EditPage extends EditRecord
 {
     protected static string $resource = PageResource::class;
-    protected static ?string $title = 'Changing site configuration';
+    protected static ?string $title = 'Изменение конфигурации сайта';
 
     public function getBreadcrumb(): string
     {

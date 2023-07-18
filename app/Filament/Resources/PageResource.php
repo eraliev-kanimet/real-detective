@@ -11,7 +11,9 @@ use Filament\Resources\Resource;
 class PageResource extends Resource
 {
     protected static ?string $model = Page::class;
-    protected static ?string $navigationLabel = 'Site configuration';
+    protected static ?string $navigationLabel = 'Конфигурация сайта';
+    protected static ?string $breadcrumb = 'Сайты';
+    protected static ?string $pluralLabel = 'Конфигурация сайта';
     protected static ?string $navigationIcon = 'heroicon-o-cog';
     protected static ?int $navigationSort = 1;
 

@@ -16,11 +16,11 @@ return [
 
     'timezone' => 'UTC',
 
-    'locale' => 'en',
+    'locale' => 'ru',
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'ru',
 
-    'faker_locale' => 'en_US',
+    'faker_locale' => 'ru_RU',
 
     'key' => env('APP_KEY'),
 
