@@ -105,9 +105,8 @@ class CategorySeeder extends Seeder
                 'description' => fake()->paragraph,
                 'rating' => 5,
                 'video' => 'https://www.youtube.com/watch?v=6DYQkCiiLIM',
-                ''
             ],
-            'contract_type' => 'Deposit',
+            'contract_type' => 'Депозитный',
             'average_receipt' => 50000,
             'minimum_advance_amount' => 50000,
             'content' => $content,
