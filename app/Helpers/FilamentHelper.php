@@ -6,6 +6,7 @@ use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
@@ -129,5 +130,10 @@ class FilamentHelper
     public function grid(array $schema, array|int $columns = 2): Grid
     {
         return Grid::make($columns)->schema($schema);
+    }
+
+    public function markdown(string $model)
+    {
+        return MarkdownEditor::make($model);
     }
 }

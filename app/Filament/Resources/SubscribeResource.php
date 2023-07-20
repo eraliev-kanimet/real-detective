@@ -24,7 +24,7 @@ class SubscribeResource extends Resource
     public static function form(Form $form): Form
     {
         return $form->schema([
-            TextInput::make('email')->email()->required()
+            TextInput::make('email')->email()->unique()->required()
         ])->columns(1);
     }
 
