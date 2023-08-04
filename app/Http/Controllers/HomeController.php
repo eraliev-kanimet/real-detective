@@ -3,12 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Review;
+use Inertia\Inertia;
 
 class HomeController extends Controller
 {
     public function home()
     {
-        return view('pages.home', $this->data(true));
+        return Inertia::render('home', $this->data(true));
+    }
+
+    public function faq()
+    {
+        return Inertia::render('faq', $this->data(true));
     }
 
     public function reviews()
@@ -17,11 +23,16 @@ class HomeController extends Controller
 
         $data['reviews'] = Review::paginate(12);
 
-        return view('pages.reviews', $data);
+        return Inertia::render('reviews', $data);
     }
 
     public function contacts()
     {
-        return view('pages.contacts', $this->data());
+        return Inertia::render('contacts', $this->data());
+    }
+
+    public function not_found()
+    {
+        return Inertia::render('404', $this->data());
     }
 }

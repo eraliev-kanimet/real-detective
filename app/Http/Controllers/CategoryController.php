@@ -3,17 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subcategory;
+use Inertia\Inertia;
 
 class CategoryController extends Controller
 {
     public function index()
     {
-        return view('pages.categories.index', $this->data());
+        return Inertia::render('catalog/index', $this->data());
     }
 
     public function price()
     {
-        return view('pages.categories.price', $this->data());
+        return Inertia::render('catalog/price', $this->data());
     }
 
     public function subcategory(Subcategory $subcategory)
@@ -22,6 +23,6 @@ class CategoryController extends Controller
 
         $data['subcategory'] = $subcategory;
 
-        return view('pages.articles.index', $data);
+        return Inertia::render('catalog/show', $data);
     }
 }

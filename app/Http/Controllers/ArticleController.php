@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use Inertia\Inertia;
 
 class ArticleController extends Controller
 {
@@ -12,7 +13,7 @@ class ArticleController extends Controller
 
         $data['articles'] = Article::paginate(9);
 
-        return view('pages.articles.index', $data);
+        return Inertia::render('articles/index', $data);
     }
 
     public function show(Article $article)
@@ -21,6 +22,6 @@ class ArticleController extends Controller
 
         $data['article'] = $article;
 
-        return view('pages.articles.show', $data);
+        return Inertia::render('articles/show', $data);
     }
 }

@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
+
 class PageController extends Controller
 {
     public function sitemap()
     {
-        return view('pages.sitemap', $this->data());
+        return Inertia::render('sitemap', $this->data());
     }
 
     public function cookiesPolicy()
     {
-        return view('pages.cookies', $this->data());
+        return Inertia::render('cookies_policy', $this->data());
     }
 
     public function privacyPolicy()
     {
-        return view('pages.privacy', $this->data());
+        return Inertia::render('privacy_policy', $this->data());
     }
 }
