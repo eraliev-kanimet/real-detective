@@ -13,8 +13,18 @@
     "dependencies": {
         "@inertiajs/inertia-react": "^0.8.1",
         "@inertiajs/react": "^1.0.9",
+        "@react-google-maps/api": "^2.19.2",
+        "@splidejs/react-splide": "^0.7.12",
         "@vitejs/plugin-react": "^4.0.4",
         "react": "^18.2.0",
-        "react-dom": "^18.2.0"
+        "react-dom": "^18.2.0",
+        "react-hook-form": "^7.45.2",
+        "react-icons": "^4.10.1",
+        "react-input-mask": "^2.0.4",
+        "react-responsive": "^9.0.2",
+        "react-scrollbars-custom": "^4.1.1",
+        "sass": "^1.64.2",
+        "styled-components": "^6.0.7",
+        "vite-plugin-svgr": "^3.2.0"
     }
 }
