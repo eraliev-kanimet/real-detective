@@ -32,11 +32,7 @@ class CategoryResource extends Resource
         return $form->schema([
             $helper->grid([
                 $helper->textInput('name')->label('Название'),
-                $helper->select('icon', [
-                    'icon1' => 'Icon 1',
-                    'icon2' => 'Icon 2',
-                    'icon3' => 'Icon 3',
-                ])->label('Иконка'),
+                $helper->select('icon', Category::$icons)->label('Иконка'),
                 $helper->select('service', Category::$services)->label('Группа'),
             ], 3),
             $helper->toggle('visible', true)->label('Активный'),

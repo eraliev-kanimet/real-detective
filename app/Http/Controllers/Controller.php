@@ -15,12 +15,15 @@ class Controller extends BaseController
 
     protected function data(bool $home = false)
     {
-        Page::$site = Page::first($home ? ['content', 'seo'] : ['seo']);
+        $site = Page::first($home ? ['content', 'seo'] : ['seo']);
 
         return [
-            'categories' => Category::with('subcategories:id,name,slug,contract_type,average_receipt,minimum_advance_amount,basic')
+            'content' => $site->content,
+            'properties' => $site->seo,
+            'categories' => Category::with('subcategories:id,name,slug,category_id,contract_type,average_receipt,minimum_advance_amount,basic')
                 ->whereVisible(true)
                 ->get()
+                ->groupBy('service')
         ];
     }
 }

@@ -1,0 +1,74 @@
+@media screen and (max-width: 675px) {
+    .container {
+        display: none;
+        opacity: 0;
+    }
+
+    .whatsapp {
+        display: none;
+    }
+}
+
+.header {
+    height: 64px;
+    background-color: #110f0f;
+    border-color: #110f0f;
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    padding: 15px 0;
+    max-width: 55px;
+    min-height: 64px;
+}
+
+.number {
+    color: #fff;
+    font-family: "Geologica", serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+    margin: 0;
+}
+
+.timevisit {
+    color: #fff;
+    font-family: Geologica, serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%;
+    margin: 0;
+}
+
+.container_medium {
+    display: flex;
+    flex-direction: row;
+    column-gap: 0.5rem;
+    padding: 0 24px 0 16px;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+}
+
+.container_small {
+    display: flex;
+    flex-direction: column;
+}
+
+.telegram {
+    max-width: 48px;
+    min-width: 48px;
+}
+
+.whatsapp {
+    max-width: 48px;
+    min-width: 48px;
+}
