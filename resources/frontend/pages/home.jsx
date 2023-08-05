@@ -11,33 +11,22 @@ import Review from "../components/home/review/review.jsx";
 import Safety from "../components/home/safety/safety.jsx";
 import Categories from "../components/home/categories/categories.jsx";
 import Videos from "../components/home/videos/videos.jsx";
-import {useEffect, useState} from "react";
 
 function Home(props) {
-    const [content, setContent] = useState({})
-    const [categories, setCategories] = useState({})
-    const [properties, setProperties] = useState({})
-
-    useEffect(() => {
-        setContent(props.content)
-        setCategories(props.categories)
-        setProperties(props.properties)
-    }, [props])
-
     return (
-        <AppLayout properties={properties} categories={categories}>
-            <MainBG properties={properties}/>
-            <About content={content.block1}/>
-            <Categories categories={categories}/>
+        <AppLayout properties={props.properties} categories={props.categories}>
+            <MainBG properties={props.properties}/>
+            <About content={props.content.block1}/>
+            <Categories categories={props.categories}/>
             <License/>
-            <Videos videos={content.videos ?? []} properties={properties}/>
-            <FirstVisit content={content.block2}/>
-            <Director properties={properties} content={content.block3}/>
-            <Review reviews={props.reviews} properties={properties}/>
-            <Safety content={content.block4}/>
-            <FAQ faq={content.faq} content={content.block3}/>
+            <Videos videos={props.content.videos ?? []} properties={props.properties}/>
+            <FirstVisit content={props.content.block2}/>
+            <Director properties={props.properties} content={props.content.block3}/>
+            <Review reviews={props.reviews} properties={props.properties}/>
+            <Safety content={props.content.block4}/>
+            <FAQ faq={props.content.faq} content={props.content.block3}/>
             <Blog articles={props.articles}/>
-            <Map map={properties.map}/>
+            <Map map={props.properties.map}/>
         </AppLayout>
     );
 }
