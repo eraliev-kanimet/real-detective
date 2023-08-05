@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Page;
 use Artesaos\SEOTools\Traits\SEOTools;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
@@ -34,6 +35,9 @@ class Controller extends BaseController
             'content' => $content,
             'properties' => $site->seo,
             'categories' => Category::with('subcategories:id,name,slug,category_id,contract_type,average_receipt,minimum_advance_amount,basic')
+                ->whereHas('subcategories', function (Builder $query) {
+                    $query->where('visible', true);
+                })
                 ->whereVisible(true)
                 ->get()
                 ->groupBy('service')

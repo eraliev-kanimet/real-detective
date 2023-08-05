@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Support\Str;
+use Spatie\Sitemap\Contracts\Sitemapable;
 
-class Article extends Model
+class Article extends Model implements Sitemapable
 {
     protected $fillable = [
         'name',
@@ -42,6 +43,11 @@ class Article extends Model
     public function author(): BelongsTo
     {
         return $this->belongsTo(Author::class);
+    }
+
+    public function toSitemapTag(): string|array
+    {
+        return route('article', $this);
     }
 
     public static function boot(): void

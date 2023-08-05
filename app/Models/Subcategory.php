@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Spatie\Sitemap\Contracts\Sitemapable;
 
-class Subcategory extends Model
+class Subcategory extends Model implements Sitemapable
 {
     protected $fillable = [
         'category_id',
@@ -36,5 +37,10 @@ class Subcategory extends Model
     public function getRouteKeyName(): string
     {
         return 'slug';
+    }
+
+    public function toSitemapTag(): string|array
+    {
+        return route('subcategory', $this);
     }
 }

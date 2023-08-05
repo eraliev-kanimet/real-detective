@@ -2,13 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
+use App\Models\Subcategory;
 use Inertia\Inertia;
 
 class PageController extends Controller
 {
     public function sitemap()
     {
-        return Inertia::render('sitemap', $this->data());
+        $data = $this->data();
+
+        $data['services'] = Subcategory::whereVisible(true)->get();
+        $data['articles'] = Article::all();
+
+        return Inertia::render('sitemap', $data);
     }
 
     public function cookiesPolicy()
