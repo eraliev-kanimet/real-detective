@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\File;
+
 function transliterate($text): string
 {
     return strtr($text, [
@@ -12,4 +14,21 @@ function transliterate($text): string
         'У' => 'U', 'Ф' => 'F', 'Х' => 'H', 'Ц' => 'Ts', 'Ч' => 'Ch', 'Ш' => 'Sh', 'Щ' => 'Sch', 'Ъ' => '', 'Ы' => 'Y', 'Ь' => '',
         'Э' => 'E', 'Ю' => 'Yu', 'Я' => 'Ya'
     ]);
+}
+
+function fakeImage(string $model): string
+{
+    $dir = storage_path("app/public/$model");
+
+    if (!is_dir($dir)) {
+        mkdir($dir, 0777, true);
+    }
+
+    $image = rand(1, 6) . '.jpg';
+
+    if (!file_exists("$dir/$image")) {
+        File::copy(storage_path("fake/$image"), "$dir/$image");
+    }
+
+    return "$model/$image";
 }

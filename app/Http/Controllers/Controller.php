@@ -17,8 +17,21 @@ class Controller extends BaseController
     {
         $site = Page::first($home ? ['content', 'seo'] : ['seo']);
 
+        $content = [];
+
+        if ($home) {
+            $content = $site->content;
+
+            $content['videos'] = array_map(function ($video) {
+                return [
+                    'preview' => asset('storage/' . $video['preview']),
+                    'link' => $video['link'],
+                ];
+            }, $content['videos']);
+        }
+
         return [
-            'content' => $site->content,
+            'content' => $content,
             'properties' => $site->seo,
             'categories' => Category::with('subcategories:id,name,slug,category_id,contract_type,average_receipt,minimum_advance_amount,basic')
                 ->whereVisible(true)

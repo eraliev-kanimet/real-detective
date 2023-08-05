@@ -32,11 +32,16 @@ class PageResourceForm
                     ], 2),
                 ]),
                 $helper->tab('Главная страница', [
-                    $helper->textInput('seo.map')->label('Карта'),
-                    $helper->tags('content.videos')
-                        ->label('Видеоролики')
-                        ->placeholder('Новое видео'),
+                    $helper->textInputNullable('seo.map')->label('Карта'),
                     $helper->tabs([
+                        $helper->tab('Видеоролики', [
+                            $helper->repeater('content.videos', [
+                                $helper->image('preview'),
+                                $helper->textInput('link')
+                            ])->label('')
+                                ->createItemButtonLabel('Добавить видео')
+                                ->required(),
+                        ]),
                         $helper->tab('Блок 1', [
                             $helper->richEditor('content.block1.text')->label(''),
                             $helper->repeater('content.block1.items', [

@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Support\Str;
 
 class Article extends Model
 {
@@ -24,6 +26,7 @@ class Article extends Model
         'tags' => 'array',
         'content' => 'array',
         'faq' => 'array',
+        'updated_at' => 'date:d.m.y',
     ];
 
     public function getRouteKeyName(): string
@@ -79,6 +82,17 @@ class Article extends Model
             }
 
             $article->content = $content;
+        });
+    }
+
+    public static function format(Collection $articles): Collection
+    {
+        return $articles->map(function (self $article) {
+            $article->image = asset('storage/' . $article->image);
+            $article->name = Str::words($article->description, 5);
+            $article->description = Str::words($article->description, 25);
+
+            return $article;
         });
     }
 }

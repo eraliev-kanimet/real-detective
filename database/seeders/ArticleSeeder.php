@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\Article;
 use App\Models\Author;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 class ArticleSeeder extends Seeder
@@ -27,7 +26,7 @@ class ArticleSeeder extends Seeder
             'name' => 'Першин Кирилл Олегович',
             'post' => 'Руководитель детективного агентства',
             'about' => 'Руководитель и лицо компании - Першин Кирилл Олегович – имеет большой эмпирический опыт в оказании детективных услуг, состоит в партнерских отношениях с ведущим медийным детективным агентством "Legion", является участником международных ассоциации детективов, ведет открытую и прозрачную политику работы, призывает не верить на слово своих заказчиков, а опираться только на подробные отчёты и факты. <br> Кирилл Олегович активно ведёт свой YouTube блог и социальные сети, где как специалист по безопасности даёт необходимые рекомендации, полезный материал и рассказывает о своих услугах и принципах их оказания.',
-            'image' => $this->image()
+            'image' => fakeImage('articles')
         ]);
     }
 
@@ -50,28 +49,11 @@ class ArticleSeeder extends Seeder
             'slug' => Str::slug($name),
             'read_time' => rand(3, 6),
             'tags' => ['tag'],
-            'image' => $this->image(),
+            'image' => fakeImage('articles'),
             'content' => $this->articleContent($author->id),
             'description' => fake()->paragraph,
             'faq' => $faq
         ]);
-    }
-
-    protected function image(): string
-    {
-        $dir = storage_path('app/public/articles');
-
-        if (! is_dir($dir)) {
-            mkdir($dir, 0777, true);
-        }
-
-        $image = rand(1, 6) . '.jpg';
-
-        if (! file_exists("$dir/$image")) {
-            File::copy(storage_path("fake/$image"), "$dir/$image");
-        }
-
-        return "articles/$image";
     }
 
     protected function articleContent(int $author_id): array
@@ -121,8 +103,8 @@ class ArticleSeeder extends Seeder
                 'header' => fake()->sentence(),
                 'text' => fake()->paragraph,
                 'images' => [
-                    ['image' => $this->image(), 'alt' => fake()->word],
-                    ['image' => $this->image()],
+                    ['image' => fakeImage('articles'), 'alt' => fake()->word],
+                    ['image' => fakeImage('articles')],
                 ]
             ]),
             $this->articleContentData('quote', [
@@ -131,7 +113,7 @@ class ArticleSeeder extends Seeder
             ]),
             $this->articleContentData('image', [
                 'images' => [
-                    ['image' => $this->image(), 'alt' => fake()->word],
+                    ['image' => fakeImage('articles'), 'alt' => fake()->word],
                 ]
             ]),
         ];

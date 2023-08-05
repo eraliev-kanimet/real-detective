@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Review;
 use Inertia\Inertia;
 
@@ -9,7 +10,12 @@ class HomeController extends Controller
 {
     public function home()
     {
-        return Inertia::render('home', $this->data(true));
+        $data = $this->data(true);
+
+        $data['reviews'] = Review::all();
+        $data['articles'] = Article::format(Article::limit(10)->get());
+
+        return Inertia::render('home', $data);
     }
 
     public function faq()

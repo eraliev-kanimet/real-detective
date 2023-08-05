@@ -11,4 +11,8 @@ class Review extends Model
         'content',
         'rating'
     ];
+
+    protected $casts = [
+        'updated_at' => 'date:d.m.Y'
+    ];
 }
