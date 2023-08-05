@@ -1,11 +1,11 @@
+import AppLayout from "../layouts/app.jsx";
+import FAQ from "../components/faq/faq.jsx";
 
-function Faq() {
+function Faq(props) {
     return (
-        <>
-            <main>
-                Hello World
-            </main>
-        </>
+        <AppLayout properties={props.properties} categories={props.categories}>
+            <FAQ faq={props.content.faq} content={props.content.block3}/>
+        </AppLayout>
     );
 }
 
