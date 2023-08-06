@@ -47,14 +47,14 @@ function Header({properties, categories}) {
                             </div>
                         </div>
                         <a
-                            href={ properties.telegram }
+                            href={'https://t.me/' + properties.telegram}
                             target="_blank"
                             rel="noreferrer"
                         >
                             <img src={Telegram} alt="Telegram" className={style.telegram}/>
                         </a>
                         <a
-                            href={ properties.whatsapp }
+                            href={`https://api.whatsapp.com/send?phone=${properties.whatsapp.replace(/\D/g, '')}&text=%D0%94%D0%BE%D0%B1%D1%80%D0%BE%D0%B3%D0%BE%20%D0%B2%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%B8%20%D1%81%D1%83%D1%82%D0%BE%D0%BA!`}
                             target="_blank"
                             rel="noreferrer"
                         >

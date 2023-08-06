@@ -24,7 +24,7 @@ const SocialMediaButtons = ({properties}) => {
             </button>
             <div className={`social-buttons ${showButtons ? "show" : "hide"}`}>
                 <a
-                    href={properties.telegram}
+                    href={'https://t.me/' + properties.telegram}
                     target="_blank"
                     rel="noreferrer"
                 >

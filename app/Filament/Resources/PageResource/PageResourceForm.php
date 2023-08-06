@@ -23,7 +23,7 @@ class PageResourceForm
                         $helper->textInput('seo.email'),
                     ], 3),
                     $helper->fieldset('Социальные сети', [
-                        $helper->textInput('seo.telegram'),
+                        $helper->textInput('seo.telegram')->prefix('@'),
                         $helper->textInput('seo.youtube'),
                         $helper->textInput('seo.profi')->label('Профи'),
                         $helper->textInput('seo.tenchat'),
@@ -32,7 +32,7 @@ class PageResourceForm
                     ], 2),
                 ]),
                 $helper->tab('Главная страница', [
-                    $helper->textInputNullable('seo.map')->label('Карта'),
+                    $helper->textInputNullable('seo.map')->label('Карта API KEY'),
                     $helper->tabs([
                         $helper->tab('Видеоролики', [
                             $helper->repeater('content.videos', [
@@ -76,22 +76,6 @@ class PageResourceForm
                             ])->label(''),
                         ]),
                     ])
-                ]),
-                $helper->tab('Страница "Контакты"', [
-                    $helper->fieldset('Город 1', [
-                        $helper->grid([
-                            $helper->textInput('content.city1.name')->label('Название'),
-                            $helper->textInput('content.city1.phone')->label('Телефон'),
-                            $helper->textInput('content.city1.address')->label('Адрес'),
-                        ], 3),
-                    ], 2),
-                    $helper->fieldset('Город 2', [
-                        $helper->grid([
-                            $helper->textInput('content.city2.name')->label('Название'),
-                            $helper->textInput('content.city2.phone')->label('Телефон'),
-                            $helper->textInput('content.city2.address')->label('Адрес'),
-                        ], 3),
-                    ], 2),
                 ]),
             ])
         ];

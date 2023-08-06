@@ -25,7 +25,7 @@ export default function Footer({properties, categories}) {
                         <div className={style.blokmobile}>
                             <a
                                 className={style.bloknet}
-                                href={properties.telegram}
+                                href={'https://t.me/' + properties.telegram}
                                 target="_blank"
                                 rel="noreferrer"
                             >
