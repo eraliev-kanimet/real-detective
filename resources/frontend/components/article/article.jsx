@@ -1,9 +1,13 @@
 import style from "./article.module.scss";
 
-export default function Article({article}) {
+export default function Article({article, slide}) {
     return (
         <a href={'/articles/' + article.slug} className={`${style.post}`}>
-            <img style={{maxWidth: '400px', maxHeight: '300px'}} src={article.image} alt="post"></img>
+            <img
+                className={slide ? style.slide : ''}
+                src={article.image}
+                alt="post"
+            ></img>
             {article.tags.map((tag, index) => (
                 <span key={index}>{tag}</span>
             ))}

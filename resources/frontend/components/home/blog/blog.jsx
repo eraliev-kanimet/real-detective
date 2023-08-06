@@ -55,7 +55,7 @@ export default function Blog({articles}) {
                 alignItems: "center",
               }}
             >
-              <Article article={article}></Article>
+              <Article slide={true} article={article}></Article>
             </SplideSlide>
           ))}
         </Splide>

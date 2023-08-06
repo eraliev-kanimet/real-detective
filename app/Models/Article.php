@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
@@ -91,7 +90,7 @@ class Article extends Model implements Sitemapable
         });
     }
 
-    public static function format(Collection $articles): Collection
+    public static function format($articles)
     {
         return $articles->map(function (self $article) {
             $article->image = asset('storage/' . $article->image);

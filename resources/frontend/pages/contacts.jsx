@@ -5,7 +5,6 @@ import {ReactComponent as Phone} from "../assets/images/footer-phone.svg";
 import {ReactComponent as Location} from "../assets/images/footer-location.svg";
 import {ReactComponent as Telegram} from "../assets/images/contact-telegram.svg";
 import {ReactComponent as Whatsapp} from "../assets/images/contact-whatsapp.svg";
-import {useEffect} from "react";
 
 function Contacts(props) {
     const mapContainerStyle = {
@@ -18,10 +17,6 @@ function Contacts(props) {
         lat: -34.397,
         lng: 150.644,
     };
-
-    useEffect(() => {
-        console.log(props)
-    }, [props]);
 
     return (
         <AppLayout properties={props.properties} categories={props.categories}>
