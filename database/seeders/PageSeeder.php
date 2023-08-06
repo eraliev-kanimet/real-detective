@@ -29,6 +29,7 @@ class PageSeeder extends Seeder
             'profi' => 'https://stavropol.profi.ru/profile/PershinKO/?mobileApp=1',
             'tenchat' => 'https://tenchat.ru/0323735?utm_source=8c7f5dcb-f757-4668-94a9-e0f145c517ff',
             'map' => '',
+            'reviews' => 'https://yandex.ru/maps/org/pershin_partners/77630423623/reviews/?add-review=true',
             'whatsapp' => 'https://api.whatsapp.com/send?phone=79686868685&text=Доброго%20времени%20суток!',
             'phone' => '+7 (925) 008-79-01',
             'address' => 'г. Москва, Ул. Александра Солженицына 42',

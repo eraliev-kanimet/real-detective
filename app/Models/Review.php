@@ -9,7 +9,8 @@ class Review extends Model
     protected $fillable = [
         'name',
         'content',
-        'rating'
+        'rating',
+        'url',
     ];
 
     protected $casts = [

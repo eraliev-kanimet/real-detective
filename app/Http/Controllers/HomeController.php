@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Review;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class HomeController extends Controller
@@ -23,11 +24,11 @@ class HomeController extends Controller
         return Inertia::render('faq', $this->data(true));
     }
 
-    public function reviews()
+    public function reviews(Request $request)
     {
         $data = $this->data();
 
-        $data['reviews'] = Review::paginate(12);
+        $data['reviews'] = Review::paginate((int) $request->get('limit', 12));
 
         return Inertia::render('reviews', $data);
     }

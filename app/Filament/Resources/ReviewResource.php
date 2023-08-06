@@ -29,7 +29,8 @@ class ReviewResource extends Resource
             $helper->grid([
                 $helper->textInput('name')->label('Имя'),
                 $helper->numericInputWithMinMaxValue('rating', 0, 5)->label('Оценка'),
-            ]),
+                $helper->textInputNullable('url')->label('URL')->columnSpan(2),
+            ], 4),
             $helper->textarea('content')->label('Текст'),
         ])->columns(1);
     }

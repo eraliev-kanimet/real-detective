@@ -30,6 +30,7 @@ class PageResourceForm
                         $helper->textInput('seo.whatsapp'),
                         $helper->textInput('seo.signal'),
                     ], 2),
+                    $helper->textInput('seo.reviews'),
                 ]),
                 $helper->tab('Главная страница', [
                     $helper->textInputNullable('seo.map')->label('Карта API KEY'),
