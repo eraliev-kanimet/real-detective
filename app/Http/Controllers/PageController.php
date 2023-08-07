@@ -2,20 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
+use App\Models\Subcategory;
+use Inertia\Inertia;
+
 class PageController extends Controller
 {
     public function sitemap()
     {
-        return view('pages.sitemap', $this->data());
+        $data = $this->data();
+
+        $data['services'] = Subcategory::whereVisible(true)->get();
+        $data['articles'] = Article::all();
+
+        return Inertia::render('sitemap', $data);
     }
 
     public function cookiesPolicy()
     {
-        return view('pages.cookies', $this->data());
+        return Inertia::render('cookies_policy', $this->data());
     }
 
     public function privacyPolicy()
     {
-        return view('pages.privacy', $this->data());
+        return Inertia::render('privacy_policy', $this->data());
     }
 }

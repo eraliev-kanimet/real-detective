@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Page;
+use Illuminate\Support\Facades\File;
 
 function transliterate($text): string
 {
@@ -16,12 +16,19 @@ function transliterate($text): string
     ]);
 }
 
-function site(string $key, mixed $default = '')
+function fakeImage(string $model): string
 {
-    return Page::$site->seo[$key] ?? $default;
-}
+    $dir = storage_path("app/public/$model");
 
-function site_content(string $key, mixed $default = '')
-{
-    return Page::$site->content[$key] ?? $default;
+    if (!is_dir($dir)) {
+        mkdir($dir, 0777, true);
+    }
+
+    $image = rand(1, 9) . '.png';
+
+    if (!file_exists("$dir/$image")) {
+        File::copy(storage_path("fake/$image"), "$dir/$image");
+    }
+
+    return "$model/$image";
 }

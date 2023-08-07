@@ -4,6 +4,7 @@ namespace App\Filament\Resources\SubcategoryResource;
 
 use App\Helpers\FilamentHelper;
 use App\Models\Category;
+use App\Models\Subcategory;
 use Closure;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -33,12 +34,24 @@ class SubcategoryForm
                         $helper->select('category_id', Category::all()->pluck('name', 'id'))
                             ->label('Категория'),
                         $helper->select('contract_type', ['Депозитный' => 'Депозитный'])->label('Тип контракта'),
+                    ]),
+                    $helper->select('basic.related', Subcategory::pluck('name', 'id'))
+                        ->label('Похожее услуги')
+                        ->multiple(),
+                    $helper->grid([
                         $helper->numericInputWithMinMaxValue('basic.rating', 0, 5)
                             ->label('Оценка'),
-                        $helper->textInput('basic.video')->label('Видео'),
                         $helper->numericInputWithMinValue('average_receipt')->label('Средний чек'),
                         $helper->numericInputWithMinValue('minimum_advance_amount')
                             ->label('Размер минимального аванса'),
+                    ], 3),
+                    $helper->fieldset('Видео', [
+                        $helper->textInput('basic.video.url')->label('Ссылка на видео'),
+                        $helper->image('basic.video.image')
+                            ->label('Видео обложка')
+                            ->imageResizeTargetHeight('314px')
+                            ->imageResizeTargetWidth('560px')
+                            ->imageResizeMode('force'),
                     ]),
                     $helper->toggle('visible', true)->label('Активный'),
                 ]),

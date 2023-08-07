@@ -65,7 +65,7 @@ class CategorySeeder extends Seeder
             ], [
                 'name' => $name,
                 'service' => $service,
-                'icon' => Str::slug(transliterate($name))
+                'icon' => array_keys(Category::$icons)[rand(0, 5)]
             ]);
 
             foreach ($subcategories as $subcategory) {

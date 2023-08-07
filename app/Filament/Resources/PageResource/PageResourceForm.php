@@ -23,20 +23,26 @@ class PageResourceForm
                         $helper->textInput('seo.email'),
                     ], 3),
                     $helper->fieldset('Социальные сети', [
-                        $helper->textInput('seo.telegram'),
+                        $helper->textInput('seo.telegram')->prefix('@'),
                         $helper->textInput('seo.youtube'),
                         $helper->textInput('seo.profi')->label('Профи'),
                         $helper->textInput('seo.tenchat'),
                         $helper->textInput('seo.whatsapp'),
                         $helper->textInput('seo.signal'),
                     ], 2),
+                    $helper->textInput('seo.reviews'),
                 ]),
                 $helper->tab('Главная страница', [
-                    $helper->textInput('seo.map')->label('Карта'),
-                    $helper->tags('content.videos')
-                        ->label('Видеоролики')
-                        ->placeholder('Новое видео'),
+                    $helper->textInputNullable('seo.map')->label('Карта API KEY'),
                     $helper->tabs([
+                        $helper->tab('Видеоролики', [
+                            $helper->repeater('content.videos', [
+                                $helper->image('preview'),
+                                $helper->textInput('link')
+                            ])->label('')
+                                ->createItemButtonLabel('Добавить видео')
+                                ->required(),
+                        ]),
                         $helper->tab('Блок 1', [
                             $helper->richEditor('content.block1.text')->label(''),
                             $helper->repeater('content.block1.items', [
@@ -71,22 +77,6 @@ class PageResourceForm
                             ])->label(''),
                         ]),
                     ])
-                ]),
-                $helper->tab('Страница "Контакты"', [
-                    $helper->fieldset('Город 1', [
-                        $helper->grid([
-                            $helper->textInput('content.city1.name')->label('Название'),
-                            $helper->textInput('content.city1.phone')->label('Телефон'),
-                            $helper->textInput('content.city1.address')->label('Адрес'),
-                        ], 3),
-                    ], 2),
-                    $helper->fieldset('Город 2', [
-                        $helper->grid([
-                            $helper->textInput('content.city2.name')->label('Название'),
-                            $helper->textInput('content.city2.phone')->label('Телефон'),
-                            $helper->textInput('content.city2.address')->label('Адрес'),
-                        ], 3),
-                    ], 2),
                 ]),
             ])
         ];

@@ -5,8 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Spatie\Sitemap\Contracts\Sitemapable;
 
-class Article extends Model
+class Article extends Model implements Sitemapable
 {
     protected $fillable = [
         'name',
@@ -24,6 +25,7 @@ class Article extends Model
         'tags' => 'array',
         'content' => 'array',
         'faq' => 'array',
+        'updated_at' => 'date:d.m.y',
     ];
 
     public function getRouteKeyName(): string
@@ -41,12 +43,21 @@ class Article extends Model
         return $this->belongsTo(Author::class);
     }
 
+    public function toSitemapTag(): string|array
+    {
+        return route('article', $this);
+    }
+
     public static function boot(): void
     {
         parent::boot();
 
         self::created(function (Article $article) {
-            $article->rating()->save(new Rating);
+            $article->rating()->save(new Rating([
+                'views' => rand(500 , 999),
+                'likes' => rand(50, 100),
+                'dislikes' => rand(1 , 5),
+            ]));
         });
 
         self::saving(function (Article $article) {

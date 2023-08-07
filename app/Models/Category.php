@@ -21,6 +21,15 @@ class Category extends Model
         'business' => 'Для Бизнеса'
     ];
 
+    public static array $icons = [
+        'info' => 'info',
+        'family' => 'family',
+        'binoculars' => 'binoculars',
+        'search' => 'search',
+        'protect' => 'protect',
+        'journalism' => 'journalism',
+    ];
+
     public function subcategories(): HasMany
     {
         return $this->hasMany(Subcategory::class);

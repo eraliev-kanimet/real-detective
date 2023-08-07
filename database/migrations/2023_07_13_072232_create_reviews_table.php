@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('content');
             $table->float('rating');
+            $table->string('url')->nullable();
             $table->timestamps();
         });
     }

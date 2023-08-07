@@ -29,7 +29,11 @@ class ArticleResourceForm
                             ->disabled()
                             ->unique(ignorable: fn(null|Model $record): null|Model => $record),
                         $helper->textarea('description')->label('Описание')->rows(7),
-                        $helper->image('image')->label('Картинка'),
+                        $helper->image('image')
+                            ->label('Картинка')
+                            ->imageResizeTargetWidth('900px')
+                            ->imageResizeTargetHeight('507px')
+                            ->imageResizeMode('force'),
                         $helper->select('author_id', $authors)
                             ->label('Автор'),
                         $helper->numericInputWithMinValue('read_time')->label('Время чтение'),
@@ -55,38 +59,32 @@ class ArticleResourceForm
                         ])->icon('heroicon-o-document-text')->label('Текст с заголовком 1'),
                         $helper->builderBlock('text_with_headers_type_2', [
                             $helper->textInput('header')->label('Заголовок'),
-                            $helper->builder('items', [
-                                $helper->builderBlock('text', [
-                                    $helper->textarea('content')->label(''),
-                                ])->label('Текст'),
-                                $helper->builderBlock('subheader', [
-                                    $helper->select('icon', [
-                                        'icon1' => 'Icon 1',
-                                        'icon2' => 'Icon 2',
-                                        'icon3' => 'Icon 3',
-                                    ])->label('Иконка'),
-                                    $helper->textInput('header')->label('Под-заголовок'),
-                                    $helper->textarea('text')->label('Текст'),
-                                ])->label('Текст с под-заголовком'),
-                            ])
+                            $helper->repeater('items', [
+                                $helper->select('icon', [
+                                    'fire' => 'Пламя',
+                                    'car' => 'Автомобиль',
+                                    'cat' => 'Кот',
+                                ])->label('Иконка'),
+                                $helper->textInput('header')->label('Под-заголовок'),
+                                $helper->textarea('text')->label('Текст'),
+                            ])->createItemButtonLabel('Добавить под-заголовок с текстом'),
                         ])->icon('heroicon-o-newspaper')->label('Текст с заголовком 2'),
                         $helper->builderBlock('text_with_headers_type_3', [
                             $helper->textInput('header')->label('Заголовок'),
-                            $helper->builder('items', [
-                                $helper->builderBlock('text', [
-                                    $helper->textarea('content')->label(''),
-                                ])->label('Текст'),
-                                $helper->builderBlock('subheader', [
-                                    $helper->textInput('header')->label('Под-заголовок'),
-                                    $helper->textarea('text')->label('Текст'),
-                                ])->label('Текст с под-заголовком'),
-                            ])
+                            $helper->repeater('items', [
+                                $helper->textInput('header')->label('Под-заголовок'),
+                                $helper->textarea('text')->label('Текст'),
+                            ])->createItemButtonLabel('Добавить под-заголовок с текстом'),
                         ])->icon('heroicon-o-document-text')->label('Текст с заголовком 3'),
                         $helper->builderBlock('image', [
                             $helper->textInputNullable('header')->label('Заголовок'),
                             $helper->textareaNullable('text')->label('Описание'),
                             $helper->repeater('images', [
-                                $helper->image('image')->label('Картинка'),
+                                $helper->image('image')
+                                    ->label('Картинка')
+                                    ->imageResizeTargetWidth('900px')
+                                    ->imageResizeTargetHeight('507px')
+                                    ->imageResizeMode('force'),
                                 $helper->textInputNullable('alt'),
                             ])->label('Картинки')
                         ])->icon('heroicon-o-photograph')->label('Картинки'),
@@ -94,6 +92,12 @@ class ArticleResourceForm
                             $helper->textarea('text')->label('Текст'),
                             $helper->select('author_id', $authors)->label('Автор')
                         ])->icon('heroicon-o-information-circle')->label('Цитата'),
+                        $helper->builderBlock('quote2', [
+                            $helper->textarea('text')->label('Текст'),
+                        ])->icon('heroicon-o-information-circle')->label('Цитата (Без автора)'),
+                        $helper->builderBlock('info', [
+                            $helper->textarea('text')->label('Текст'),
+                        ])->icon('heroicon-o-information-circle')->label('Инфо'),
                     ])->required(),
                 ]),
                 $helper->tab('FAQ', [

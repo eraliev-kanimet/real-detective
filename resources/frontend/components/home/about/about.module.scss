@@ -1,0 +1,144 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 64px;
+}
+
+.blok {
+    display: grid;
+    grid-template-columns: 10% 90%;
+    grid-template-rows: 30% 1fr;
+    grid-template-areas:
+        "number title "
+        ". smalltext";
+    justify-items: start;
+    align-items: center;
+}
+
+.left, .right {
+    display: flex;
+    max-width: 600px;
+}
+
+.left {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 32px;
+    padding: 0 16px;
+    flex: 1 0 0;
+}
+
+.right {
+    display: flex;
+    max-width: 600px;
+    align-items: center;
+    gap: 24px;
+    flex: 1 0 0;
+}
+
+.h3 {
+    font-family: Geologica, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+}
+
+@media screen and (min-width: 744px) {
+    .container {
+        padding: 160px 40px;
+    }
+    .h3 {
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width: 744px) {
+    .container {
+        padding: 80px 24px;
+        flex-direction: column;
+    }
+    .h3 {
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .container {
+        padding: 56px 0;
+    }
+    .h3 {
+        font-size: 24px;
+    }
+    .right {
+        align-items: flex-end;
+        gap: 1px;
+        padding-right: 16px;
+    }
+    .left {
+        gap: 32px;
+        padding: 0 16px;
+    }
+}
+
+.about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 32px;
+    flex: 1 0 0;
+}
+
+.h3, .number, .title, .smalltext, .paragraph strong, .partners {
+    font-family: Geologica, sans-serif;
+    font-style: normal;
+    line-height: 140%;
+}
+
+.number {
+    grid-area: number;
+    margin: 0;
+    color: #e9c394;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 100%;
+}
+
+.title {
+    grid-area: title;
+    margin: 0;
+    color: #403531;
+    font-size: 21px;
+    font-weight: 500;
+}
+
+.smalltext {
+    grid-area: smalltext;
+    margin: 0;
+    color: #484848;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.h3 {
+    flex: 1 0 0;
+    color: #403531;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.paragraph {
+    color: var(--grey-1, #484848);
+    align-self: stretch;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.partners strong {
+    color: #403531;
+    font-size: 16px;
+    font-weight: 500;
+}
