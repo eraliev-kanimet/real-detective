@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ArticleResource;
+use App\Http\Resources\SubcategoryResource;
+use App\Models\Article;
 use App\Models\Subcategory;
 use Inertia\Inertia;
 
@@ -19,9 +22,10 @@ class CategoryController extends Controller
 
     public function subcategory(Subcategory $subcategory)
     {
-        $data = $this->data();
+        $data = $this->data(true);
 
-        $data['subcategory'] = $subcategory;
+        $data['category'] = new SubcategoryResource($subcategory);
+        $data['articles'] = ArticleResource::collection(Article::inRandomOrder()->limit(10)->get());
 
         return Inertia::render('catalog/show', $data);
     }
