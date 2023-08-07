@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from "react";
 import style from "../../assets/pages/catalog/index.module.scss";
 import Breadcrumbs from "../../components/breadcrumbs/breadcrumbs.jsx";
-import {ReactComponent as Person} from "../../assets/images/dashicons_businessman.svg";
-import {ReactComponent as Business} from "../../assets/images/dashbusiness-center.svg";
 import {ReactComponent as Info} from "../../assets/images/services-chat.svg";
 import {ReactComponent as Family} from "../../assets/images/services-family.svg";
 import {ReactComponent as Binoculars} from "../../assets/images/services-binoculars.svg";
@@ -11,6 +9,7 @@ import {ReactComponent as Protect} from "../../assets/images/services-protect.sv
 import {ReactComponent as Journalism} from "../../assets/images/services-journalism.svg";
 import {ReactComponent as ArrowDown} from "../../assets/images/biege_arrow_down.svg";
 import AppLayout from "../../layouts/app.jsx";
+import CategoryTab from "../../components/catalog/tab.jsx";
 
 function CatalogIndex(props) {
     const [category, setCategory] = useState('')
@@ -34,31 +33,22 @@ function CatalogIndex(props) {
                     <div className={style.services__tabs}>
                         {
                             props.categories.hasOwnProperty('private_person') ? (
-                                <div
+                                <CategoryTab
                                     onClick={() => setCategoryItems('private_person')}
-                                    className={
-                                        category === 'private_person' ? [
-                                            style.tabs__category, style.active
-                                        ].join(' ') : style.tabs__category
-                                    }>
-                                    <Person alt="person" className={style.icon}/>
-                                    Для частных лиц
-                                </div>
+                                    current={category}
+                                    category='private_person'
+                                    categoryName='Для частных лиц'
+                                />
                             ) : ''
                         }
                         {
                             props.categories.hasOwnProperty('business') ? (
-                                <div
+                                <CategoryTab
                                     onClick={() => setCategoryItems('business')}
-                                    className={
-                                        category === 'business' ? [
-                                            style.tabs__category, style.active
-                                        ].join(' ') : style.tabs__category
-                                    }
-                                >
-                                    <Business alt="small suitcase" className={style.icon}/>
-                                    Для бизнеса
-                                </div>
+                                    current={category}
+                                    category='business'
+                                    categoryName='Для бизнеса'
+                                />
                             ) : ''
                         }
                     </div>
