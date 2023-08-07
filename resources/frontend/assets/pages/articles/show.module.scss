@@ -4,10 +4,6 @@
     border-radius: 50%;
 }
 
-.img900 {
-    width: 100%;
-}
-
 @media screen and (min-width: 1024px) {
     .container {
         display: flex;
@@ -283,7 +279,6 @@
     .imageslider {
         width: 343px;
         height: auto;
-        height: 243px;
     }
 
     .section_quote {

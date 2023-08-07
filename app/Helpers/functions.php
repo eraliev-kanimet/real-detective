@@ -24,7 +24,7 @@ function fakeImage(string $model): string
         mkdir($dir, 0777, true);
     }
 
-    $image = rand(1, 6) . '.png';
+    $image = rand(1, 9) . '.png';
 
     if (!file_exists("$dir/$image")) {
         File::copy(storage_path("fake/$image"), "$dir/$image");

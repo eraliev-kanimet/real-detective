@@ -29,7 +29,11 @@ class ArticleResourceForm
                             ->disabled()
                             ->unique(ignorable: fn(null|Model $record): null|Model => $record),
                         $helper->textarea('description')->label('Описание')->rows(7),
-                        $helper->image('image')->label('Картинка'),
+                        $helper->image('image')
+                            ->label('Картинка')
+                            ->imageResizeTargetWidth('900px')
+                            ->imageResizeTargetHeight('507px')
+                            ->imageResizeMode('force'),
                         $helper->select('author_id', $authors)
                             ->label('Автор'),
                         $helper->numericInputWithMinValue('read_time')->label('Время чтение'),
@@ -76,7 +80,11 @@ class ArticleResourceForm
                             $helper->textInputNullable('header')->label('Заголовок'),
                             $helper->textareaNullable('text')->label('Описание'),
                             $helper->repeater('images', [
-                                $helper->image('image')->label('Картинка'),
+                                $helper->image('image')
+                                    ->label('Картинка')
+                                    ->imageResizeTargetWidth('900px')
+                                    ->imageResizeTargetHeight('507px')
+                                    ->imageResizeMode('force'),
                                 $helper->textInputNullable('alt'),
                             ])->label('Картинки')
                         ])->icon('heroicon-o-photograph')->label('Картинки'),

@@ -331,7 +331,7 @@ function ArticlesShow(props) {
                                     <img
                                         src={'/storage/' + content.data.images[0].image}
                                         alt={content.data.images[0].alt}
-                                        className={[style.image, style.img900].join(' ')}
+                                        className={style.image}
                                     />
                                     <p className={style.text}>{content.data.text}</p>
                                 </div>
@@ -340,7 +340,7 @@ function ArticlesShow(props) {
                                     <img
                                         key={image.image}
                                         src={'/storage/' + image.image}
-                                        alt={image.image}
+                                        alt={image.alt}
                                         className={style.imageslider}
                                     />
                                 ))
