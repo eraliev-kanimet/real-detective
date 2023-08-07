@@ -25,14 +25,14 @@ function ArticlesIndex(props) {
                     {articles.map(article => <Article key={article.id} article={article}/>)}
                 </div>
                 <Pagination
-                    path={props.articles.path}
-                    limit={props.articles.per_page}
+                    path={props.articles.meta.path}
+                    limit={props.articles.meta.per_page}
                     initLimit={12}
-                    current={props.articles.current_page}
-                    last={props.articles.last_page}
-                    next={props.articles.next_page_url}
-                    prev={props.articles.prev_page_url}
-                    links={props.articles.links}
+                    current={props.articles.meta.current_page}
+                    last={props.articles.meta.last_page}
+                    next={props.articles.links.next}
+                    prev={props.articles.links.prev}
+                    links={props.articles.meta.links}
                 />
             </div>
         </AppLayout>

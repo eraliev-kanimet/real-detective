@@ -1,9 +1,8 @@
-import React, {useState, useRef, useEffect} from "react";
-import {FiPlus} from "react-icons/fi";
+import React from "react";
 import FormPhoto from "../../assets/images/form-foto.png";
 import "./faq.scss";
 import SecondModal from "../modal/second.jsx";
-import parse from "html-react-parser";
+import FaqItem from "./faq-item.jsx";
 
 export default function FAQ({content, faq}) {
     return (
@@ -33,38 +32,3 @@ export default function FAQ({content, faq}) {
         </>
     );
 }
-
-const FaqItem = ({content}) => {
-    const [active, setActive] = useState(false);
-    const contentRef = useRef(null);
-
-    useEffect(() => {
-        contentRef.current.style.maxHeight = active
-            ? `${contentRef.current.scrollHeight}px`
-            : "0px";
-    }, [contentRef, active]);
-
-    const toggleAccordion = () => {
-        setActive(!active);
-    };
-
-    return (
-        <button
-            className={`question-section ${active}`}
-            onClick={toggleAccordion}
-        >
-            <div style={{width: '100%'}}>
-                <div className="question-align">
-                    <p className="question-style">{content.question}</p>
-                    <FiPlus className={active ? `question-icon rotate` : `question-icon`}/>
-                </div>
-                <div
-                    ref={contentRef}
-                    className={active ? `answer answer-divider` : `answer`}
-                >
-                    {parse(content.answer)}
-                </div>
-            </div>
-        </button>
-    );
-};

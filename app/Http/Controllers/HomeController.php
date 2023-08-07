@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ArticleResource;
 use App\Models\Article;
 use App\Models\Review;
 use Illuminate\Http\Request;
@@ -14,7 +15,7 @@ class HomeController extends Controller
         $data = $this->data(true);
 
         $data['reviews'] = Review::all();
-        $data['articles'] = Article::format(Article::limit(10)->get());
+        $data['articles'] = ArticleResource::collection(Article::inRandomOrder()->limit(10)->get());
 
         return Inertia::render('home', $data);
     }

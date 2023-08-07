@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
-use Illuminate\Support\Str;
 use Spatie\Sitemap\Contracts\Sitemapable;
 
 class Article extends Model implements Sitemapable
@@ -54,7 +53,11 @@ class Article extends Model implements Sitemapable
         parent::boot();
 
         self::created(function (Article $article) {
-            $article->rating()->save(new Rating);
+            $article->rating()->save(new Rating([
+                'views' => rand(500 , 999),
+                'likes' => rand(50, 100),
+                'dislikes' => rand(1 , 5),
+            ]));
         });
 
         self::saving(function (Article $article) {
@@ -87,17 +90,6 @@ class Article extends Model implements Sitemapable
             }
 
             $article->content = $content;
-        });
-    }
-
-    public static function format($articles)
-    {
-        return $articles->map(function (self $article) {
-            $article->image = asset('storage/' . $article->image);
-            $article->name = Str::words($article->description, 5);
-            $article->description = Str::words($article->description, 25);
-
-            return $article;
         });
     }
 }

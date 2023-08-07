@@ -58,61 +58,69 @@ class ArticleSeeder extends Seeder
 
     protected function articleContent(int $author_id): array
     {
+        $icons = ['fire', 'car', 'cat'];
+
         return [
             $this->articleContentData('text', [
-                'content' => fake()->paragraph
+                'content' => fake()->paragraph . '. ' . fake()->paragraph
             ]),
             $this->articleContentData('text_with_headers_type_1', [
                 'header' => fake()->sentence(),
                 'items' => [
                     $this->articleContentData('text', [
-                        'content' => fake()->paragraph
+                        'content' => fake()->paragraph . '. ' . fake()->paragraph
                     ]),
                     $this->articleContentData('subheader', [
                         'header' => fake()->sentence(),
-                        'text' => fake()->paragraph,
+                        'text' => fake()->paragraph . '. ' . fake()->paragraph,
                     ]),
                 ]
             ]),
             $this->articleContentData('text_with_headers_type_2', [
                 'header' => fake()->sentence(),
-                'items' => [
-                    $this->articleContentData('subheader', [
-                        'icon' => 'icon1',
+                'items' => array_map(function () use ($icons) {
+                    return [
+                        'icon' => $icons[rand(0, 2)],
                         'header' => fake()->sentence(),
-                        'text' => fake()->paragraph,
-                    ]),
-                    $this->articleContentData('text', [
-                        'content' => fake()->paragraph
-                    ]),
+                        'text' => fake()->paragraph . '. ' . fake()->paragraph,
+                    ];
+                }, [1, 2, 3])
+            ]),
+            $this->articleContentData('image', [
+                'header' => fake()->sentence(),
+                'text' => fake()->paragraph . '. ' . fake()->paragraph,
+                'images' => [
+                    ['image' => fakeImage('articles'), 'alt' => fake()->word],
                 ]
             ]),
             $this->articleContentData('text_with_headers_type_3', [
                 'header' => fake()->sentence(),
-                'items' => [
-                    $this->articleContentData('text', [
-                        'content' => fake()->paragraph
-                    ]),
-                    $this->articleContentData('subheader', [
+                'items' => array_map(function () {
+                    return [
                         'header' => fake()->sentence(),
-                        'text' => fake()->paragraph,
-                    ]),
-                ]
+                        'text' => fake()->paragraph . '. ' . fake()->paragraph,
+                    ];
+                }, [1, 2, 3])
             ]),
             $this->articleContentData('image', [
                 'header' => fake()->sentence(),
-                'text' => fake()->paragraph,
+                'text' => fake()->paragraph . '. ' . fake()->paragraph,
                 'images' => [
                     ['image' => fakeImage('articles'), 'alt' => fake()->word],
                     ['image' => fakeImage('articles')],
                 ]
             ]),
             $this->articleContentData('quote', [
-                'text' => fake()->paragraph,
+                'text' => fake()->paragraph . '. ' . fake()->paragraph,
                 'author_id' => $author_id,
+            ]),
+            $this->articleContentData('quote2', [
+                'text' => fake()->paragraph . '. ' . fake()->paragraph,
             ]),
             $this->articleContentData('image', [
                 'images' => [
+                    ['image' => fakeImage('articles'), 'alt' => fake()->word],
+                    ['image' => fakeImage('articles'), 'alt' => fake()->word],
                     ['image' => fakeImage('articles'), 'alt' => fake()->word],
                 ]
             ]),

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ArticleResource;
+use App\Http\Resources\ArticleShowResource;
 use App\Models\Article;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Inertia\Inertia;
 
 class ArticleController extends Controller
@@ -13,15 +14,7 @@ class ArticleController extends Controller
     {
         $data = $this->data();
 
-        $articles = Article::paginate((int) $request->get('limit', 12));
-
-        foreach ($articles->items() as $article) {
-            $article->image = asset('storage/' . $article->image);
-            $article->name = Str::words($article->description, 5);
-            $article->description = Str::words($article->description, 25);
-        }
-
-        $data['articles'] = $articles;
+        $data['articles'] = ArticleResource::collection(Article::paginate((int) $request->get('limit', 12)));
 
         return Inertia::render('articles/index', $data);
     }
@@ -30,7 +23,8 @@ class ArticleController extends Controller
     {
         $data = $this->data();
 
-        $data['article'] = $article;
+        $data['article'] = new ArticleShowResource($article);
+        $data['articles'] = ArticleResource::collection(Article::inRandomOrder()->limit(10)->get());
 
         return Inertia::render('articles/show', $data);
     }

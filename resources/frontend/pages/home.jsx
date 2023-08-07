@@ -25,7 +25,7 @@ function Home(props) {
             <Review reviews={props.reviews} properties={props.properties}/>
             <Safety content={props.content.block4}/>
             <FAQ faq={props.content.faq} content={props.content.block3}/>
-            <Blog articles={props.articles}/>
+            <Blog header='Блог' articles={props.articles?.data ?? []}/>
             <Map map={props.properties.map}/>
         </AppLayout>
     );

@@ -137,10 +137,10 @@ const Navbar = ({properties, categories}) => {
                             <Item url='/catalog' name='Для частных лиц' classes={style.limob}/> : ''}
                         {categories.business ? <Item url='/catalog' name='Для бизнеса' classes={style.limob}/> : ''}
 
-                        <Item url='price' name='Цены'/>
-                        <Item url='articles' name='Блог'/>
-                        <Item url='reviews' name='Отзывы'/>
-                        <Item url='contacts' name='Контакты'/>
+                        <Item url='/price' name='Цены'/>
+                        <Item url='/articles' name='Блог'/>
+                        <Item url='/reviews' name='Отзывы'/>
+                        <Item url='/contacts' name='Контакты'/>
 
                         <div className={style.navcontainer}>
                             <div className={style.container_medium}>
