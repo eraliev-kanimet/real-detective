@@ -4,6 +4,7 @@ import "@splidejs/react-splide/css";
 import icon from "../../../assets/images/icon_youtube.svg";
 import play from "../../../assets/images/play_button.svg";
 import {useEffect, useState} from "react";
+import {LazyLoadImage} from "react-lazy-load-image-component";
 
 export default function Videos(props) {
     const [videos, setVideos] = useState([])
@@ -24,7 +25,7 @@ export default function Videos(props) {
                 >
           <span>
             Наш блог на YouTube
-            <img src={icon} alt="YouTube"></img>
+            <LazyLoadImage src={icon} alt="YouTube"/>
           </span>
                 </a>
             </div>
@@ -64,16 +65,16 @@ export default function Videos(props) {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <img
+                            <LazyLoadImage
                                 className={style.video}
                                 src={video.preview}
                                 alt="video"
-                            ></img>
-                            <img
+                            />
+                            <LazyLoadImage
                                 className={style.play}
                                 src={play}
                                 alt="play video"
-                            ></img>
+                            />
                         </a>
                     </SplideSlide>
                 ))}

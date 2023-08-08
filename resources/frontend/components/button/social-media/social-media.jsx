@@ -3,6 +3,7 @@ import "./social-media.scss";
 import { ReactComponent as MediaButttons } from "../../../assets/images/bxs_chat.svg";
 import Telegram from "../../../assets/images/telegram.svg";
 import WhatsApp from "../../../assets/images/whatsapp.svg";
+import {LazyLoadImage} from "react-lazy-load-image-component";
 
 const SocialMediaButtons = ({properties}) => {
     const [showButtons, setShowButtons] = useState(false);
@@ -28,14 +29,14 @@ const SocialMediaButtons = ({properties}) => {
                     target="_blank"
                     rel="noreferrer"
                 >
-                    <img src={Telegram} alt="Telegram" className="socmedia_telegram" />
+                    <LazyLoadImage src={Telegram} alt="Telegram" className="socmedia_telegram" />
                 </a>
                 <a
                     href={properties.whatsapp}
                     target="_blank"
                     rel="noreferrer"
                 >
-                    <img src={WhatsApp} alt="WhatsApp" className="socmedia_whatsapp" />
+                    <LazyLoadImage src={WhatsApp} alt="WhatsApp" className="socmedia_whatsapp" />
                 </a>
             </div>
         </div>

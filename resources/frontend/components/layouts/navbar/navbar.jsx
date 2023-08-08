@@ -6,6 +6,7 @@ import Item from "./item.jsx";
 import Phone from "../../../assets/images/gg_phone.svg";
 import Telegram from "../../../assets/images/telegram.svg";
 import WhatsApp from "../../../assets/images/whatsapp.svg";
+import {LazyLoadImage} from "react-lazy-load-image-component";
 
 const StyledBurger = styled.div`
     height: 48px;
@@ -144,7 +145,7 @@ const Navbar = ({properties, categories}) => {
 
                         <div className={style.navcontainer}>
                             <div className={style.container_medium}>
-                                <img src={Phone} alt="phone" className={style.phone}/>
+                                <LazyLoadImage src={Phone} alt="phone" className={style.phone}/>
                                 <div className={style.container_small}>
                                     <p className={style.number}>{properties.phone}</p>
                                     <p className={style.timevisit}>Ежедневно с 8:00 до 22:00</p>
@@ -155,14 +156,14 @@ const Navbar = ({properties, categories}) => {
                                 target="_blank"
                                 rel="noreferrer"
                             >
-                                <img src={Telegram} alt="Telegram" className={style.telegram}/>
+                                <LazyLoadImage src={Telegram} alt="Telegram" className={style.telegram}/>
                             </a>
                             <a
                                 href={`https://api.whatsapp.com/send?phone=${properties.whatsapp.replace(/\D/g, '')}&text=%D0%94%D0%BE%D0%B1%D1%80%D0%BE%D0%B3%D0%BE%20%D0%B2%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%B8%20%D1%81%D1%83%D1%82%D0%BE%D0%BA!`}
                                 target="_blank"
                                 rel="noreferrer"
                             >
-                                <img src={WhatsApp} alt="WhatsApp" className={style.whatsapp}/>
+                                <LazyLoadImage src={WhatsApp} alt="WhatsApp" className={style.whatsapp}/>
                             </a>
                         </div>
                     </Ul>

@@ -20,6 +20,7 @@ import AppLayout from "../../layouts/app.jsx";
 import FaqItem from "../../components/faq/faq-item.jsx";
 import "../../components/faq/faq.scss";
 import axios from "axios";
+import {LazyLoadImage} from "react-lazy-load-image-component";
 
 function ArticlesShow(props) {
     const [article, setArticle] = useState({
@@ -251,7 +252,7 @@ function ArticlesShow(props) {
                             <div className={style.about}>
                                 {content.data.items.map((item, index3) => (
                                     <div key={index3} className={style.blokabout}>
-                                        <img src={getIcons(item.icon)} alt="Icon" className={style.img}/>
+                                        <LazyLoadImage src={getIcons(item.icon)} alt="Icon" className={style.img}/>
                                         <h3 className={style.title} id={index3 + 'subtitle' + index}>{item.header}</h3>
                                         <p className={style.smalltext}>{item.text}</p>
                                     </div>
@@ -282,11 +283,11 @@ function ArticlesShow(props) {
                 if (content.type === 'quote') {
                     return (
                         <section key={index} className={style.section_quote}>
-                            <img src={Quote} alt="Quote" className={style.img}/>
+                            <LazyLoadImage src={Quote} alt="Quote" className={style.img}/>
                             <div className={style.blok_quote}>
                                 <p className={style.text}>{content.data.text}</p>
                                 <div className={style.blokdirector}>
-                                    <img
+                                    <LazyLoadImage
                                         className={style.img64}
                                         src={'/storage/' + content.data.author.image}
                                         alt="director"
@@ -305,7 +306,7 @@ function ArticlesShow(props) {
                 if (content.type === 'quote2') {
                     return (
                         <section key={index} className={style.section_gray}>
-                            <img src={Quote} alt="Quote" className={style.img}/>
+                            <LazyLoadImage src={Quote} alt="Quote" className={style.img}/>
                             <p className={style.text}>{content.data.text}</p>
                         </section>
                     )
@@ -314,7 +315,7 @@ function ArticlesShow(props) {
                 if (content.type === 'info') {
                     return (
                         <section key={index} className={style.section_gray}>
-                            <img src={Info} alt="Info" className={style.img}/>
+                            <LazyLoadImage src={Info} alt="Info" className={style.img}/>
                             <p className={style.text}>{content.data.text}</p>
                         </section>
                     )
@@ -328,7 +329,7 @@ function ArticlesShow(props) {
                             ) : ''}
                             {content.data.images.length === 1 ? (
                                 <div className={style.blok_titletext}>
-                                    <img
+                                    <LazyLoadImage
                                         src={'/storage/' + content.data.images[0].image}
                                         alt={content.data.images[0].alt}
                                         className={style.image}
@@ -356,7 +357,7 @@ function ArticlesShow(props) {
             </section>
 
             <section className={style.section_autor}>
-                <img className={style.img64} src={article.author.image} alt="director"/>
+                <LazyLoadImage className={style.img64} src={article.author.image} alt="director"/>
                 <p className={style.textautor}>
                     Автор статьи
                     <br/>
@@ -371,7 +372,7 @@ function ArticlesShow(props) {
                         type="button"
                         className={style.like}
                     >
-                        <img src={Like} alt="Like"/>
+                        <LazyLoadImage src={Like} alt="Like"/>
                         {article.likes}
                     </button>
                     <button
@@ -379,7 +380,7 @@ function ArticlesShow(props) {
                         type="button"
                         className={style.dislike}
                     >
-                        <img src={Dislike} alt="Dislike"/>
+                        <LazyLoadImage src={Dislike} alt="Dislike"/>
                         {article.dislikes}
                     </button>
                 </div>
@@ -393,7 +394,7 @@ function ArticlesShow(props) {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <img src={Telegram} alt="Telegram"/>
+                            <LazyLoadImage src={Telegram} alt="Telegram"/>
                         </a>
 
                         <a
@@ -402,7 +403,7 @@ function ArticlesShow(props) {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <img src={Whatsapp} alt="Whatsapp"/>
+                            <LazyLoadImage src={Whatsapp} alt="Whatsapp"/>
                         </a>
 
                         <a
@@ -411,7 +412,7 @@ function ArticlesShow(props) {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <img src={Vk} alt="Vk"/>
+                            <LazyLoadImage src={Vk} alt="Vk"/>
                         </a>
 
                         <a
@@ -420,7 +421,7 @@ function ArticlesShow(props) {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <img src={Fc} alt="Fc"/>
+                            <LazyLoadImage src={Fc} alt="Fc"/>
                         </a>
                     </div>
                 </div>

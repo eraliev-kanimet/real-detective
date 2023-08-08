@@ -23,8 +23,6 @@ function CatalogShow(props) {
     useEffect(() => {
         if (Object.keys(props.category?.data).length) {
             setCategory(props.category.data)
-
-            console.log(props.content)
         }
     }, [props]);
     const [buttonPopup, setButtonPopup] = useState(false);
@@ -40,7 +38,7 @@ function CatalogShow(props) {
                     <Breadcrumbs
                         links={[{url: '/catalog', name: 'Каталог'}, {last: true, name: category.name}]}
                     />
-                    <h1 className={style.h1}>{category.name}</h1>
+                    <h1 className={style.h1}>{category.basic.h1}</h1>
                     <div className={style.blok_header}>
                         <a
                             href={category.video.url}

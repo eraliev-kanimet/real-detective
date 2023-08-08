@@ -15,30 +15,28 @@ export default function Map({map}) {
         lng: 150.644,
     };
     return (
-        <>
-            <section className={style.container}>
-                <div className={style.blok}>
-                    <h3 className={style.h3}>Где мы находимся?</h3>
-                    <a href="/contacts">
-                        <button type="submit" className={style.button}>
-                            Все контакты
-                            <div className={style.vector}>
-                                <Vectorright/>
-                            </div>
-                        </button>
-                    </a>
-                </div>
+        <section className={style.container}>
+            <div className={style.blok}>
+                <h3 className={style.h3}>Где мы находимся?</h3>
+                <a href="/contacts">
+                    <button type="submit" className={style.button}>
+                        Все контакты
+                        <div className={style.vector}>
+                            <Vectorright/>
+                        </div>
+                    </button>
+                </a>
+            </div>
 
-                <LoadScript googleMapsApiKey={map}>
-                    <GoogleMap
-                        mapContainerStyle={mapContainerStyle}
-                        center={center}
-                        zoom={8}
-                    >
-                        <Marker position={center}/>
-                    </GoogleMap>
-                </LoadScript>
-            </section>
-        </>
+            <LoadScript googleMapsApiKey={map}>
+                <GoogleMap
+                    mapContainerStyle={mapContainerStyle}
+                    center={center}
+                    zoom={8}
+                >
+                    <Marker position={center}/>
+                </GoogleMap>
+            </LoadScript>
+        </section>
     );
 }

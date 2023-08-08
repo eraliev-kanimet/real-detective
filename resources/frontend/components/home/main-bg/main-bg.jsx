@@ -9,33 +9,31 @@ function MainBG({properties}) {
     const [buttonPopup, setButtonPopup] = useState(false);
 
     return (
-        <>
-            <section className={style.background}>
-                <div className={style.container}>
-                    <h1 className={style.h1}>perhin & partners</h1>
-                    <h2 className={style.h2}>детективное агентство в москве</h2>
+        <section className={style.background}>
+            <div className={style.container}>
+                <h1 className={style.h1}>perhin & partners</h1>
+                <h2 className={style.h2}>детективное агентство в москве</h2>
 
-                    <SecondModal properties={properties} isOnMain={true}></SecondModal>
+                <SecondModal properties={properties} isOnMain={true}></SecondModal>
 
-                    <div className={style.button_mobile}>
-                        <button
-                            type="submit"
-                            className={style.button}
-                            onClick={() => setButtonPopup(true)}
-                        >
-                            Оставить заявку
-                            <div className={style.vector}>
-                                <Vectorright/>
-                            </div>
-                        </button>
-                        <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
-                            <SecondModal properties={properties} isMainMobile={true}/>
-                        </Popup>
-                    </div>
-                    <SocialMediaButtons properties={properties}/>
+                <div className={style.button_mobile}>
+                    <button
+                        type="submit"
+                        className={style.button}
+                        onClick={() => setButtonPopup(true)}
+                    >
+                        Оставить заявку
+                        <div className={style.vector}>
+                            <Vectorright/>
+                        </div>
+                    </button>
+                    <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+                        <SecondModal properties={properties} isMainMobile={true}/>
+                    </Popup>
                 </div>
-            </section>
-        </>
+                <SocialMediaButtons properties={properties}/>
+            </div>
+        </section>
     );
 }
 
