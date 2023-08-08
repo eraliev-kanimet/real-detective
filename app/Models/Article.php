@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use App\Http\Resources\ArticleResource;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Spatie\Sitemap\Contracts\Sitemapable;
 
 class Article extends Model implements Sitemapable
@@ -91,5 +93,12 @@ class Article extends Model implements Sitemapable
 
             $article->content = $content;
         });
+    }
+
+    public static function getRandom(): AnonymousResourceCollection
+    {
+        return ArticleResource::collection(
+            self::inRandomOrder()->limit(10)->get(['id', 'slug', 'name', 'description', 'tags', 'image', 'updated_at'])
+        );
     }
 }

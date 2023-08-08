@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\ArticleResource;
 use App\Models\Article;
 use App\Models\Review;
 use Illuminate\Http\Request;
@@ -12,21 +11,27 @@ class HomeController extends Controller
 {
     public function home()
     {
+        $this->seo()->setCanonical(route('home'));
+
         $data = $this->data(true);
 
         $data['reviews'] = Review::all();
-        $data['articles'] = ArticleResource::collection(Article::inRandomOrder()->limit(10)->get());
+        $data['articles'] = Article::getRandom();
 
         return Inertia::render('home', $data);
     }
 
     public function faq()
     {
+        $this->seo()->setCanonical(route('faq'));
+
         return Inertia::render('faq', $this->data(true));
     }
 
     public function reviews(Request $request)
     {
+        $this->seo()->setCanonical(route('reviews'));
+
         $data = $this->data();
 
         $data['reviews'] = Review::paginate((int) $request->get('limit', 12));
@@ -36,6 +41,8 @@ class HomeController extends Controller
 
     public function contacts()
     {
+        $this->seo()->setCanonical(route('contacts'));
+
         return Inertia::render('contacts', $this->data());
     }
 

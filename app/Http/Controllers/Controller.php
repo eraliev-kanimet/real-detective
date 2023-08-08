@@ -14,13 +14,18 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests, SEOTools;
 
-    protected function data(bool $home = false)
+    protected function data(bool $isContent = false, bool $seoDefault = true)
     {
-        $site = Page::first($home ? ['content', 'seo'] : ['seo']);
+        $site = Page::first($isContent ? ['content', 'seo'] : ['seo']);
+
+        if ($seoDefault) {
+            $this->seo()->setTitle($site->seo['title']);
+            $this->seo()->setDescription($site->seo['description']);
+        }
 
         $content = [];
 
-        if ($home) {
+        if ($isContent) {
             $content = $site->content;
 
             $content['videos'] = array_map(function ($video) {

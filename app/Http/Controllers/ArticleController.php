@@ -12,19 +12,30 @@ class ArticleController extends Controller
 {
     public function index(Request $request)
     {
-        $data = $this->data();
+        $this->seo()->setTitle('Статьи');
+        $this->seo()->setDescription('Статьи Детективного Агентства');
+        $this->seo()->setCanonical(route('articles'));
 
-        $data['articles'] = ArticleResource::collection(Article::paginate((int) $request->get('limit', 12)));
+        $data = $this->data(false, false);
+
+        $data['articles'] = ArticleResource::collection(Article::paginate(
+            (int) $request->get('limit', 12),
+            ['id', 'slug', 'name', 'description', 'tags', 'image', 'updated_at']
+        ));
 
         return Inertia::render('articles/index', $data);
     }
 
     public function show(Article $article)
     {
-        $data = $this->data();
+        $this->seo()->setTitle($article->name);
+        $this->seo()->setDescription($article->description);
+        $this->seo()->setCanonical(route('article', $article));
+
+        $data = $this->data(false, false);
 
         $data['article'] = new ArticleShowResource($article);
-        $data['articles'] = ArticleResource::collection(Article::inRandomOrder()->limit(10)->get());
+        $data['articles'] = Article::getRandom();
 
         return Inertia::render('articles/show', $data);
     }
