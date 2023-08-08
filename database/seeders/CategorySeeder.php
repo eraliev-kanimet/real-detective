@@ -104,7 +104,11 @@ class CategorySeeder extends Seeder
                 'h1' => $name,
                 'description' => fake()->paragraph,
                 'rating' => 5,
-                'video' => 'https://www.youtube.com/watch?v=6DYQkCiiLIM',
+                'video' => [
+                    'url' => 'https://www.youtube.com/watch?v=6DYQkCiiLIM',
+                    'image' => fakeImage('categories')
+                ],
+                'related' => Subcategory::inRandomOrder()->limit(rand(1, 3))->pluck('id')->toArray()
             ],
             'contract_type' => 'Депозитный',
             'average_receipt' => 50000,
