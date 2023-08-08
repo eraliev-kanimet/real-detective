@@ -28,6 +28,11 @@ class SubscribeResource extends Resource
         ])->columns(1);
     }
 
+    public static function canViewAny(): bool
+    {
+        return false;
+    }
+
     /**
      * @throws Exception
      */

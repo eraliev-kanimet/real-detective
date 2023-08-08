@@ -44,6 +44,11 @@ class NewsletterResource extends Resource
             ])->columns(2);
     }
 
+    public static function canViewAny(): bool
+    {
+        return false;
+    }
+
     /**
      * @throws Exception
      */
