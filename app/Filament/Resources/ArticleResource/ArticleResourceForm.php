@@ -106,6 +106,12 @@ class ArticleResourceForm
                         $helper->textarea('answer')->label('Ответ'),
                     ])->required()->label(''),
                 ]),
+                $helper->tab('SEO', [
+                    $helper->textInput('seo.name')
+                        ->label('Название')
+                        ->reactive(),
+                    $helper->textarea('seo.description')->label('Описание'),
+                ]),
             ])
         ];
     }

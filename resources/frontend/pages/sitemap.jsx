@@ -17,8 +17,8 @@ function Sitemap(props) {
                                 <li><a href="/contacts">Контакты</a></li>
                                 <li><a href="/cookies-policy">Cookies Policy</a></li>
                                 <li><a href="/privacy-policy">Privacy Policy</a></li>
-                                <li><a href="/articles">Блог</a></li>
-                                <li><a href="/catalog">Услуги</a></li>
+                                <li><a href="/blog">Блог</a></li>
+                                <li><a href="/services">Услуги</a></li>
                                 <li><a href="/price">Цены</a></li>
                             </ul>
                         </li>
@@ -26,7 +26,7 @@ function Sitemap(props) {
                             <h3>Услуги</h3>
                             <ul>
                                 {props.services.map((service, index) => (
-                                    <li key={index}><a href={'/catalog/' + service.slug}>{service.name}</a></li>
+                                    <li key={index}><a href={'/services/' + service.slug}>{service.name}</a></li>
                                 ))}
                             </ul>
                         </li>
@@ -34,7 +34,7 @@ function Sitemap(props) {
                             <h3>Статьи</h3>
                             <ul>
                                 {props.articles.map((article, index) => (
-                                    <li key={index}><a href={'/articles/' + article.slug}>{article.name}</a></li>
+                                    <li key={index}><a href={'/blog/' + article.slug}>{article.name}</a></li>
                                 ))}
                             </ul>
                         </li>

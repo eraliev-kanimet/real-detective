@@ -63,7 +63,7 @@ export default function Categories(props) {
                             ) : ''
                         }
                     </ul>
-                    <a href="/catalog">
+                    <a href="/services">
                         <button type="submit" className={style.button}>
                             Смотреть все
                             <div className={style.vector}>
@@ -118,7 +118,7 @@ export default function Categories(props) {
                         </SplideSlide>
                     ))}
                 </Splide>
-                <a href="/catalog">
+                <a href="/services">
                     <button type="submit" className={style.buttonmobile}>
                         Смотреть все
                         <div className={style.vector}>

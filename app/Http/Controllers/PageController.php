@@ -10,9 +10,11 @@ class PageController extends Controller
 {
     public function sitemap()
     {
-        $this->seo()->setCanonical(route('sitemap'));
-
         $data = $this->data();
+
+        $this->seo()->setTitle($data['properties']['sitemap']['title']);
+        $this->seo()->setDescription($data['properties']['sitemap']['description']);
+        $this->seo()->setCanonical(route('sitemap'));
 
         $data['services'] = Subcategory::whereVisible(true)->get(['id', 'name', 'slug']);
         $data['articles'] = Article::all(['id', 'name', 'slug']);
@@ -22,15 +24,23 @@ class PageController extends Controller
 
     public function cookiesPolicy()
     {
+        $data = $this->data(true);
+
+        $this->seo()->setTitle($data['properties']['cookies_policy']['title']);
+        $this->seo()->setDescription($data['properties']['cookies_policy']['description']);
         $this->seo()->setCanonical(route('cookies-policy'));
 
-        return Inertia::render('cookies_policy', $this->data());
+        return Inertia::render('cookies_policy', $data);
     }
 
     public function privacyPolicy()
     {
+        $data = $this->data(true);
+
+        $this->seo()->setTitle($data['properties']['privacy_policy']['title']);
+        $this->seo()->setDescription($data['properties']['privacy_policy']['description']);
         $this->seo()->setCanonical(route('privacy-policy'));
 
-        return Inertia::render('privacy_policy', $this->data());
+        return Inertia::render('privacy_policy', $data);
     }
 }

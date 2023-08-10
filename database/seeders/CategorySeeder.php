@@ -85,7 +85,7 @@ class CategorySeeder extends Seeder
         for ($i = 0; $i < 5; $i++) {
             $content[] = [
                 'header' => fake()->sentence(),
-                'content' => fake()->paragraph
+                'content' => '<p>' . fake()->paragraph . '</p> <br><p>' . fake()->paragraph . '</p>'
             ];
             $faq[] = [
                 'question' => fake()->sentence(),
@@ -103,10 +103,14 @@ class CategorySeeder extends Seeder
             'basic' => [
                 'h1' => $name,
                 'description' => fake()->paragraph,
+                'seo' => [
+                    'name' => $name,
+                    'description' => fake()->paragraph,
+                ],
                 'rating' => 5,
                 'video' => [
                     'url' => 'https://www.youtube.com/watch?v=6DYQkCiiLIM',
-                    'image' => fakeImage('categories')
+                    'image' => fakeImage('categories', '10.png')
                 ],
                 'related' => Subcategory::inRandomOrder()->limit(rand(1, 3))->pluck('id')->toArray()
             ],

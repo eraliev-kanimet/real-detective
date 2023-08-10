@@ -104,7 +104,7 @@ export default function Footer({properties, categories}) {
                         <p className={style.title}>Для частных лиц</p>
                         {
                             categories.private_person.map(category => (
-                                <a href="/catalog" key={category.id}>
+                                <a href="/services" key={category.id}>
                                     <p className={style.p}>{ category.name }</p>
                                 </a>
                             ))
@@ -117,7 +117,7 @@ export default function Footer({properties, categories}) {
                         <p className={style.title}>Для бизнеса</p>
                         {
                             categories.business.map(category => (
-                                <a href="/catalog" key={category.id}>
+                                <a href="/services" key={category.id}>
                                     <p className={style.p}>{ category.name }</p>
                                 </a>
                             ))
@@ -127,7 +127,7 @@ export default function Footer({properties, categories}) {
 
                 <div className={style.blokmain4}>
                     <p className={style.title}>Меню</p>
-                    <a href="/articles">
+                    <a href="/blog">
                         <p className={style.p}>Блог</p>
                     </a>
                     <a href="/reviews">
@@ -136,7 +136,7 @@ export default function Footer({properties, categories}) {
                     <a href="/contacts">
                         <p className={style.p}>Контакты</p>
                     </a>
-                    <a href="/catalog">
+                    <a href="/services">
                         <p className={style.p}>Услуги</p>
                     </a>
                     <a href="/price">

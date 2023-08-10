@@ -65,12 +65,12 @@ export default function Videos(props) {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <LazyLoadImage
+                            <img
                                 className={style.video}
                                 src={video.preview}
                                 alt="video"
                             />
-                            <LazyLoadImage
+                            <img
                                 className={style.play}
                                 src={play}
                                 alt="play video"

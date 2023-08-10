@@ -135,11 +135,11 @@ const Navbar = ({properties, categories}) => {
                         <Category name="Для бизнеса" categories={categories.business ?? []}/>
 
                         {categories.private_person ?
-                            <Item url='/catalog' name='Для частных лиц' classes={style.limob}/> : ''}
-                        {categories.business ? <Item url='/catalog' name='Для бизнеса' classes={style.limob}/> : ''}
+                            <Item url='/services' name='Для частных лиц' classes={style.limob}/> : ''}
+                        {categories.business ? <Item url='/services' name='Для бизнеса' classes={style.limob}/> : ''}
 
                         <Item url='/price' name='Цены'/>
-                        <Item url='/articles' name='Блог'/>
+                        <Item url='/blog' name='Блог'/>
                         <Item url='/reviews' name='Отзывы'/>
                         <Item url='/contacts' name='Контакты'/>
 

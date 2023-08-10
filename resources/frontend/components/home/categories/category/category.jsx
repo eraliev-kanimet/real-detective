@@ -13,13 +13,13 @@ export default function Category({category}) {
     return (
         <div className={style.card}>
             <img src={icons[category.icon]} className={style.card_icon} alt=""/>
-            <a href={'/catalog/' + category.slug}>
+            <a href={'/services/' + category.slug}>
                 <p className={style.card_title}>{ category.name }</p>
             </a>
             <p className={style.card_text}>{ category.basic.description }</p>
             <div className={style.card_price_container}>
                 <p className={style.card_price}>от {category.minimum_advance_amount} руб</p>
-                <a href={'/catalog/' + category.slug}>
+                <a href={'/services/' + category.slug}>
                     <div>
                         <span>Подробнее</span>
                         <img

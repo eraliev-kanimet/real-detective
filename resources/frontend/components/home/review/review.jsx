@@ -23,7 +23,7 @@ export default function Reviews({reviews, properties}) {
                     </a>
                     <a
                         className={style.a}
-                        href={properties.yandex}
+                        href={properties.reviews2}
                         target="_blank"
                         rel="noreferrer"
                     >

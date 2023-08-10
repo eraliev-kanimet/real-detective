@@ -36,7 +36,7 @@ function CatalogShow(props) {
             <main className={style.container}>
                 <section className={style.section_header}>
                     <Breadcrumbs
-                        links={[{url: '/catalog', name: 'Каталог'}, {last: true, name: category.name}]}
+                        links={[{url: '/services', name: 'Услуги'}, {last: true, name: category.name}]}
                     />
                     <h1 className={style.h1}>{category.basic.h1}</h1>
                     <div className={style.blok_header}>
@@ -54,11 +54,11 @@ function CatalogShow(props) {
                         <div className={style.blok_header_text}>
                             <p className={style.text_header}>{category.description}</p>
                             <div className={style.blok_price}>
-                                <div className={style.blok_pricesmall}>
+                                <div>
                                     <p className={style.text_aboutprice}>Минимальный депозит</p>
                                     <p className={style.text_price}>{category.minimum_advance_amount} руб</p>
                                 </div>
-                                <div className={style.blok_pricesmall}>
+                                <div>
                                     <p className={style.text_aboutprice}>Средний чек</p>
                                     <p className={style.text_price}>{category.average_receipt} руб</p>
                                 </div>
@@ -137,7 +137,7 @@ function CatalogShow(props) {
                         <div className={style.blok_main}>
                             <h2 className={style.h2}>Похожие услуги</h2>
                             {category.related.map(related => (
-                                <a href={'/catalog/' + related.slug} key={related.id}>
+                                <a href={'/services/' + related.slug} key={related.id}>
                                     <div className={style.button_yet}>
                                         <div className={style.smallcontainer_yet}>
                                             <Binoculars alt="Binoculars" className={style.iconbutton}/>

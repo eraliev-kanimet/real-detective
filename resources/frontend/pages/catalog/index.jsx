@@ -98,7 +98,7 @@ const Category = ({category}) => {
             {getIcon(category.icon)}
             <h2 className={style.h2}>{category.name}</h2>
             {category.subcategories.slice(0, visibleItems).map(item => (
-                <a key={item.id} href={'/catalog/' + item.slug}>
+                <a key={item.id} href={'/services/' + item.slug}>
                     <p className={style.text}>{item.name}</p>
                 </a>
             ))}
@@ -217,7 +217,7 @@ const CategoryMobile = ({category}) => {
             {showItems && (
                 <div className={style.bloktext}>
                     {category.subcategories.map(subcategory => (
-                        <a key={subcategory.id} href={'/catalog/' + subcategory.slug}>
+                        <a key={subcategory.id} href={'/services/' + subcategory.slug}>
                             <p className={style.text}>{subcategory.name}</p>
                         </a>
                     ))}

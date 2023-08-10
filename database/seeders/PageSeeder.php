@@ -18,23 +18,40 @@ class PageSeeder extends Seeder
         ]);
     }
 
-    protected function seo(): array
+    protected function seo2(): array
     {
         return [
             'title' => 'Title',
             'description' => 'Description',
+        ];
+    }
+
+    protected function seo(): array
+    {
+        return [
             'yandex' => 'https://profi.ru/profile/PershinKO/?mobileApp=1',
             'telegram' => 'persin_detective',
             'youtube' => 'https://www.youtube.com/@pershin_detective',
             'profi' => 'https://stavropol.profi.ru/profile/PershinKO/?mobileApp=1',
             'tenchat' => 'https://tenchat.ru/0323735?utm_source=8c7f5dcb-f757-4668-94a9-e0f145c517ff',
             'map' => '',
-            'reviews' => 'https://yandex.ru/maps/org/pershin_partners/77630423623/reviews/?add-review=true',
+            'reviews2' => 'https://yandex.ru/maps/org/pershin_partners/77630423623/reviews/?add-review=true',
             'whatsapp' => '+79686868685',
             'phone' => '+7 (925) 008-79-01',
             'address' => 'г. Москва, Ул. Александра Солженицына 42',
             'signal' => '@detective',
             'email' => 'Pershin-detective@yandex.ru',
+            'home' => $this->seo2(),
+            'faq' => $this->seo2(),
+            'blog' => $this->seo2(),
+            'services' => $this->seo2(),
+            'price' => $this->seo2(),
+            'reviews' => $this->seo2(),
+            'contacts' => $this->seo2(),
+            'cookies_policy' => $this->seo2(),
+            'privacy_policy' => $this->seo2(),
+            'not_found' => $this->seo2(),
+            'sitemap' => $this->seo2(),
         ];
     }
 
@@ -50,7 +67,10 @@ class PageSeeder extends Seeder
         }
 
         return [
-            'faq' => $faq,
+            'faq' => [
+                'home' => $faq,
+                'faq' => $faq,
+            ],
             'videos' => [
                 [
                     'preview' => fakeImage('pages'),
@@ -107,6 +127,8 @@ class PageSeeder extends Seeder
                 'header' => 'Мы гарантируем сохранять в тайне',
                 'description' => '<ul><li>Персональные данные Заказчика</li><li>Любую приватную информацию, относящуюся к делу</li><li>Коммерческую тайну — Результаты нашей деятельности</li><li>Результаты нашей деятельности</li><li>Договор об оказании услуг (уничтожается)</li><li>Факт посещения человеком офиса (любого его присутствия)</li><li>Стоимость контракта об оказании услуг</li><li>Материалы сообщений, контакты и отчеты (безвозвратное удаление)</li></ul>',
             ],
+            'cookies_policy' => "<h1>Cookie Policy</h1>",
+            'privacy_policy' => "<h1>Privacy Policy</h1>",
         ];
     }
 }

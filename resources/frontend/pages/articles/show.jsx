@@ -148,7 +148,7 @@ function ArticlesShow(props) {
     return (<AppLayout properties={props.properties} categories={props.categories}>
         <div className={style.container}>
             <section className={style.section_header}>
-                <Breadcrumbs links={[{url: '/articles', name: 'Блог'}, {last: true, name: article.name}]}/>
+                <Breadcrumbs links={[{url: '/blog', name: 'Блог'}, {last: true, name: article.name}]}/>
                 <img src={article.image} alt="article main" className={style.image}/>
                 <div className={style.container_time}>
                     <div className={style.blok_time}>

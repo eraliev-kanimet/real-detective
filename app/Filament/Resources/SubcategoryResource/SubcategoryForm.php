@@ -66,7 +66,13 @@ class SubcategoryForm
                         $helper->textInput('question')->label('Вопрос'),
                         $helper->textarea('answer')->label('Ответ'),
                     ])->required()->label(''),
-                ])
+                ]),
+                $helper->tab('SEO', [
+                    $helper->textInput('basic.seo.name')
+                        ->label('Название')
+                        ->reactive(),
+                    $helper->textarea('basic.seo.description')->label('Описание'),
+                ]),
             ]),
         ];
     }

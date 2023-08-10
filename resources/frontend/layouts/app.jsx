@@ -1,6 +1,7 @@
 import Header from "../components/layouts/header/header.jsx";
-import Footer from "../components/layouts/footer/footer.jsx";
-import {useEffect} from "react";
+import {lazy, Suspense, useEffect} from "react";
+
+const Footer = lazy(() => import('./../components/layouts/footer/footer.jsx'));
 
 function AppLayout({children, properties, categories}) {
 
@@ -14,7 +15,9 @@ function AppLayout({children, properties, categories}) {
             <main>
                 {children}
             </main>
-            <Footer properties={properties} categories={categories}/>
+            <Suspense fallback={() => console.log('Loading')}>
+                <Footer properties={properties} categories={categories}/>
+            </Suspense>
         </>
     );
 }

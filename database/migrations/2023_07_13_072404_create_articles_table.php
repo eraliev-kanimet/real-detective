@@ -22,6 +22,7 @@ return new class extends Migration
             $table->json('tags');
             $table->json('content');
             $table->json('faq');
+            $table->json('seo');
             $table->timestamps();
         });
     }

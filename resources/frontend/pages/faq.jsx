@@ -4,7 +4,7 @@ import FAQ from "../components/faq/faq.jsx";
 function Faq(props) {
     return (
         <AppLayout properties={props.properties} categories={props.categories}>
-            <FAQ faq={props.content.faq} content={props.content.block3}/>
+            <FAQ faq={props.content?.faq?.faq ?? []} content={props.content.block3}/>
         </AppLayout>
     );
 }

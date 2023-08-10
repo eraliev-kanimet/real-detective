@@ -12,6 +12,7 @@ import axios from "axios";
 
 export default function Form(props) {
     const isMobile = useMediaQuery({query: `(max-width: 580px)`});
+    const [isLoading, setIsLoading] = useState(false)
 
     const {
         register,
@@ -21,8 +22,12 @@ export default function Form(props) {
     } = useForm();
 
     const onSubmit = async (data) => {
+        setIsLoading(true)
+
         await axios.post('/api/form/callback', data).finally(() => {
             props.isPopup ? props.onButtonClick() : props.onButtonClickShow();
+
+            setIsLoading(false)
         })
     };
 
@@ -139,6 +144,7 @@ export default function Form(props) {
                 )}
                 <button
                     type="submit"
+                    disabled={isLoading}
                     className={
                         props.isOnMain
                             ? mainstyles.button

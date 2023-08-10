@@ -37,7 +37,7 @@ const Subcategories = ({category}) => {
             {getIcon(category.icon)}
             <h2 className={style.h2}>{category.name}</h2>
             {category.subcategories.slice(0, visibleItems).map(item => (
-                <a key={item.id} href={'/catalog/' + item.slug}>
+                <a key={item.id} href={'/services/' + item.slug}>
                     <p className={style.text}>{item.name}</p>
                 </a>
             ))}

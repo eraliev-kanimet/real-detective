@@ -11,11 +11,11 @@ Route::get('faq', [HomeController::class, 'faq'])->name('faq');
 Route::get('reviews', [HomeController::class, 'reviews'])->name('reviews');
 Route::get('contacts', [HomeController::class, 'contacts'])->name('contacts');
 
-Route::get('articles/{article:slug}', [ArticleController::class, 'show'])->name('article');
-Route::get('articles', [ArticleController::class, 'index'])->name('articles');
+Route::get('blog/{article:slug}', [ArticleController::class, 'show'])->name('article');
+Route::get('blog', [ArticleController::class, 'index'])->name('articles');
 
-Route::get('catalog/{subcategory:slug}', [CategoryController::class, 'subcategory'])->name('subcategory');
-Route::get('catalog', [CategoryController::class, 'index'])->name('categories');
+Route::get('services/{subcategory:slug}', [CategoryController::class, 'subcategory'])->name('subcategory');
+Route::get('services', [CategoryController::class, 'index'])->name('categories');
 Route::get('price', [CategoryController::class, 'price'])->name('price');
 
 Route::get('sitemap', [PageController::class, 'sitemap'])->name('sitemap');

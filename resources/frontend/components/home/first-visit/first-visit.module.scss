@@ -60,11 +60,18 @@
 }
 
 .about {
+    color: #484848;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     gap: 32px;
+    font-family: Geologica, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    margin-top: 4px;
 }
 
 .about p {

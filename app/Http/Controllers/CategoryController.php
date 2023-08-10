@@ -11,29 +11,33 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $this->seo()->setTitle('Каталог');
-        $this->seo()->setDescription('Каталог услуг');
+        $data = $this->data();
+
+        $this->seo()->setTitle($data['properties']['services']['title']);
+        $this->seo()->setDescription($data['properties']['services']['description']);
         $this->seo()->setCanonical(route('categories'));
 
-        return Inertia::render('catalog/index', $this->data(false, false));
+        return Inertia::render('catalog/index', $data);
     }
 
     public function price()
     {
-        $this->seo()->setTitle('Цены');
-        $this->seo()->setDescription('Цены на услуг');
+        $data = $this->data();
+
+        $this->seo()->setTitle($data['properties']['price']['title']);
+        $this->seo()->setDescription($data['properties']['price']['description']);
         $this->seo()->setCanonical(route('price'));
 
-        return Inertia::render('catalog/price', $this->data(false, false));
+        return Inertia::render('catalog/price', $data);
     }
 
     public function subcategory(Subcategory $subcategory)
     {
-        $this->seo()->setTitle($subcategory->name);
-        $this->seo()->setDescription($subcategory->basic['description']);
+        $this->seo()->setTitle($subcategory->basic['seo']['name']);
+        $this->seo()->setDescription($subcategory->basic['seo']['description']);
         $this->seo()->setCanonical(route('subcategory', $subcategory));
 
-        $data = $this->data(true, false);
+        $data = $this->data(true);
 
         $data['category'] = new SubcategoryResource($subcategory);
         $data['articles'] = Article::getRandom();

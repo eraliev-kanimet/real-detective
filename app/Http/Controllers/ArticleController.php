@@ -12,11 +12,11 @@ class ArticleController extends Controller
 {
     public function index(Request $request)
     {
-        $this->seo()->setTitle('Статьи');
-        $this->seo()->setDescription('Статьи Детективного Агентства');
-        $this->seo()->setCanonical(route('articles'));
+        $data = $this->data();
 
-        $data = $this->data(false, false);
+        $this->seo()->setTitle($data['properties']['blog']['title']);
+        $this->seo()->setDescription($data['properties']['blog']['description']);
+        $this->seo()->setCanonical(route('articles'));
 
         $data['articles'] = ArticleResource::collection(Article::paginate(
             (int) $request->get('limit', 12),
@@ -28,11 +28,11 @@ class ArticleController extends Controller
 
     public function show(Article $article)
     {
-        $this->seo()->setTitle($article->name);
-        $this->seo()->setDescription($article->description);
+        $this->seo()->setTitle($article->seo['name']);
+        $this->seo()->setDescription($article->seo['description']);
         $this->seo()->setCanonical(route('article', $article));
 
-        $data = $this->data(false, false);
+        $data = $this->data();
 
         $data['article'] = new ArticleShowResource($article);
         $data['articles'] = Article::getRandom();

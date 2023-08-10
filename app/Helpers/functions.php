@@ -16,7 +16,7 @@ function transliterate($text): string
     ]);
 }
 
-function fakeImage(string $model): string
+function fakeImage(string $model, ?string $image = null): string
 {
     $dir = storage_path("app/public/$model");
 
@@ -24,7 +24,9 @@ function fakeImage(string $model): string
         mkdir($dir, 0777, true);
     }
 
-    $image = rand(1, 9) . '.png';
+    if (is_null($image)) {
+        $image = rand(1, 9) . '.png';
+    }
 
     if (!file_exists("$dir/$image")) {
         File::copy(storage_path("fake/$image"), "$dir/$image");

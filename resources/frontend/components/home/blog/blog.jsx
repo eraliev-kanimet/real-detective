@@ -10,7 +10,7 @@ export default function Blog({articles, header, viewAll = true}) {
                 <h3>{header}</h3>
                 {
                     viewAll ? (
-                        <a href="/articles">
+                        <a href="/blog">
                             Смотреть все
                             <img
                                 src={"/images/biege_arrow_right.svg"}

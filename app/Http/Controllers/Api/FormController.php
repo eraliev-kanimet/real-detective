@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ContactFormMail;
 use App\Models\Rating;
 use App\Models\SiteForm;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class FormController extends Controller
 {
@@ -21,6 +23,12 @@ class FormController extends Controller
             'type' => 'callback',
             'data' => $data
         ]);
+
+        Mail::to(config('app.email'))->send(new ContactFormMail(
+            (string) $request->get('name'),
+            (string) $request->get('number'),
+            (string) $request->get('question', ''),
+        ));
 
         return response()->json();
     }

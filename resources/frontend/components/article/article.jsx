@@ -2,7 +2,7 @@ import style from "./article.module.scss";
 
 export default function Article({article, slide}) {
     return (
-        <a href={'/articles/' + article.slug} className={`${style.post}`}>
+        <a href={'/blog/' + article.slug} className={`${style.post}`}>
             <img
                 className={slide ? style.slide : ''}
                 src={article.image}

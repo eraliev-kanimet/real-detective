@@ -22,6 +22,8 @@ return [
 
     'faker_locale' => 'ru_RU',
 
+    'email' => env('APP_EMAIL'),
+
     'key' => env('APP_KEY'),
 
     'cipher' => 'AES-256-CBC',
@@ -32,13 +34,7 @@ return [
     ],
 
     'providers' => ServiceProvider::defaultProviders()->merge([
-        /*
-         * Package Service Providers...
-         */
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
-        /*
-         * Application Service Providers...
-         */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,

@@ -21,12 +21,14 @@ class Article extends Model implements Sitemapable
         'content',
         'description',
         'faq',
+        'seo',
     ];
 
     protected $casts = [
         'tags' => 'array',
         'content' => 'array',
         'faq' => 'array',
+        'seo' => 'array',
         'updated_at' => 'date:d.m.y',
     ];
 

@@ -31,7 +31,7 @@ class ReviewResource extends Resource
                 $helper->numericInputWithMinMaxValue('rating', 0, 5)->label('Оценка'),
                 $helper->textInputNullable('url')->label('URL')->columnSpan(2),
             ], 4),
-            $helper->textarea('content')->label('Текст'),
+            $helper->textarea('content')->label('Текст')->maxLength(300),
         ])->columns(1);
     }
 

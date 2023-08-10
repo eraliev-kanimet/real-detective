@@ -14,14 +14,9 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests, SEOTools;
 
-    protected function data(bool $isContent = false, bool $seoDefault = true)
+    protected function data(bool $isContent = false)
     {
         $site = Page::first($isContent ? ['content', 'seo'] : ['seo']);
-
-        if ($seoDefault) {
-            $this->seo()->setTitle($site->seo['title']);
-            $this->seo()->setDescription($site->seo['description']);
-        }
 
         $content = [];
 

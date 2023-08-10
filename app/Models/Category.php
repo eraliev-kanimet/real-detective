@@ -22,12 +22,12 @@ class Category extends Model
     ];
 
     public static array $icons = [
-        'info' => 'info',
-        'family' => 'family',
-        'binoculars' => 'binoculars',
-        'search' => 'search',
-        'protect' => 'protect',
-        'journalism' => 'journalism',
+        'info' => 'Инфо',
+        'family' => 'Семья',
+        'binoculars' => 'Бинокль',
+        'search' => 'Поиск',
+        'protect' => 'Защита',
+        'journalism' => 'Журналистика',
     ];
 
     public function subcategories(): HasMany

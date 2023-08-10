@@ -52,7 +52,11 @@ class ArticleSeeder extends Seeder
             'image' => fakeImage('articles'),
             'content' => $this->articleContent($author->id),
             'description' => fake()->paragraph,
-            'faq' => $faq
+            'faq' => $faq,
+            'seo' => [
+                'name' => $name,
+                'description' => fake()->paragraph
+            ]
         ]);
     }
 
