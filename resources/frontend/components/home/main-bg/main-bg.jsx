@@ -16,22 +16,22 @@ function MainBG({properties}) {
 
                 <SecondModal properties={properties} isOnMain={true}></SecondModal>
 
-                <div className={style.button_mobile}>
-                    <button
-                        type="submit"
-                        className={style.button}
-                        onClick={() => setButtonPopup(true)}
-                    >
-                        Оставить заявку
-                        <div className={style.vector}>
-                            <Vectorright/>
-                        </div>
-                    </button>
-                    <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
-                        <SecondModal properties={properties} isMainMobile={true}/>
-                    </Popup>
-                </div>
                 <SocialMediaButtons properties={properties}/>
+            </div>
+            <div className={style.button_mobile}>
+                <button
+                    type="submit"
+                    className={style.button}
+                    onClick={() => setButtonPopup(true)}
+                >
+                    Оставить заявку
+                    <div className={style.vector}>
+                        <Vectorright/>
+                    </div>
+                </button>
+                <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+                    <SecondModal properties={properties} isMainMobile={true}/>
+                </Popup>
             </div>
         </section>
     );

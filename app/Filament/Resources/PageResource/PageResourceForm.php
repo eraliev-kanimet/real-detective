@@ -74,7 +74,7 @@ class PageResourceForm
                             $helper->richEditor('content.block4.description')->label('Описание')
                         ]),
                         $helper->tab('FAQ', [
-                            $helper->repeater('content.home.faq', [
+                            $helper->repeater('content.faq.home', [
                                 $helper->textInput('question')->label('Вопрос'),
                                 $helper->richEditor('answer')->label('Ответ')
                             ])->label(''),

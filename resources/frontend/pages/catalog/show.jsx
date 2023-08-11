@@ -10,6 +10,7 @@ import Blog from "../../components/home/blog/blog.jsx";
 import Popup from "../../components/popup/popup.jsx";
 import SecondModal from "../../components/modal/second.jsx";
 import parse from "html-react-parser";
+import { ReactComponent as Play } from "../../assets/images/play.svg";
 
 function CatalogShow(props) {
     const [category, setCategory] = useState({
@@ -33,24 +34,29 @@ function CatalogShow(props) {
                 <SecondModal properties={props.properties} HowToReachUs={true}/>
             </Popup>
 
-            <main className={style.container}>
+            <div className={style.container}>
                 <section className={style.section_header}>
                     <Breadcrumbs
                         links={[{url: '/services', name: 'Услуги'}, {last: true, name: category.name}]}
                     />
                     <h1 className={style.h1}>{category.basic.h1}</h1>
                     <div className={style.blok_header}>
-                        <a
-                            href={category.video.url}
-                            target="_blank"
-                            rel="noreferrer"
-                        >
+                        <div className={style.blok_img}>
                             <img
                                 src={category.video.image}
                                 alt="geolocation"
                                 className={style.img}
                             />
-                        </a>
+                            <button className={style.play}>
+                                <a
+                                    href={category.video.url}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    <Play alt="play" />
+                                </a>
+                            </button>
+                        </div>
                         <div className={style.blok_header_text}>
                             <p className={style.text_header}>{category.description}</p>
                             <div className={style.blok_price}>
@@ -87,7 +93,7 @@ function CatalogShow(props) {
                 <section className={style.section_main}>
                     {category.content.map((content, index) => (
                         <div key={index} className={style.blok_main}>
-                            <h2 className={style.h2}>{content.header}</h2>
+                            {content.header ? (<h2 className={style.h2}>{content.header}</h2>) : ''}
                             {parse(content.content)}
                         </div>
                     ))}
@@ -152,7 +158,7 @@ function CatalogShow(props) {
                 </section>
                 <FAQ faq={category.faq ?? []} content={props.content.block3}/>
                 <Blog header='Блог' articles={props.articles?.data ?? []}/>
-            </main>
+            </div>
         </AppLayout>
     );
 }

@@ -8,19 +8,17 @@ export default function Popup(props) {
     }
 
     return (props.trigger) ? (
-        <>
-            <div className={style.popup} onClick={(e) => checkOnGrey(e)}>
-                <div className={style.popup_inner}>
-                    <div className={style.popup_header}>
-                        <button className={style.close_btn} onClick={() => props.setTrigger(false)}><Cross/>Закрыть
-                        </button>
-                        <a href="/" className={style.popup_logo}>
-                            <img src={Logo} alt="logo"/>
-                        </a>
-                    </div>
-                    {props.children}
+        <div className={style.popup} onClick={(e) => checkOnGrey(e)}>
+            <div className={style.popup_inner}>
+                <div className={style.popup_header}>
+                    <button className={style.close_btn} onClick={() => props.setTrigger(false)}><Cross/>Закрыть
+                    </button>
+                    <a href="/" className={style.popup_logo}>
+                        <img src={Logo} alt="logo" className={style.popup_img}/>
+                    </a>
                 </div>
+                {props.children}
             </div>
-        </>
+        </div>
     ) : ""
 }

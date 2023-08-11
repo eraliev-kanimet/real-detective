@@ -9,8 +9,8 @@ import WhatsApp from "../../../assets/images/whatsapp.svg";
 import {LazyLoadImage} from "react-lazy-load-image-component";
 
 const StyledBurger = styled.div`
-    height: 48px;
-    padding: 4px 20px;
+    height: 30px;
+    padding: 4px 15px;
     align-items: center;
     gap: 8px;
     position: fixed;
@@ -36,7 +36,7 @@ const StyledBurger = styled.div`
         display: flex;
         justify-content: space-around;
         flex-flow: row nowrap;
-        right: 15%;
+        right: 7%;
     }
 
     @media (max-width: 1230px) {
@@ -60,17 +60,17 @@ const StyledBurger = styled.div`
 
     div {
         &:nth-child(1) {
-            transform: ${({open}) => (open ? "rotate(38deg)" : "rotate(0)")};
+            transform: ${({ open }) => (open ? "rotate(45deg)" : "rotate(0)")};
         }
 
         &:nth-child(2) {
-            transform: ${({open}) => (open ? "translateX(100%)" : "translateX(0)")};
-            opacity: ${({open}) => (open ? 0 : 1)};
+            transform: ${({ open }) => (open ? "translateX(100%)" : "translateX(0)")};
+            opacity: ${({ open }) => (open ? 0 : 1)};
         }
 
         &:nth-child(3) {
-            transform: ${({open}) =>
-                open ? "rotate(-38deg) scaleX(2)" : "rotate(0) scaleX(1)"};
+            transform: ${({ open }) =>
+                open ? "rotate(-45deg) scaleX(2)" : "rotate(0) scaleX(1)"};
         }
     }
 `;
@@ -105,14 +105,14 @@ const Ul = styled.ul`
         position: fixed;
         z-index: 30;
         transform: ${({open}) => (open ? "translateX(0)" : "translateX(100%)")};
-        top: 88px;
+        top: 65px;
         left: 0;
         right: 0;
         padding: 24px 16px;
         height: 812px;
         transition: transform 0.3s ease-in-out;
-    }
-`;
+        margin: 0;
+    }`;
 
 const Navbar = ({properties, categories}) => {
     const [open, setOpen] = useState(false);

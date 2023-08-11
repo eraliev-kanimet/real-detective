@@ -58,7 +58,7 @@ class SubcategoryForm
                 ]),
                 $helper->tab('Контент', [
                     $helper->repeater('content', [
-                        $helper->textInput('header')->label('Заголовок'),
+                        $helper->textInputNullable('header')->label('Заголовок'),
                         $helper->richEditor('content')->label('Описание'),
                     ])->required()->label('')
                 ]),
