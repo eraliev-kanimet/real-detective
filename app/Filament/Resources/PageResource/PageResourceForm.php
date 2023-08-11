@@ -13,6 +13,9 @@ class PageResourceForm
         return [
             $helper->tabs([
                 $helper->tab('Свойства сайта', [
+                    $helper->tags('seo.contract_types')
+                        ->label('Тип контракта')
+                        ->placeholder('Введите название контракта'),
                     $helper->grid([
                         $helper->textInput('seo.phone')->label('Телефон'),
                         $helper->textInput('seo.address')->label('Адрес'),

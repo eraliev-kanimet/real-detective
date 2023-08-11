@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\SubcategoryResource\Pages;
 use App\Filament\Resources\SubcategoryResource\SubcategoryForm;
+use App\Models\Page;
 use App\Models\Subcategory;
 use Exception;
 use Filament\Resources\Form;
@@ -23,7 +24,13 @@ class SubcategoryResource extends Resource
 
     public static function form(Form $form): Form
     {
-        return $form->schema(SubcategoryForm::form())->columns(1);
+        $contract_types = [];
+
+        foreach (Page::first()->seo['contract_types'] as $type) {
+            $contract_types[$type] = $type;
+        }
+
+        return $form->schema(SubcategoryForm::form($contract_types))->columns(1);
     }
 
     /**

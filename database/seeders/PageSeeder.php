@@ -50,6 +50,7 @@ class PageSeeder extends Seeder
             'contacts' => $this->seo2(),
             'cookies_policy' => $this->seo2(),
             'privacy_policy' => $this->seo2(),
+            'contract_types' => ['Депозитный']
         ];
     }
 

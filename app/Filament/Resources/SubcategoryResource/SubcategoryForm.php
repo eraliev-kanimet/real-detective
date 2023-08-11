@@ -4,6 +4,7 @@ namespace App\Filament\Resources\SubcategoryResource;
 
 use App\Helpers\FilamentHelper;
 use App\Models\Category;
+use App\Models\Page;
 use App\Models\Subcategory;
 use Closure;
 use Illuminate\Database\Eloquent\Model;
@@ -11,7 +12,7 @@ use Illuminate\Support\Str;
 
 class SubcategoryForm
 {
-    public static function form(): array
+    public static function form(array $contract_types): array
     {
         $helper = new FilamentHelper;
 
@@ -33,7 +34,7 @@ class SubcategoryForm
                     $helper->grid([
                         $helper->select('category_id', Category::all()->pluck('name', 'id'))
                             ->label('Категория'),
-                        $helper->select('contract_type', ['Депозитный' => 'Депозитный'])->label('Тип контракта'),
+                        $helper->select('contract_type', $contract_types)->label('Тип контракта'),
                     ]),
                     $helper->select('basic.related', Subcategory::pluck('name', 'id'))
                         ->label('Похожее услуги')
