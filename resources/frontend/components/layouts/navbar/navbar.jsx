@@ -80,6 +80,7 @@ const Ul = styled.ul`
     display: flex;
     flex-flow: row nowrap;
     column-gap: 1rem;
+    margin-top: 0;
 
     a {
         text-decoration: none;

@@ -12,8 +12,8 @@ class PageController extends Controller
     {
         $data = $this->data();
 
-        $this->seo()->setTitle($data['properties']['sitemap']['title']);
-        $this->seo()->setDescription($data['properties']['sitemap']['description']);
+        $this->seo()->setTitle($data['properties']['home']['title']);
+        $this->seo()->setDescription($data['properties']['home']['description']);
         $this->seo()->setCanonical(route('sitemap'));
 
         $data['services'] = Subcategory::whereVisible(true)->get(['id', 'name', 'slug']);

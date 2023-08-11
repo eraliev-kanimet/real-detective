@@ -50,8 +50,6 @@ class PageSeeder extends Seeder
             'contacts' => $this->seo2(),
             'cookies_policy' => $this->seo2(),
             'privacy_policy' => $this->seo2(),
-            'not_found' => $this->seo2(),
-            'sitemap' => $this->seo2(),
         ];
     }
 

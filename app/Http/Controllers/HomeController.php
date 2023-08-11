@@ -62,8 +62,8 @@ class HomeController extends Controller
     {
         $data = $this->data();
 
-        $this->seo()->setTitle($data['properties']['not_found']['title']);
-        $this->seo()->setDescription($data['properties']['not_found']['description']);
+        $this->seo()->setTitle($data['properties']['home']['title']);
+        $this->seo()->setDescription($data['properties']['home']['description']);
 
         return Inertia::render('404', $data);
     }

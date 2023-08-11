@@ -26,7 +26,7 @@ class PageResourceForm
                         $helper->textInput('seo.whatsapp'),
                         $helper->textInput('seo.signal'),
                     ], 2),
-                    $helper->textInput('seo.reviews2'),
+                    $helper->textInput('seo.reviews2')->label('Ссылка на отзывы'),
                     $helper->textInputNullable('seo.map')->label('Карта API KEY'),
                 ]),
                 $helper->tab('Главная страница', [
@@ -133,18 +133,6 @@ class PageResourceForm
                         $helper->textarea('seo.privacy_policy.description')->label('Описание'),
                     ]),
                     $helper->richEditor('content.privacy_policy')->label('Контент')
-                ]),
-                $helper->tab('Страница 404', [
-                    $helper->fieldset('SEO', [
-                        $helper->textInput('seo.not_found.title')->label('Заголовок'),
-                        $helper->textarea('seo.not_found.description')->label('Описание'),
-                    ]),
-                ]),
-                $helper->tab('Страница Карта сайта', [
-                    $helper->fieldset('SEO', [
-                        $helper->textInput('seo.sitemap.title')->label('Заголовок'),
-                        $helper->textarea('seo.sitemap.description')->label('Описание'),
-                    ]),
                 ]),
             ])
         ];
