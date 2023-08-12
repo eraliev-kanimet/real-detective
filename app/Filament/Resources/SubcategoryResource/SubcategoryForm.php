@@ -4,7 +4,6 @@ namespace App\Filament\Resources\SubcategoryResource;
 
 use App\Helpers\FilamentHelper;
 use App\Models\Category;
-use App\Models\Page;
 use App\Models\Subcategory;
 use Closure;
 use Illuminate\Database\Eloquent\Model;
@@ -30,6 +29,7 @@ class SubcategoryForm
                             ->disabled()
                             ->unique(ignorable: fn(null|Model $record): null|Model => $record),
                     ]),
+                    $helper->textInput('basic.h1')->label('H1 Заголовок'),
                     $helper->textarea('basic.description')->label('Описание'),
                     $helper->grid([
                         $helper->select('category_id', Category::all()->pluck('name', 'id'))
