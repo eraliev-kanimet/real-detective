@@ -275,6 +275,18 @@
     margin: 8px 0;
 }
 
+.address {
+    overflow: hidden;
+    color: #fff;
+    text-overflow: ellipsis;
+    font-family: Geologica, serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    margin: 8px 0;
+}
+
 .bloknet {
     display: flex;
     align-items: center;

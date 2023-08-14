@@ -16,7 +16,7 @@ function ArticlesIndex(props) {
 
     return (
         <AppLayout properties={props.properties} categories={props.categories}>
-            <div className={style.page_container}>
+            <main className={style.page_container}>
                 <section className={style.page_header}>
                     <Breadcrumbs links={[{last: true, name: 'Блог'}]}/>
                     <h3 className={style.page_title}>Блог</h3>
@@ -34,7 +34,7 @@ function ArticlesIndex(props) {
                     prev={props.articles.links.prev}
                     links={props.articles.meta.links}
                 />
-            </div>
+            </main>
         </AppLayout>
     );
 }

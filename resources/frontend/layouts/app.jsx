@@ -12,9 +12,8 @@ function AppLayout({children, properties, categories}) {
     return (
         <>
             <Header properties={properties} categories={categories}/>
-            <main>
-                {children}
-            </main>
+            {children}
+            <Footer properties={properties} categories={categories}/>
             <Suspense fallback={() => console.log('Loading')}>
                 <Footer properties={properties} categories={categories}/>
             </Suspense>

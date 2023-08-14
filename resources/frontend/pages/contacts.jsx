@@ -20,7 +20,7 @@ function Contacts(props) {
 
     return (
         <AppLayout properties={props.properties} categories={props.categories}>
-            <div className={style.container}>
+            <main className={style.container}>
                 <section className={style.blokmoscow}>
                     <h3 className={style.h3}>Москва</h3>
 
@@ -110,7 +110,7 @@ function Contacts(props) {
                         <Whatsapp alt="Whatsapp" className={style.icon}/>
                     </a>
                 </section>
-            </div>
+            </main>
         </AppLayout>
     );
 }

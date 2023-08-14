@@ -162,7 +162,7 @@
 
     .blok_price {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: center;
         text-align: center;
         align-items: center;
@@ -359,7 +359,7 @@
     margin: 0;
 }
 
-.blok_main *:not(.h2, .about, .blok) {
+.blok_main *:not(.h2, .about, .blok, strong) {
     color: #484848;
     font-family: Geologica, serif;
     font-size: 16px;

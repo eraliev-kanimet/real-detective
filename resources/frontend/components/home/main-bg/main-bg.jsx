@@ -9,15 +9,17 @@ function MainBG({properties}) {
     const [buttonPopup, setButtonPopup] = useState(false);
 
     return (
-        <section className={style.background}>
-            <div className={style.container}>
-                <h1 className={style.h1}>perhin & partners</h1>
-                <h2 className={style.h2}>детективное агентство в москве</h2>
+        <>
+            <section className={style.background}>
+                <div className={style.container}>
+                    <h1 className={style.h1}>perhin & partners</h1>
+                    <h2 className={style.h2}>детективное агентство в москве</h2>
 
-                <SecondModal properties={properties} isOnMain={true}></SecondModal>
+                    <SecondModal properties={properties} isOnMain={true}></SecondModal>
 
-                <SocialMediaButtons properties={properties}/>
-            </div>
+                    <SocialMediaButtons properties={properties}/>
+                </div>
+            </section>
             <div className={style.button_mobile}>
                 <button
                     type="submit"
@@ -33,7 +35,7 @@ function MainBG({properties}) {
                     <SecondModal properties={properties} isMainMobile={true}/>
                 </Popup>
             </div>
-        </section>
+        </>
     );
 }
 

@@ -145,6 +145,24 @@ function ArticlesShow(props) {
         return icons[name] ?? icons.default
     }
 
+    function hasAnyValueRecursive(obj, values) {
+        const stack = [obj];
+
+        while (stack.length > 0) {
+            const current = stack.pop();
+            if (typeof current === 'object') {
+                if (Object.values(current).some(value => values.includes(value))) {
+                    return true;
+                }
+                for (const prop in current) {
+                    stack.push(current[prop]);
+                }
+            }
+        }
+
+        return false;
+    }
+
     return (<AppLayout properties={props.properties} categories={props.categories}>
         <div className={style.container}>
             <section className={style.section_header}>
@@ -160,53 +178,55 @@ function ArticlesShow(props) {
                 </div>
                 <h1 className={style.h1}>{article.name}</h1>
                 <p className={style.text}>{article.description}</p>
-                <div className={style.blok}>
-                    <div className={style.row}>
-                        <h3 className={style.h3}>Содержание</h3>
-                        <VectotUp
-                            alt="VectotUp"
-                            className={style.large_icon}
-                            onClick={handleItemClick}
-                            style={{
-                                transform: isIconUp ? "rotate(0deg)" : "rotate(180deg)",
-                                transition: "transform 0.3s ease",
-                            }}
-                        />
-                    </div>
-                    {showItems && (
-                        <ol className={style.bloktext}>
-                            {article.content.map((content, index) => {
-                                if (['text_with_headers_type_1'].includes(content.type)) {
-                                    return (
-                                        <li
-                                            key={index}
-                                            onClick={(e) => scrollToSection('title' + index, e)}
-                                        >{content.data.header}</li>
-                                    )
-                                }
+                {hasAnyValueRecursive(article.content, ['text_with_headers_type_1', 'text_with_headers_type_2', 'text_with_headers_type_3']) ? (
+                    <div className={style.blok}>
+                        <div className={style.row}>
+                            <h3 className={style.h3}>Содержание</h3>
+                            <VectotUp
+                                alt="VectotUp"
+                                className={style.large_icon}
+                                onClick={handleItemClick}
+                                style={{
+                                    transform: isIconUp ? "rotate(0deg)" : "rotate(180deg)",
+                                    transition: "transform 0.3s ease",
+                                }}
+                            />
+                        </div>
+                        {showItems && (
+                            <ol className={style.bloktext}>
+                                {article.content.map((content, index) => {
+                                    if (['text_with_headers_type_1'].includes(content.type)) {
+                                        return (
+                                            <li
+                                                key={index}
+                                                onClick={(e) => scrollToSection('title' + index, e)}
+                                            >{content.data.header}</li>
+                                        )
+                                    }
 
-                                if (['text_with_headers_type_2', 'text_with_headers_type_3'].includes(content.type)) {
-                                    return (
-                                        <li
-                                            key={index}
-                                            onClick={(e) => scrollToSection('title' + index, e)}
-                                        >
-                                            <div style={{marginBottom: '8px'}}>{content.data.header}</div>
-                                            <ol className={style.bloktext}>
-                                                {content.data.items.map((item, index2) => (
-                                                    <li
-                                                        key={index2}
-                                                        onClick={(e) => scrollToSection(index2 + 'subtitle' + index, e)}
-                                                    >{item.header}</li>
-                                                ))}
-                                            </ol>
-                                        </li>
-                                    )
-                                }
-                            })}
-                        </ol>
-                    )}
-                </div>
+                                    if (['text_with_headers_type_2', 'text_with_headers_type_3'].includes(content.type)) {
+                                        return (
+                                            <li
+                                                key={index}
+                                                onClick={(e) => scrollToSection('title' + index, e)}
+                                            >
+                                                <div style={{marginBottom: '8px'}}>{content.data.header}</div>
+                                                <ol className={style.bloktext}>
+                                                    {content.data.items.map((item, index2) => (
+                                                        <li
+                                                            key={index2}
+                                                            onClick={(e) => scrollToSection(index2 + 'subtitle' + index, e)}
+                                                        >{item.header}</li>
+                                                    ))}
+                                                </ol>
+                                            </li>
+                                        )
+                                    }
+                                })}
+                            </ol>
+                        )}
+                    </div>
+                ) : ''}
             </section>
 
             {article.content.map((content, index) => {

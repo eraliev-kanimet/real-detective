@@ -29,7 +29,7 @@ export default function Footer({properties, categories}) {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <LazyLoadImage src={Telegram} alt="Telegram" className={style.socnet}/>
+                            <LazyLoadImage src={Telegram} alt="Telegram"/>
                         </a>
 
                         <a
@@ -38,7 +38,7 @@ export default function Footer({properties, categories}) {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <LazyLoadImage src={Techat} alt="Techat" className={style.socnet}/>
+                            <LazyLoadImage src={Techat} alt="Techat"/>
                         </a>
 
                         <a
@@ -47,7 +47,7 @@ export default function Footer({properties, categories}) {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <LazyLoadImage src={Youtube} alt="Videos" className={style.socnet}/>
+                            <LazyLoadImage src={Youtube} alt="Videos"/>
                         </a>
 
                         <a
@@ -56,7 +56,7 @@ export default function Footer({properties, categories}) {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <LazyLoadImage src={Profi} alt="Profi" className={style.socnet}/>
+                            <LazyLoadImage src={Profi} alt="Profi"/>
                         </a>
                     </div>
                 </div>
@@ -68,33 +68,32 @@ export default function Footer({properties, categories}) {
                         <p className={style.title}>Контакты</p>
 
                         <div className={style.section}>
-                            <LazyLoadImage src={Location} alt="Location" className={style.icon}/>
-                            <p className={style.p}>{properties.address}</p>
+                            <LazyLoadImage src={Location} alt="Location"/>
+                            <p className={style.address}>{properties.address}</p>
                         </div>
 
                         <div className={style.section}>
-                            <LazyLoadImage src={Phone} alt="Phone" className={style.icon}/>
+                            <LazyLoadImage src={Phone} alt="Phone"/>
                             <p className={style.p}>{properties.phone}</p>
                         </div>
 
                         <div className={style.section}>
-                            <LazyLoadImage src={Time} alt="Time" className={style.icon}/>
+                            <LazyLoadImage src={Time} alt="Time"/>
                             <p className={style.p}>Понедельник-суббота 8:00-18:00</p>
                         </div>
 
                         <div className={style.section}>
-                            <LazyLoadImage src={Email} alt="Email" className={style.icon}/>
+                            <LazyLoadImage src={Email} alt="Email"/>
                             <p className={style.p}>{properties.email}</p>
                         </div>
                     </div>
 
                     <div className={style.card}>
-                        <LazyLoadImage src={Mir} alt="Mir" className={style.cardicon}/>
-                        <LazyLoadImage src={Visa} alt="Visa" className={style.cardicon}/>
+                        <LazyLoadImage src={Mir} alt="Mir"/>
+                        <LazyLoadImage src={Visa} alt="Visa"/>
                         <LazyLoadImage
                             src={Mastercard}
                             alt="Mastercard"
-                            className={style.cardicon}
                         />
                     </div>
                 </div>
