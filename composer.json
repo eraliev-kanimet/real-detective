@@ -14,6 +14,7 @@
         "filament/filament": "^2.0",
         "guzzlehttp/guzzle": "^7.2",
         "inertiajs/inertia-laravel": "^0.6.9",
+        "irazasyed/telegram-bot-sdk": "^3.13",
         "laravel/framework": "^10.10",
         "laravel/tinker": "^2.8",
         "shuvroroy/filament-spatie-laravel-backup": "^1.3",

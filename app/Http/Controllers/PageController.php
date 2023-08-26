@@ -43,4 +43,15 @@ class PageController extends Controller
 
         return Inertia::render('privacy_policy', $data);
     }
+
+    public function about()
+    {
+        $data = $this->data(true);
+
+        $this->seo()->setTitle($data['properties']['about']['title']);
+        $this->seo()->setDescription($data['properties']['about']['description']);
+        $this->seo()->setCanonical(route('about'));
+
+        return Inertia::render('about', $data);
+    }
 }

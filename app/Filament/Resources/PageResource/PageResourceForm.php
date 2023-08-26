@@ -137,6 +137,13 @@ class PageResourceForm
                     ]),
                     $helper->richEditor('content.privacy_policy')->label('Контент')
                 ]),
+                $helper->tab('Страница О компании', [
+                    $helper->fieldset('SEO', [
+                        $helper->textInput('seo.about.title')->label('Заголовок'),
+                        $helper->textarea('seo.about.description')->label('Описание'),
+                    ]),
+                    $helper->richEditor('content.about')->label('Контент')
+                ]),
             ])
         ];
     }

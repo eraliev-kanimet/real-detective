@@ -143,6 +143,7 @@ const Navbar = ({properties, categories}) => {
                         <Item url='/blog' name='Блог'/>
                         <Item url='/reviews' name='Отзывы'/>
                         <Item url='/contacts' name='Контакты'/>
+                        <Item url='/about' name='О компании'/>
 
                         <div className={style.navcontainer}>
                             <div className={style.container_medium}>

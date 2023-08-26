@@ -62,6 +62,12 @@ class SubcategoryForm
                         $helper->richEditor('content')->label('Описание'),
                     ])->required()->label('')
                 ]),
+                $helper->tab('Этапы работы', [
+                    $helper->repeater('basic.steps_of_work', [
+                        $helper->textInput('header')->label('Заголовок'),
+                        $helper->textarea('content')->label('Описание'),
+                    ])->required()->label('')
+                ]),
                 $helper->tab('FAQ', [
                     $helper->repeater('faq', [
                         $helper->textInput('question')->label('Вопрос'),

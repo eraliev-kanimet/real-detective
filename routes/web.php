@@ -19,6 +19,7 @@ Route::get('services', [CategoryController::class, 'index'])->name('categories')
 Route::get('price', [CategoryController::class, 'price'])->name('price');
 
 Route::get('sitemap', [PageController::class, 'sitemap'])->name('sitemap');
+Route::get('about', [PageController::class, 'about'])->name('about');
 Route::get('cookies-policy', [PageController::class, 'cookiesPolicy'])->name('cookies-policy');
 Route::get('privacy-policy', [PageController::class, 'privacyPolicy'])->name('privacy-policy');
 

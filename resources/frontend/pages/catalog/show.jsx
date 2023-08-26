@@ -14,7 +14,9 @@ import { ReactComponent as Play } from "../../assets/images/play.svg";
 
 function CatalogShow(props) {
     const [category, setCategory] = useState({
-        basic: {},
+        basic: {
+            steps_of_work: [],
+        },
         video: {},
         rating_array: [],
         related: [],
@@ -101,41 +103,13 @@ function CatalogShow(props) {
                     <div className={style.blok_main2}>
                         <h2 className={style.h2}>Этапы нашей работы</h2>
                         <div className={style.about}>
-                            <div className={style.blok}>
-                                <p className={style.number}>1</p>
-                                <p className={style.title}>Заявка на услугу</p>
-                                <p className={style.smalltext}>
-                                    Оставляете заявку любым удобным способом
-                                </p>
-                            </div>
-                            <div className={style.blok}>
-                                <p className={style.number}>2</p>
-                                <p className={style.title}>Консультация</p>
-                                <p className={style.smalltext}>
-                                    Бесплатная консультация и обсуждение деталей
-                                </p>
-                            </div>
-                            <div className={style.blok}>
-                                <p className={style.number}>3</p>
-                                <p className={style.title}>Предоплата</p>
-                                <p className={style.smalltext}>
-                                    После обсуждения деталей - внесение предоплаты
-                                </p>
-                            </div>
-                            <div className={style.blok}>
-                                <p className={style.number}>4</p>
-                                <p className={style.title}>Выполнение</p>
-                                <p className={style.smalltext}>
-                                    Переходим к выполнению поставленных задач
-                                </p>
-                            </div>
-                            <div className={style.blok}>
-                                <p className={style.number}>5</p>
-                                <p className={style.title}>Отчет</p>
-                                <p className={style.smalltext}>
-                                    Предоставление полного отчета о проделанной работе
-                                </p>
-                            </div>
+                            {category.basic.steps_of_work.map((item, index) => (
+                                <div className={style.blok}>
+                                    <p className={style.number}>{index + 1}</p>
+                                    <p className={style.title}>{item.header}</p>
+                                    <p className={style.smalltext}>{item.content}</p>
+                                </div>
+                            ))}
                         </div>
                     </div>
 

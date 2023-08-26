@@ -41,4 +41,7 @@ return [
         App\Providers\RouteServiceProvider::class,
     ])->toArray(),
 
+    'telegram_bot_token' => env('TELEGRAM_BOT_TOKEN'),
+    'telegram_chat' => env('TELEGRAM_CHAT'),
+
 ];

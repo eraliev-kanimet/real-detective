@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\SubcategoryResource\Pages;
 use App\Filament\Resources\SubcategoryResource\SubcategoryForm;
+use App\Models\Category;
 use App\Models\Page;
 use App\Models\Subcategory;
 use Exception;
@@ -41,6 +42,10 @@ class SubcategoryResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')->label('Название'),
+                Tables\Columns\TextColumn::make('category.service')
+                    ->label('Группа')
+                    ->enum(Category::$services)
+                    ->label('Название'),
                 Tables\Columns\TextColumn::make('contract_type')->label('Тип контракта'),
             ])
             ->actions([

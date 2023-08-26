@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Mail\ContactFormMail;
 use App\Models\Rating;
 use App\Models\SiteForm;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Telegram\Bot\Laravel\Facades\Telegram;
 
 class FormController extends Controller
 {
@@ -29,6 +31,22 @@ class FormController extends Controller
             (string) $request->get('number'),
             (string) $request->get('question', ''),
         ));
+
+        $message = "Имя: {$request->get('name')}\n\n";
+        $message .= "Телефон: {$request->get('number')}";
+
+        if ($request->has('question')) {
+            $message .= "\n\nВопрос: {$request->get('question')}\n";
+        }
+
+        try {
+            Telegram::sendMessage([
+                'chat_id' => config('app.telegram_chat'),
+                'text' => $message,
+            ]);
+        } catch (Exception) {
+
+        }
 
         return response()->json();
     }
