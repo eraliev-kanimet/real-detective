@@ -1,7 +1,7 @@
 import style from "./categories.module.scss";
 import Category from "./category/category.jsx";
-import Person from "../../../assets/images/icon_person.svg";
-import Business from "../../../assets/images/icon_business.svg";
+import Person from "../../../../images/icon_person.svg";
+import Business from "../../../../images/icon_business.svg";
 import Vectorright from "../../../assets/svg/Vectorright.jsx";
 import {Splide, SplideSlide} from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";

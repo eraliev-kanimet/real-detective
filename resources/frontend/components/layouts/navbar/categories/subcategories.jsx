@@ -1,31 +1,7 @@
 import React, {useState} from 'react';
 import style from "./categories.module.scss";
-import {ReactComponent as Info} from "../../../../assets/images/services-chat.svg";
-import {ReactComponent as Family} from "../../../../assets/images/services-family.svg";
-import {ReactComponent as Binoculars} from "../../../../assets/images/services-binoculars.svg";
-import {ReactComponent as Search} from "../../../../assets/images/services-search.svg";
-import {ReactComponent as Protect} from "../../../../assets/images/services-protect.svg";
-import {ReactComponent as Journalism} from "../../../../assets/images/services-journalism.svg";
 
 const Subcategories = ({category}) => {
-    const icons = {
-        info: <Info alt="Info"/>,
-        family: <Family alt="Family"/>,
-        binoculars: <Binoculars alt="Binoculars"/>,
-        search: <Search alt="Search"/>,
-        protect: <Protect alt="Protect"/>,
-        journalism: <Journalism alt="Journalism"/>,
-        default: <Info alt="Info"/>,
-    }
-
-    const getIcon = (icon) => {
-        if (icons.hasOwnProperty(icon)) {
-            return icons[icon]
-        }
-
-        return icons.default
-    }
-
     const [visibleItems, setVisibleItems] = useState(5);
 
     const showMoreItems = () => {
@@ -34,7 +10,6 @@ const Subcategories = ({category}) => {
 
     return (
         <section>
-            {getIcon(category.icon)}
             <h2 className={style.h2}>{category.name}</h2>
             {category.subcategories.slice(0, visibleItems).map(item => (
                 <a key={item.id} href={'/services/' + item.slug}>

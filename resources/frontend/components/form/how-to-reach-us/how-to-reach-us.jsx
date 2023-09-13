@@ -1,7 +1,7 @@
 import style from "./how-to-reach-us.module.scss"
-import { ReactComponent as Telegram } from "../../../assets/images/footer-telegram.svg";
-import { ReactComponent as WhatsApp } from "../../../assets/images/popup-whatsapp.svg";
-import { ReactComponent as Phone } from "../../../assets/images/popup-phone.svg";
+import { ReactComponent as Telegram } from "../../../../images/footer-telegram.svg";
+import { ReactComponent as WhatsApp } from "../../../../images/popup-whatsapp.svg";
+import { ReactComponent as Phone } from "../../../../images/popup-phone.svg";
 import Form from "../form.jsx";
 
 export default function HowToReachUs({properties, onButtonClickShow}) {

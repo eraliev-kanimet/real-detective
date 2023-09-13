@@ -1,5 +1,5 @@
 import style from "./director.module.scss";
-import WorkHistory from "../../../assets/images/work-history.svg";
+import WorkHistory from "../../../../images/work-history.svg";
 import Vectorright from "../../../assets/svg/Vectorright.jsx";
 import Popup from "../../popup/popup.jsx";
 import SecondModal from "../../modal/second.jsx";

@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {FiPlus} from "react-icons/fi";
+// import {FiPlus} from "react-icons/fi";
 import parse from "html-react-parser";
 
 const FaqItem = ({content}) => {
@@ -24,7 +24,7 @@ const FaqItem = ({content}) => {
             <div style={{width: '100%'}}>
                 <div className="question-align">
                     <p className="question-style">{content.question}</p>
-                    <FiPlus className={active ? `question-icon rotate` : `question-icon`}/>
+                    {/*<FiPlus className={active ? `question-icon rotate` : `question-icon`}/>*/}
                 </div>
                 <div
                     ref={contentRef}

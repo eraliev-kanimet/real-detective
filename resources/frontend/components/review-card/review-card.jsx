@@ -1,6 +1,6 @@
 import style from "./review-card.module.scss";
-import star from "../../assets/images/icon_star.svg";
-import emptyStar from "../../assets/images/icon_empty_star.svg";
+import star from "../../../images/icon_star.svg";
+import emptyStar from "../../../images/icon_empty_star.svg";
 
 export default function Review({review}) {
     const stars = [];

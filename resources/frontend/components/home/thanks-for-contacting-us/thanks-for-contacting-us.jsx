@@ -1,4 +1,4 @@
-import {ReactComponent as Check} from "../../../assets/images/white_check.svg";
+import {ReactComponent as Check} from "../../../../images/white_check.svg";
 import style from "./thanks-for-contacting-us.module.scss"
 
 export default function ThanksForContactingUs(props) {

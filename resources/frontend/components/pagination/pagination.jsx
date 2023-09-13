@@ -1,8 +1,8 @@
 import React from "react";
 import style from "./pagination.module.scss";
-import ArrowLeft from "../../assets/images/white_arrow_left.svg";
-import ArrowRight from "../../assets/images/white_arrow_right.svg";
-import ArrowDown from "../../assets/images/biege_arrow_down.svg";
+import ArrowLeft from "../../../images/white_arrow_left.svg";
+import ArrowRight from "../../../images/white_arrow_right.svg";
+import ArrowDown from "../../../images/biege_arrow_down.svg";
 
 const Pagination = ({limit, initLimit, path, links, current, next, prev, last}) => {
     const PaginateHandle = (url) => {

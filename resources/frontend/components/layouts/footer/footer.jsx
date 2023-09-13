@@ -1,18 +1,17 @@
 import style from "./footer.module.scss";
 
-import Logo from "../../../assets/images/logo.svg";
-import Telegram from "../../../assets/images/footer-telegram.svg";
-import Techat from "../../../assets/images/footer-techat.svg";
-import Youtube from "../../../assets/images/footer-youtube.svg";
-import Profi from "../../../assets/images/footer-profi.svg";
-import Location from "../../../assets/images/footer-location.svg";
-import Phone from "../../../assets/images/footer-phone.svg";
-import Time from "../../../assets/images/footer-time.svg";
-import Email from "../../../assets/images/footer-email.svg";
-import Mir from "../../../assets/images/footer-mir.png";
-import Visa from "../../../assets/images/footer-visa.png";
-import Mastercard from "../../../assets/images/footer-mastercard.png";
-import {LazyLoadImage} from "react-lazy-load-image-component";
+import Logo from "../../../../images/logo.svg";
+import Telegram from "../../../../images/footer-telegram.svg";
+import Techat from "../../../../images/footer-techat.svg";
+import Youtube from "../../../../images/footer-youtube.svg";
+import Profi from "../../../../images/footer-profi.svg";
+import Location from "../../../../images/footer-location.svg";
+import Phone from "../../../../images/footer-phone.svg";
+import Time from "../../../../images/footer-time.svg";
+import Email from "../../../../images/footer-email.svg";
+import Mir from "../../../../images/footer-mir.png";
+import Visa from "../../../../images/footer-visa.png";
+import Mastercard from "../../../../images/footer-mastercard.png";
 
 export default function Footer({properties, categories}) {
     return (
@@ -29,7 +28,7 @@ export default function Footer({properties, categories}) {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <LazyLoadImage src={Telegram} alt="Telegram"/>
+                            <img src={Telegram} alt="Telegram"/>
                         </a>
 
                         <a
@@ -38,7 +37,7 @@ export default function Footer({properties, categories}) {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <LazyLoadImage src={Techat} alt="Techat"/>
+                            <img src={Techat} alt="Techat"/>
                         </a>
 
                         <a
@@ -47,7 +46,7 @@ export default function Footer({properties, categories}) {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <LazyLoadImage src={Youtube} alt="Videos"/>
+                            <img src={Youtube} alt="Videos"/>
                         </a>
 
                         <a
@@ -56,7 +55,7 @@ export default function Footer({properties, categories}) {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <LazyLoadImage src={Profi} alt="Profi"/>
+                            <img src={Profi} alt="Profi"/>
                         </a>
                     </div>
                 </div>
@@ -68,30 +67,30 @@ export default function Footer({properties, categories}) {
                         <p className={style.title}>Контакты</p>
 
                         <div className={style.section}>
-                            <LazyLoadImage src={Location} alt="Location"/>
+                            <img src={Location} alt="Location"/>
                             <p className={style.address}>{properties.address}</p>
                         </div>
 
                         <div className={style.section}>
-                            <LazyLoadImage src={Phone} alt="Phone"/>
+                            <img src={Phone} alt="Phone"/>
                             <p className={style.p}>{properties.phone}</p>
                         </div>
 
                         <div className={style.section}>
-                            <LazyLoadImage src={Time} alt="Time"/>
+                            <img src={Time} alt="Time"/>
                             <p className={style.p}>Понедельник-суббота 8:00-18:00</p>
                         </div>
 
                         <div className={style.section}>
-                            <LazyLoadImage src={Email} alt="Email"/>
+                            <img src={Email} alt="Email"/>
                             <p className={style.p}>{properties.email}</p>
                         </div>
                     </div>
 
                     <div className={style.card}>
-                        <LazyLoadImage src={Mir} alt="Mir"/>
-                        <LazyLoadImage src={Visa} alt="Visa"/>
-                        <LazyLoadImage
+                        <img src={Mir} alt="Mir"/>
+                        <img src={Visa} alt="Visa"/>
+                        <img
                             src={Mastercard}
                             alt="Mastercard"
                         />

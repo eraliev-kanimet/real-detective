@@ -1,6 +1,6 @@
 import style from "../assets/pages/not_found.module.scss";
-import {ReactComponent as VectorRight} from "../assets/images/vectorright.svg";
-import NoMatch from "../assets/images/nomatch-404.png";
+import {ReactComponent as VectorRight} from "../../images/vectorright.svg";
+import NoMatch from "../../images/nomatch-404.png";
 import AppLayout from "../layouts/app.jsx";
 
 function NotFound(props) {

@@ -1,12 +1,11 @@
 import style from "./license.module.scss";
-import LicenseImg from "../../../assets/images/license.png";
-import {LazyLoadImage} from 'react-lazy-load-image-component';
+import LicenseImg from "../../../../images/license.png";
 
 export default function License() {
     return (
         <>
             <section className={style.container}>
-                <LazyLoadImage src={LicenseImg} alt="license" className={style.img}/>
+                <img src={LicenseImg} alt="license" className={style.img}/>
                 <div className={style.blok}>
                     <h3 className={style.h3}>Лицензия</h3>
                     <p className={style.p}>

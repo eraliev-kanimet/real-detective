@@ -1,10 +1,10 @@
 import AppLayout from "../layouts/app.jsx";
 import style from "../assets/pages/contacts.module.scss";
 import {GoogleMap, LoadScript, Marker} from "@react-google-maps/api";
-import {ReactComponent as Phone} from "../assets/images/footer-phone.svg";
-import {ReactComponent as Location} from "../assets/images/footer-location.svg";
-import {ReactComponent as Telegram} from "../assets/images/contact-telegram.svg";
-import {ReactComponent as Whatsapp} from "../assets/images/contact-whatsapp.svg";
+import {ReactComponent as Phone} from "../../images/footer-phone.svg";
+import {ReactComponent as Location} from "../../images/footer-location.svg";
+import {ReactComponent as Telegram} from "../../images/contact-telegram.svg";
+import {ReactComponent as Whatsapp} from "../../images/contact-whatsapp.svg";
 
 function Contacts(props) {
     const mapContainerStyle = {

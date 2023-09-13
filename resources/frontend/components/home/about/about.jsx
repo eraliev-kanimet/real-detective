@@ -1,5 +1,5 @@
 import style from "./about.module.scss";
-import Img from "../../../assets/images/about.png";
+import Img from "../../../../images/about.png";
 import parse from 'html-react-parser';
 
 export default function About({content}) {

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Vite;
 
 function transliterate($text): string
 {
@@ -33,4 +34,14 @@ function fakeImage(string $model, ?string $image = null): string
     }
 
     return "$model/$image";
+}
+
+function a(string $path): string
+{
+    return Vite::asset('resources/' . $path);
+}
+
+function get_only_numbers($value): string
+{
+    return preg_replace('/[^0-9]/', '', $value);
 }

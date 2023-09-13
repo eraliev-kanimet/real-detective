@@ -2,15 +2,15 @@ import AppLayout from "../../layouts/app.jsx";
 import style from "../../assets/pages/catalog/show.module.scss";
 import {useEffect, useState} from "react";
 import Breadcrumbs from "../../components/breadcrumbs/breadcrumbs.jsx";
-import Star from "../../assets/images/icon_star.svg";
-import {ReactComponent as VectorRight} from "../../assets/images/vectorright.svg";
-import {ReactComponent as Binoculars} from "../../assets/images/services-binoculars.svg";
+import Star from "../../../images/icon_star.svg";
+import {ReactComponent as VectorRight} from "../../../images/vectorright.svg";
+import {ReactComponent as Binoculars} from "../../../images/services-binoculars.svg";
 import FAQ from "../../components/faq/faq.jsx";
 import Blog from "../../components/home/blog/blog.jsx";
 import Popup from "../../components/popup/popup.jsx";
 import SecondModal from "../../components/modal/second.jsx";
 import parse from "html-react-parser";
-import { ReactComponent as Play } from "../../assets/images/play.svg";
+import { ReactComponent as Play } from "../../../images/play.svg";
 
 function CatalogShow(props) {
     const [category, setCategory] = useState({

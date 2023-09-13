@@ -20,7 +20,7 @@ class HomeController extends Controller
         $data['reviews'] = Review::all();
         $data['articles'] = Article::getRandom();
 
-        return Inertia::render('home', $data);
+        return view('pages.home', $data);
     }
 
     public function faq()

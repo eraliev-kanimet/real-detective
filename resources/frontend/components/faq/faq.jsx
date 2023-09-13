@@ -1,9 +1,8 @@
 import React from "react";
-import FormPhoto from "../../assets/images/form-foto.png";
+import FormPhoto from "../../../images/form-foto.png";
 import "./faq.scss";
 import SecondModal from "../modal/second.jsx";
 import FaqItem from "./faq-item.jsx";
-import {LazyLoadImage} from "react-lazy-load-image-component";
 
 export default function FAQ({content, faq}) {
     return (
@@ -18,7 +17,7 @@ export default function FAQ({content, faq}) {
                 <div className="blokform">
                     <p className="title">Связаться с частным детективом</p>
                     <div className="blokdirector">
-                        <LazyLoadImage src={FormPhoto} alt="director" className="photo"/>
+                        <img src={FormPhoto} alt="director" className="photo"/>
                         <p className="text">
                             {content.post}
                             <br/>

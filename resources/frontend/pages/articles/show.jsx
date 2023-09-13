@@ -3,24 +3,23 @@ import Blog from "../../components/home/blog/blog.jsx";
 import {Carousel} from "../../components/articles/carousel/carousel.jsx";
 import style from "../../assets/pages/articles/show.module.scss";
 import Breadcrumbs from "../../components/breadcrumbs/breadcrumbs.jsx";
-import Eye from "../../assets/images/article-eye.svg";
-import {ReactComponent as VectotUp} from "../../assets/images/article-icon.svg";
-import Fire from "../../assets/images/article-fire.svg";
-import Car from "../../assets/images/article-car.svg";
-import Cat from "../../assets/images/article-cat.svg";
-import Quote from "../../assets/images/article-quote.svg";
-import Info from "../../assets/images/article-info.svg";
-import Like from "../../assets/images/article-like.svg";
-import Dislike from "../../assets/images/article-dislike.svg";
-import Telegram from "../../assets/images/footer-telegram.svg";
-import Whatsapp from "../../assets/images/article-whatsapp.svg";
-import Vk from "../../assets/images/article-vk.svg";
-import Fc from "../../assets/images/article-facebook.svg";
+import Eye from "../../../images/article-eye.svg";
+import {ReactComponent as VectotUp} from "../../../images/article-icon.svg";
+import Fire from "../../../images/article-fire.svg";
+import Car from "../../../images/article-car.svg";
+import Cat from "../../../images/article-cat.svg";
+import Quote from "../../../images/article-quote.svg";
+import Info from "../../../images/article-info.svg";
+import Like from "../../../images/article-like.svg";
+import Dislike from "../../../images/article-dislike.svg";
+import Telegram from "../../../images/footer-telegram.svg";
+import Whatsapp from "../../../images/article-whatsapp.svg";
+import Vk from "../../../images/article-vk.svg";
+import Fc from "../../../images/article-facebook.svg";
 import AppLayout from "../../layouts/app.jsx";
 import FaqItem from "../../components/faq/faq-item.jsx";
 import "../../components/faq/faq.scss";
 import axios from "axios";
-import {LazyLoadImage} from "react-lazy-load-image-component";
 
 function ArticlesShow(props) {
     const [article, setArticle] = useState({
@@ -272,7 +271,7 @@ function ArticlesShow(props) {
                             <div className={style.about}>
                                 {content.data.items.map((item, index3) => (
                                     <div key={index3} className={style.blokabout}>
-                                        <LazyLoadImage src={getIcons(item.icon)} alt="Icon" className={style.img}/>
+                                        <img src={getIcons(item.icon)} alt="Icon" className={style.img}/>
                                         <h3 className={style.title} id={index3 + 'subtitle' + index}>{item.header}</h3>
                                         <p className={style.smalltext}>{item.text}</p>
                                     </div>
@@ -303,11 +302,11 @@ function ArticlesShow(props) {
                 if (content.type === 'quote') {
                     return (
                         <section key={index} className={style.section_quote}>
-                            <LazyLoadImage src={Quote} alt="Quote" className={style.img}/>
+                            <img src={Quote} alt="Quote" className={style.img}/>
                             <div className={style.blok_quote}>
                                 <p className={style.text}>{content.data.text}</p>
                                 <div className={style.blokdirector}>
-                                    <LazyLoadImage
+                                    <img
                                         className={style.img64}
                                         src={'/storage/' + content.data.author.image}
                                         alt="director"
@@ -326,7 +325,7 @@ function ArticlesShow(props) {
                 if (content.type === 'quote2') {
                     return (
                         <section key={index} className={style.section_gray}>
-                            <LazyLoadImage src={Quote} alt="Quote" className={style.img}/>
+                            <img src={Quote} alt="Quote" className={style.img}/>
                             <p className={style.text}>{content.data.text}</p>
                         </section>
                     )
@@ -335,7 +334,7 @@ function ArticlesShow(props) {
                 if (content.type === 'info') {
                     return (
                         <section key={index} className={style.section_gray}>
-                            <LazyLoadImage src={Info} alt="Info" className={style.img}/>
+                            <img src={Info} alt="Info" className={style.img}/>
                             <p className={style.text}>{content.data.text}</p>
                         </section>
                     )
@@ -349,7 +348,7 @@ function ArticlesShow(props) {
                             ) : ''}
                             {content.data.images.length === 1 ? (
                                 <div className={style.blok_titletext}>
-                                    <LazyLoadImage
+                                    <img
                                         src={'/storage/' + content.data.images[0].image}
                                         alt={content.data.images[0].alt}
                                         className={style.image}
@@ -377,7 +376,7 @@ function ArticlesShow(props) {
             </section>
 
             <section className={style.section_autor}>
-                <LazyLoadImage className={style.img64} src={article.author.image} alt="director"/>
+                <img className={style.img64} src={article.author.image} alt="director"/>
                 <p className={style.textautor}>
                     Автор статьи
                     <br/>
@@ -392,7 +391,7 @@ function ArticlesShow(props) {
                         type="button"
                         className={style.like}
                     >
-                        <LazyLoadImage src={Like} alt="Like"/>
+                        <img src={Like} alt="Like"/>
                         {article.likes}
                     </button>
                     <button
@@ -400,7 +399,7 @@ function ArticlesShow(props) {
                         type="button"
                         className={style.dislike}
                     >
-                        <LazyLoadImage src={Dislike} alt="Dislike"/>
+                        <img src={Dislike} alt="Dislike"/>
                         {article.dislikes}
                     </button>
                 </div>
@@ -414,7 +413,7 @@ function ArticlesShow(props) {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <LazyLoadImage src={Telegram} alt="Telegram"/>
+                            <img src={Telegram} alt="Telegram"/>
                         </a>
 
                         <a
@@ -423,7 +422,7 @@ function ArticlesShow(props) {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <LazyLoadImage src={Whatsapp} alt="Whatsapp"/>
+                            <img src={Whatsapp} alt="Whatsapp"/>
                         </a>
 
                         <a
@@ -432,7 +431,7 @@ function ArticlesShow(props) {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <LazyLoadImage src={Vk} alt="Vk"/>
+                            <img src={Vk} alt="Vk"/>
                         </a>
 
                         <a
@@ -441,7 +440,7 @@ function ArticlesShow(props) {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <LazyLoadImage src={Fc} alt="Fc"/>
+                            <img src={Fc} alt="Fc"/>
                         </a>
                     </div>
                 </div>

@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from "react";
 import style from "../../assets/pages/catalog/index.module.scss";
 import Breadcrumbs from "../../components/breadcrumbs/breadcrumbs.jsx";
-import {ReactComponent as Info} from "../../assets/images/services-chat.svg";
-import {ReactComponent as Family} from "../../assets/images/services-family.svg";
-import {ReactComponent as Binoculars} from "../../assets/images/services-binoculars.svg";
-import {ReactComponent as Search} from "../../assets/images/services-search.svg";
-import {ReactComponent as Protect} from "../../assets/images/services-protect.svg";
-import {ReactComponent as Journalism} from "../../assets/images/services-journalism.svg";
-import {ReactComponent as ArrowDown} from "../../assets/images/biege_arrow_down.svg";
+import {ReactComponent as Info} from "../../../images/services-chat.svg";
+import {ReactComponent as Family} from "../../../images/services-family.svg";
+import {ReactComponent as Binoculars} from "../../../images/services-binoculars.svg";
+import {ReactComponent as Search} from "../../../images/services-search.svg";
+import {ReactComponent as Protect} from "../../../images/services-protect.svg";
+import {ReactComponent as Journalism} from "../../../images/services-journalism.svg";
+import {ReactComponent as ArrowDown} from "../../../images/biege_arrow_down.svg";
 import AppLayout from "../../layouts/app.jsx";
 import CategoryTab from "../../components/catalog/tab.jsx";
 

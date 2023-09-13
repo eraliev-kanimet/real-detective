@@ -1,7 +1,7 @@
 import React from 'react';
 import style from "../../assets/pages/catalog/index.module.scss";
-import {ReactComponent as Person} from "../../assets/images/dashicons_businessman.svg";
-import {ReactComponent as Business} from "../../assets/images/dashbusiness-center.svg";
+import {ReactComponent as Person} from "../../../images/dashicons_businessman.svg";
+import {ReactComponent as Business} from "../../../images/dashbusiness-center.svg";
 
 const CategoryTab = ({current, category, categoryName, onClick}) => {
     return (

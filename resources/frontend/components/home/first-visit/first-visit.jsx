@@ -1,10 +1,9 @@
 import style from "./first-visit.module.scss";
-import Chat from "../../../assets/images/chat.svg";
-import Car from "../../../assets/images/car.svg";
-import Users from "../../../assets/images/users.svg";
-import VideoChat from "../../../assets/images/videochat.svg";
+import Chat from "../../../../images/chat.svg";
+import Car from "../../../../images/car.svg";
+import Users from "../../../../images/users.svg";
+import VideoChat from "../../../../images/videochat.svg";
 import parse from "html-react-parser";
-import {LazyLoadImage} from "react-lazy-load-image-component";
 
 export default function FirstVisit({content}) {
     const icons = [Chat, Users, Car, VideoChat, Chat, Users, Car, VideoChat]
@@ -19,7 +18,7 @@ export default function FirstVisit({content}) {
 
                 {content.items.map((item, index) => (
                     <div key={index} className={style.blok}>
-                        <LazyLoadImage src={icons[index]} alt="chat"/>
+                        <img src={icons[index]} alt="chat"/>
                         <div className={style.blokinside}>
                             <p className={style.title}>{item.header}</p>
                             {parse(item.description)}

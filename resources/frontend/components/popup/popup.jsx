@@ -1,6 +1,6 @@
 import style from "./popup.module.scss"
-import {ReactComponent as Cross} from "../../assets/images/icon-white-cross.svg";
-import Logo from "../../assets/images/logo.svg";
+import {ReactComponent as Cross} from "../../../images/icon-white-cross.svg";
+import Logo from "../../../images/logo.svg";
 
 export default function Popup(props) {
     const checkOnGrey = (e) => {

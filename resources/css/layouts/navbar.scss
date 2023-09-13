@@ -1,0 +1,405 @@
+.burger {
+    height: 30px;
+    padding: 4px 15px;
+    align-items: center;
+    gap: 8px;
+    position: fixed;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    border-radius: 48px;
+    color: #fff;
+    background-color: #110f0f;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    z-index: 20;
+    display: none;
+
+    .burger_menu {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.2rem;
+    }
+
+    @media screen and (max-width: 1230px) and (min-width: 675px) {
+        display: flex;
+        justify-content: space-around;
+        flex-flow: row nowrap;
+        left: 15%;
+    }
+
+    @media screen and (max-width: 674px) {
+        display: flex;
+        justify-content: space-around;
+        flex-flow: row nowrap;
+        right: 7%;
+    }
+
+    .menu-background {
+        background-color: rgba(17, 15, 15, 0.5);
+    }
+    .dark {
+        position: fixed;
+        top: 88px;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 35;
+    }
+
+    @media (max-width: 1230px) {
+        .menu_background {
+            position: fixed;
+            z-index: 40;
+            top: 88px;
+            left: 0;
+            height: 100vh;
+            width: 100vh;
+            background-color: rgba(17, 15, 15, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+    }
+
+    .dark {
+        background-color: rgba(17, 15, 15, 0.5);
+    }
+
+    div {
+        &:nth-child(1) {
+            transform: rotate(0);
+            width: 16px;
+            height: 0.1rem;
+            background-color: #fff;
+            transform-origin: 1px;
+            transition: all 0.3s linear;
+        }
+
+        &:nth-child(2) {
+            transform: translateX(0);
+            opacity: 1;
+            width: 12px;
+            height: 0.1rem;
+            background-color: #fff;
+            transform-origin: 1px;
+            transition: all 0.3s linear;
+        }
+
+        &:nth-child(3) {
+            transform: rotate(0) scaleX(1);
+            width: 8px;
+            height: 0.1rem;
+            background-color: #fff;
+            transform-origin: 1px;
+            transition: all 0.3s linear;
+        }
+    }
+
+    &.active div {
+        &:nth-child(1) {
+            transform: rotate(45deg);
+        }
+
+        &:nth-child(2) {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+
+        &:nth-child(3) {
+            transform: rotate(-45deg) scaleX(2);
+
+        }
+    }
+}
+
+@media screen and (min-width: 1880px) {
+    .navbar_nav {
+        padding-right: 30rem;
+    }
+
+    .navbar_limobile {
+        display: none;
+    }
+
+    .navbar_li {
+        display: flex;
+        flex-flow: row nowrap;
+        column-gap: 0.5rem;
+        padding: 18px 10px;
+        color: #fff;
+        font-family: Geologica, sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%;
+        cursor: pointer;
+    }
+
+    .navbar_li:hover {
+        color: #fff2d8;
+    }
+}
+
+@media screen and (max-width: 1879px) {
+    .navbar_nav {
+        padding-right: 4rem;
+    }
+
+    .navbar_limobile {
+        display: none;
+    }
+
+    .navbar_li {
+        display: flex;
+        flex-flow: row nowrap;
+        column-gap: 0.5rem;
+        color: #fff;
+        font-family: Geologica, sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%;
+        cursor: pointer;
+    }
+
+    .navbar_li:hover {
+        color: #fff2d8;
+    }
+}
+
+@media (min-width: 1230px) {
+    .navbar_navcontainer {
+        display: none;
+    }
+
+    .navbar_right {
+        display: none;
+    }
+
+    .navbar_vector {
+        cursor: pointer;
+        overflow: hidden;
+    }
+
+    .navbar_limob {
+        display: none;
+    }
+
+    .navbar_li:hover {
+        .vector {
+            & path {
+                fill: #fff2d8;
+            }
+            .profile {
+                display: block;
+            }
+        }
+    }
+
+    .navbar_li {
+        display: flex;
+        flex-flow: row nowrap;
+        column-gap: 0.5rem;
+        padding: 18px 10px;
+        color: #fff;
+        font-family: Geologica, sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%;
+        cursor: pointer;
+    }
+
+    .navbar_liservices {
+        display: flex;
+        flex-flow: row nowrap;
+        column-gap: 0.5rem;
+        padding: 18px 10px;
+        color: #fff;
+        font-family: Geologica, sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%;
+        cursor: pointer;
+    }
+
+    .navbar_li:hover {
+        color: #fff2d8;
+    }
+
+    .navbar_liservices:hover {
+        color: #fff2d8;
+    }
+}
+
+@media (max-width: 1230px) {
+    .navbar_vector {
+        display: none;
+    }
+
+    .navbar_navcontainer {
+        display: none;
+    }
+
+    .navbar_li {
+        display: flex;
+        height: 56px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        color: #403531;
+        font-family: Geologica, sans-serif;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 140%;
+    }
+
+    .navbar_limob {
+        display: flex;
+        height: 56px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        color: #403531;
+        font-family: Geologica, sans-serif;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 140%;
+    }
+
+    .navbar_link {
+        color: #403531;
+        font-family: Geologica, sans-serif;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 140%;
+    }
+
+    .navbar_liservices {
+        display: none;
+    }
+}
+
+@media (max-width: 500px) {
+    .navbar_navcontainer {
+        display: flex;
+        padding: 330px 16px 2px 16px;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .navbar_header {
+        height: 64px;
+        background-color: #110f0f;
+        border-color: #110f0f;
+        padding: 12px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .navbar_logo {
+        padding: 15px 0;
+        max-width: 55px;
+        min-height: 64px;
+    }
+
+    .navbar_number {
+        color: #403531;
+        font-family: Geologica, sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%;
+        margin: 0;
+    }
+
+    .navbar_timevisit {
+        color: #403531;
+        font-family: Geologica, sans-serif;
+        font-size: 11px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 140%;
+        margin: 0;
+    }
+
+    .navbar_container_medium {
+        display: flex;
+        flex-direction: row;
+        column-gap: 0.5rem;
+        box-sizing: border-box;
+    }
+
+    .navbar_container_small {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .navbar_telegram {
+        max-width: 48px;
+        min-width: 48px;
+    }
+
+    .navbar_whatsapp {
+        max-width: 48px;
+        min-width: 48px;
+    }
+}
+
+.navbar_ul {
+    list-style: none;
+    display: flex;
+    flex-flow: row nowrap;
+    column-gap: 1rem;
+    margin-top: 0;
+
+    a {
+        text-decoration: none;
+    }
+
+    @media (max-width: 1230px) {
+        flex-flow: column nowrap;
+        background-color: #fff;
+        position: fixed;
+        z-index: 30;
+        transform: translateX(0);
+        top: 88px;
+        left: 0;
+        right: 0;
+        padding: 24px 40px;
+        transition: transform 0.3s ease-in-out;
+
+        &.active {
+            transform: translateX(100%);
+        }
+    }
+
+    @media (max-width: 600px) {
+        flex-flow: column nowrap;
+        background-color: #fff;
+        position: fixed;
+        z-index: 30;
+        transform: translateX(0);
+        top: 65px;
+        left: 0;
+        right: 0;
+        padding: 24px 16px;
+        height: 812px;
+        transition: transform 0.3s ease-in-out;
+        margin: 0;
+
+        &.active {
+            transform: translateX(100%);
+        }
+    }
+}
