@@ -26,26 +26,30 @@ class FormController extends Controller
             'data' => $data
         ]);
 
-        Mail::to(config('app.email'))->send(new ContactFormMail(
-            (string) $request->get('name'),
-            (string) $request->get('number'),
-            (string) $request->get('question', ''),
-        ));
-
-        $message = "Имя: {$request->get('name')}\n\n";
-        $message .= "Телефон: {$request->get('number')}";
-
-        if ($request->has('question')) {
-            $message .= "\n\nВопрос: {$request->get('question')}\n";
+        if (config('mail.mailers.smtp.username')) {
+            Mail::to(config('app.email'))->send(new ContactFormMail(
+                (string)$request->get('name'),
+                (string)$request->get('number'),
+                (string)$request->get('question', ''),
+            ));
         }
 
-        try {
-            Telegram::sendMessage([
-                'chat_id' => config('app.telegram_chat'),
-                'text' => $message,
-            ]);
-        } catch (Exception) {
+        $telegram_chat = config('app.telegram_chat');
 
+        if ($telegram_chat) {
+            try {
+                $message = "Имя: {$request->get('name')}\n\n";
+                $message .= "Телефон: {$request->get('number')}";
+
+                if ($request->has('question')) {
+                    $message .= "\n\nВопрос: {$request->get('question')}\n";
+                }
+
+                Telegram::sendMessage([
+                    'chat_id' => $telegram_chat,
+                    'text' => $message,
+                ]);
+            } catch (Exception) {}
         }
 
         return response()->json();
