@@ -33,6 +33,7 @@ class ArticleShowResource extends JsonResource
             'views' => $this->resource->rating->views,
             'likes' => $this->resource->rating->likes,
             'dislikes' => $this->resource->rating->dislikes,
+            'seo' => $this->resource->seo,
         ];
     }
 }
