@@ -110,6 +110,7 @@ class PageResourceForm
                         $helper->textInput('seo.price.title')->label('Заголовок'),
                         $helper->textarea('seo.price.description')->label('Описание'),
                     ]),
+                    $helper->richEditor('content.price')->label('Контент')
                 ]),
                 $helper->tab('Страница Отзывы', [
                     $helper->fieldset('SEO', [

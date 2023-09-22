@@ -40,7 +40,7 @@ function Header({properties, categories}) {
                     <Navbar properties={properties} categories={categories}/>
                     <div className={style.container}>
                         <div className={style.container_medium}>
-                            <img src={Phone} alt="phone" className={style.phone}/>
+                            <img src={Phone} alt="phone"/>
                             <div className={style.container_small}>
                                 <p className={style.number}>{ properties.phone }</p>
                                 <p className={style.timevisit}>Ежедневно с 8:00 до 22:00</p>
